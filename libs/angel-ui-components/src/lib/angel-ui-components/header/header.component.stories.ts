@@ -5,7 +5,7 @@ import { expect } from '@storybook/jest';
 
 const meta: Meta<HeaderComponent> = {
   component: HeaderComponent,
-  title: 'HeaderComponent',
+  title: 'SharedUi/HeaderComponent',
   parameters: {
     layout: 'fullscreen',
   },

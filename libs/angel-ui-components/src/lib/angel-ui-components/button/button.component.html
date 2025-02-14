@@ -1,0 +1,22 @@
+<button
+  [ngClass]="buttonClasses"
+  [disabled]="disabled || loading"
+  (click)="handleClick($event)"
+  type="button"
+>
+  <ng-container *ngIf="iconLeft && !loading">
+    <ng-icon [name]="iconLeft" class="icon-left"></ng-icon>
+  </ng-container>
+
+  <ng-container *ngIf="loading">
+    <ng-icon name="heroArrowPath" class="animate-spin"></ng-icon>
+  </ng-container>
+
+  <span *ngIf="!loading" class="label">
+    <ng-content></ng-content>
+  </span>
+
+  <ng-container *ngIf="iconRight && !loading">
+    <ng-icon [name]="iconRight" class="icon-right"></ng-icon>
+  </ng-container>
+</button>

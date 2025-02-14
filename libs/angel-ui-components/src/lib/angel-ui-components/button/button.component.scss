@@ -1,0 +1,75 @@
+/* button.component.scss */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Estilo base para el botón */
+.btn {
+  @apply inline-flex items-center justify-center rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition;
+}
+
+/* Variants */
+
+/* Botón primario: fondo azul y texto blanco */
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+/* Botón secundario: fondo gris oscuro y texto blanco */
+.btn-secondary {
+  @apply bg-gray-600 text-white hover:bg-gray-700;
+}
+
+/* Botón outline: fondo transparente, borde y texto gris */
+.btn-outline {
+  @apply border border-gray-300 text-gray-700 hover:bg-gray-100;
+}
+
+/* Botón ghost: estilo minimalista, sin fondo, solo texto */
+.btn-ghost {
+  @apply bg-transparent text-gray-700 hover:bg-gray-50;
+}
+
+/* Botón link: sin fondo, con estilo de enlace */
+.btn-link {
+  @apply bg-transparent text-blue-600 hover:underline;
+}
+
+/* Sizes */
+
+/* Botón pequeño */
+.btn-sm {
+  @apply px-2 py-1 text-xs;
+}
+
+/* Botón mediano */
+.btn-md {
+  @apply px-4 py-2 text-sm;
+}
+
+/* Botón grande */
+.btn-lg {
+  @apply px-6 py-3 text-base;
+}
+
+/* Estados adicionales */
+
+/* Estado loading y disabled: opacidad reducida y cursor no permitido */
+.btn-loading,
+.btn-disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Ajustes para íconos */
+.icon-left {
+  @apply mr-2;
+}
+
+.icon-right {
+  @apply ml-2;
+}
+
+/* Estilo para la etiqueta interna */
+.label {
+  @apply text-center;
+}
