@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { HeaderComponent } from './../../../../libs/angel-ui-components/src/lib/angel-ui-components/header/header.component';
+import { FooterComponent } from './../../../../libs/angel-ui-components/src/lib/angel-ui-components/footer/footer.component';
+import { ChatComponent } from './../../../../libs/angel-ui-components/src/lib/angel-ui-components/chat/chat.component';
 
 @Component({
-  imports: [NxWelcomeComponent, RouterModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrls: ['./app.component.scss'],
+  imports: [RouterModule, FooterComponent, HeaderComponent, ChatComponent],
 })
 export class AppComponent {
-  title = 'angelProyect';
+  // Implementación del componente
 }

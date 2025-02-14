@@ -1,0 +1,17 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('/assets/mountain-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff; // Asegúrate de que el texto tenga contraste
+  }
+  
+  .content {
+    flex: 1;
+    padding: 1rem; // Espaciado para que el contenido no se pegue a los bordes
+    background: rgba(0, 0, 0, 0.5); // Opcional: una capa semitransparente para mejorar legibilidad
+  }
+  

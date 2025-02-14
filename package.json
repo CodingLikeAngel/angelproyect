@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "create-stories": "nx g @nx/angular:stories angel-ui-components"
+    "create-stories": "nx g @nx/angular:stories angel-ui-components",
+    "serve": "npx nx run angelProyect:serve",
+    "pre-render": "ng run angelProyect:prerender"
   },
   "private": true,
   "dependencies": {

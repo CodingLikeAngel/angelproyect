@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.footer {
+  @apply bg-gray-50 border-t border-gray-100;
+
+  &-link {
+    @apply text-gray-600 hover:text-indigo-600 transition-colors duration-300;
+
+    &:hover {
+      transform: translateX(4px);
+    }
+  }
+
+  &-section-title {
+    @apply text-gray-900 font-semibold mb-4 text-lg;
+  }
+
+  &-social-icon {
+    @apply text-gray-400 hover:text-indigo-600 transition-colors duration-300;
+  }
+}
