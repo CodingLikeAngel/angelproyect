@@ -4,6 +4,25 @@
 @tailwind utilities;
 
 
+// styles.scss
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 /* Estilos para el contenedor de la tarjeta del título de la publicación */
 .post-title-card {
     background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
@@ -46,4 +65,12 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
+  /* Estilos para el contenedor de la tarjeta del título de la publicación */
+.post-title-card {
+  @apply bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-6 shadow-lg text-center transform transition-transform duration-300 hover:scale-105;
+}
+
+/* Estilos para el título de la publicación */
+.post-title {
+  @apply text-2xl font-semibold text-white;
+}

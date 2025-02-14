@@ -1,14 +1,20 @@
 /** @type {import('tailwindcss').Config} */
+
+
+
 module.exports = {
   content: [
-    './libs/angel-ui-components/src/**/*.{html,ts,scss}', // Asegúrate de que esté incluido
-    './libs/features/src/**/*.{html,ts,scss}', // Asegúrate de que esté incluido
-    './apps/**/*.{html,ts,scss}',               // También las apps si las estás usando
+    './libs/angel-ui-components/src/**/*.{html,ts,scss}',
+    './libs/features/src/**/*.{html,ts,scss}',
+    './apps/**/*.{html,ts,scss}',
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animate'),
+    // ... otros plugins ...
+  ],
   options: {
     safelist: [
       'btn-primary',
@@ -20,8 +26,7 @@ module.exports = {
       'btn-md',
       'btn-lg',
       'btn-loading',
-      'btn-disabled'
+      'btn-disabled',
     ],
   },
-}
-
+};

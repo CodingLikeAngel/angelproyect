@@ -1,0 +1,40 @@
+<!-- Paso 1: Crear contenido -->
+<div *ngIf="pasoActual === 1" class="p-4">
+    <h2 class="text-2xl font-semibold mb-4">Paso 1: Crear contenido para tu publicación</h2>
+    <lib-input
+      *ngIf="isEditable"
+      [(value)]="content"
+      placeholder="Escribe el contenido aquí"
+    ></lib-input>
+    <lib-button
+      *ngIf="isEditable"
+      [variant]="'primary'"
+      [size]="'md'"
+      [disabled]="!content.trim()"
+      (clicked)="guardarContenido()"
+    >
+      Guardar
+    </lib-button>
+  </div>
+  
+  <!-- Paso 2: Confirmación -->
+  <div *ngIf="pasoActual === 2" class="p-4">
+    <h2 class="text-2xl font-semibold mb-4">Paso 2: Confirmar contenido</h2>
+    <p class="text-lg">Tu contenido es: {{ content }}</p>
+    <lib-button
+      [variant]="'primary'"
+      [size]="'md'"
+      (clicked)="siguientePaso()"
+    >
+      Continuar
+    </lib-button>
+  </div>
+  
+<!-- Paso 3: Contenido Final -->
+<div *ngIf="pasoActual === 3" class="p-4">
+    <div class="bg-gradient-to-r from-green-500 to-blue-600 rounded-lg p-6 shadow-lg text-center transform transition-transform duration-300 hover:scale-105">
+      <h3 [ngStyle]="{'color': isDarkBackground() ? 'white' : 'black'}" class="text-2xl font-semibold">
+        {{ content || 'Contenido no disponible' }}
+      </h3>
+    </div>
+  </div>

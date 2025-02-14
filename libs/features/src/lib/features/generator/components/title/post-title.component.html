@@ -1,0 +1,38 @@
+<!-- Paso 1: Crear título -->
+<div *ngIf="pasoActual === 1" class="p-4">
+  <h2 class="text-2xl font-semibold mb-4">Paso 1: Crear un título para tu publicación</h2>
+  <lib-input
+    *ngIf="isEditable"
+    [(value)]="title"
+    placeholder="Escribe el título aquí"
+  ></lib-input>
+  <lib-button
+    *ngIf="isEditable"
+    [variant]="'primary'"
+    [size]="'md'"
+    [disabled]="!title.trim()"
+    (clicked)="guardarTitulo()"
+  >
+    Guardar
+  </lib-button>
+</div>
+
+<!-- Paso 2: Confirmación -->
+<div *ngIf="pasoActual === 2" class="p-4">
+  <h2 class="text-2xl font-semibold mb-4">Paso 2: Confirmar título</h2>
+  <p class="text-lg">Tu título es: {{ title }}</p>
+  <lib-button
+    [variant]="'primary'"
+    [size]="'md'"
+    (clicked)="siguientePaso()"
+  >
+    Continuar
+  </lib-button>
+</div>
+
+<!-- Paso 3: Título Final -->
+<div *ngIf="pasoActual === 3" class="p-4">
+  <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-6 shadow-lg text-center transform transition-transform duration-300 hover:scale-105">
+    <h3 class="text-2xl font-semibold text-white">{{ title || 'Título no disponible' }}</h3>
+  </div>
+</div>
