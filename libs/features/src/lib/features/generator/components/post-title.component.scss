@@ -1,0 +1,49 @@
+/* libs/shared-ui/src/lib/styles.scss */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Estilos para el contenedor de la tarjeta del título de la publicación */
+.post-title-card {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    border-radius: 10px;
+    padding: 0.8rem; /* Reducido de 1.5rem a 1rem */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 1rem 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Efecto hover para la tarjeta */
+  .post-title-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Estilos para el título de la publicación */
+  .post-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 0.5rem 0; /* Reducido de 1rem a 0.5rem */
+  }
+  
+  /* Estilos para el componente lib-input */
+  lib-input {
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem; /* Reducido de 1rem a 0.5rem */
+  }
+  
+  /* Estilos internos para el input dentro de lib-input */
+  lib-input input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  

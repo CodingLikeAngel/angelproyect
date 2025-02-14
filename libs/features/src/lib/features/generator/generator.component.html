@@ -1,0 +1,8 @@
+<!-- Puedes mantener el router-outlet si lo necesitas -->
+<!-- <router-outlet></router-outlet> -->
+
+<!-- Componente que genera el contenido -->
+<lib-content-generator (contentGenerated)="handleGeneratedContent($event)"></lib-content-generator>
+
+<!-- Componente que muestra el título o contenido generado -->
+<lib-post-title [title]="generatedContent"></lib-post-title>

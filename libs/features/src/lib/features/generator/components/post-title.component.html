@@ -1,0 +1,24 @@
+<div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-6 shadow-lg text-center transform transition-transform duration-300 hover:scale-105">
+    <h1 class="text-4xl font-bold text-white mb-4 animate-fade-in">Bienvenido</h1>
+    <p class="text-lg text-white animate-slide-in">Empecemos a crear un título para tu publicación.</p>
+  </div>
+  
+  
+  <div class="post-title-card">
+    <h1 class="post-title">{{ title || 'Título del Post' }}</h1>
+  </div>
+  <lib-input
+    *ngIf="isEditable"
+    [(value)]="title"
+    placeholder="Escribe el título aquí"
+  ></lib-input>
+  <lib-button
+    *ngIf="isEditable"
+    [variant]="'primary'"
+    [size]="'md'"
+    [disabled]="!title.trim()"
+    (clicked)="guardarTitulo()"
+  >
+    Guardar
+  </lib-button>
+  

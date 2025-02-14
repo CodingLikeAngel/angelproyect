@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angel/angel-ui-components": ["libs/angel-ui-components/src/index.ts"]
+      "@angel/angel-ui-components": ["libs/angel-ui-components/src/index.ts"],
+      "@angel/features": ["libs/features/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
