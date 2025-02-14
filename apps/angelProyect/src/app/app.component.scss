@@ -1,17 +1,22 @@
-:host {
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos */
+  }
+  .content {
+    margin-top: 60px; /* Ajusta este valor según la altura de tu encabezado */
+  }
+  :host {
+    position: relative; /* Asegura que los elementos secundarios se posicionen correctamente */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: url('/assets/mountain-background.jpg');
+    // background-image: url('./../assets/mountains.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: #fff; // Asegúrate de que el texto tenga contraste
-  }
-  
-  .content {
-    flex: 1;
-    padding: 1rem; // Espaciado para que el contenido no se pegue a los bordes
-    background: rgba(0, 0, 0, 0.5); // Opcional: una capa semitransparente para mejorar legibilidad
+    color: #416814;
   }
   
