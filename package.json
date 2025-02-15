@@ -6,7 +6,7 @@
     "create-stories": "nx g @nx/angular:stories angel-ui-components",
     "serve": "npx nx run angelProyect:serve",
     "pre-render": "nx run angelProyect:prerender",
-    "deploy": "npx nx run test:build --configuration=production  && gh-pages -d dist/apps/angelProyect/browser -r https://github.com/CodingLikeAngel/angelproyect"
+    "deploy": "npx nx run test:build --configuration=production  && gh-pages -d dist/apps/test -r https://github.com/CodingLikeAngel/angelproyect"
   },
   "private": true,
   "dependencies": {
