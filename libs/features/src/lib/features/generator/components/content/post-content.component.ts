@@ -1,43 +1,63 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from 'libs/angel-ui-components/src/lib/angel-ui-components/button/button.component';
 import { InputComponent } from 'libs/angel-ui-components/src/lib/angel-ui-components/input/input.component';
+
+
+export interface Section {
+  type: 'title' | 'paragraph' | 'image';
+  content: string;
+  imageUrl?: string;
+}
+
 
 @Component({
   selector: 'lib-post-content',
   standalone: true,
-   imports: [CommonModule, FormsModule, InputComponent, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, InputComponent],
   templateUrl: './post-content.component.html',
   styleUrls: ['./post-content.component.scss']
 })
 export class PostContentComponent {
-  @Input() content = ''; // Recibe el contenido desde el padre
-  @Output() contentCompletado = new EventEmitter<void>(); // Emite un evento cuando el contenido está listo
-  
-  pasoActual = 1;
-  isEditable = true;
+  sections: Section[] = [];
 
-  guardarContenido() {
-    if (this.content.trim()) {
-      this.isEditable = false;
-      this.pasoActual = 2;
+  @Output() articleSaved = new EventEmitter<Section[]>();
+
+  addSection(type: 'title' | 'paragraph' | 'image'): void {
+    this.sections.push({ type, content: '' });
+  }
+
+  removeSection(index: number): void {
+    this.sections.splice(index, 1);
+  }
+
+  isArticleValid(): boolean {
+    return this.sections.length > 0 && this.sections.every(section => {
+      if (section.type === 'image') {
+        return section.imageUrl && section.imageUrl.trim() !== '';
+      }
+      return section.content.trim() !== '';
+    });
+  }
+
+  guardarArticulo(): void {
+    if (this.isArticleValid()) {
+      this.articleSaved.emit(this.sections);
+      alert('¡Artículo guardado exitosamente!');
     } else {
-      alert('El contenido no puede estar vacío.');
+      alert('Por favor, completa todas las secciones antes de guardar.');
     }
   }
 
-  siguientePaso() {
-    if (this.pasoActual === 2) {
-      this.pasoActual = 3;
-      this.contentCompletado.emit(); // Emite el evento cuando se termina el paso 3
+  onFileSelected(event: Event, index: number): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file: File = input.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.sections[index].imageUrl = e.target?.result as string;
+      };
+      reader.readAsDataURL(file);
     }
-  }
-
-  isDarkBackground(): boolean {
-    // Lógica simple para determinar si el fondo es oscuro o no, 
-    // podrías usar un cálculo de contraste real dependiendo del fondo.
-    // Aquí solo usamos un valor de ejemplo
-    return true; // Esto siempre retorna `true` por ahora, ajusta según el color del fondo.
   }
 }

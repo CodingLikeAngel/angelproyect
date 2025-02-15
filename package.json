@@ -5,7 +5,7 @@
   "scripts": {
     "create-stories": "nx g @nx/angular:stories angel-ui-components",
     "serve": "npx nx run angelProyect:serve",
-    "pre-render": "ng run angelProyect:prerender"
+    "pre-render": "nx run angelProyect:prerender"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +25,8 @@
     "@ssr/source": "file:",
     "animate.css": "^4.1.1",
     "express": "^4.21.2",
+    "ngx-quill": "^27.0.0",
+    "quill": "^2.0.3",
     "rxjs": "~7.8.0",
     "tailwindcss-animated": "^2.0.0",
     "zone.js": "~0.15.0"

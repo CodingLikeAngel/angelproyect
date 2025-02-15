@@ -1,40 +1,69 @@
-<!-- Paso 1: Crear contenido -->
-<div *ngIf="pasoActual === 1" class="p-4">
-    <h2 class="text-2xl font-semibold mb-4">Paso 1: Crear contenido para tu publicación</h2>
-    <lib-input
-      *ngIf="isEditable"
-      [(value)]="content"
-      placeholder="Escribe el contenido aquí"
-    ></lib-input>
-    <lib-button
-      *ngIf="isEditable"
-      [variant]="'primary'"
-      [size]="'md'"
-      [disabled]="!content.trim()"
-      (clicked)="guardarContenido()"
-    >
-      Guardar
-    </lib-button>
-  </div>
+<div class="p-4">
+    <h2 class="text-2xl font-semibold mb-4">Crea tu artículo</h2>
   
-  <!-- Paso 2: Confirmación -->
-  <div *ngIf="pasoActual === 2" class="p-4">
-    <h2 class="text-2xl font-semibold mb-4">Paso 2: Confirmar contenido</h2>
-    <p class="text-lg">Tu contenido es: {{ content }}</p>
-    <lib-button
-      [variant]="'primary'"
-      [size]="'md'"
-      (clicked)="siguientePaso()"
-    >
-      Continuar
-    </lib-button>
-  </div>
-  
-<!-- Paso 3: Contenido Final -->
-<div *ngIf="pasoActual === 3" class="p-4">
-    <div class="bg-gradient-to-r from-green-500 to-blue-600 rounded-lg p-6 shadow-lg text-center transform transition-transform duration-300 hover:scale-105">
-      <h3 [ngStyle]="{'color': isDarkBackground() ? 'white' : 'black'}" class="text-2xl font-semibold">
-        {{ content || 'Contenido no disponible' }}
-      </h3>
+    <!-- Lista de secciones dinámicas -->
+    <div *ngFor="let section of sections; let i = index" class="mb-4 border p-2 rounded">
+      <!-- Mostrar input de título -->
+      <div *ngIf="section.type === 'title'">
+        <lib-input
+          [(value)]="section.content"
+          placeholder="Escribe el título aquí"
+          class="mb-2 text-xl font-bold">
+        </lib-input>
+      </div>
+      <!-- Mostrar input de párrafo -->
+      <div *ngIf="section.type === 'paragraph'">
+        <lib-input
+          [(value)]="section.content"
+          placeholder="Escribe el párrafo aquí"
+          class="mb-2">
+        </lib-input>
+      </div>
+      <!-- Mostrar input de imagen -->
+      <div *ngIf="section.type === 'image'">
+        <input type="file" (change)="onFileSelected($event, i)" class="mb-2" />
+        <div *ngIf="section.imageUrl">
+          <img [src]="section.imageUrl" alt="Imagen seleccionada" class="mb-2 max-w-full h-auto" />
+        </div>
+      </div>
+      <!-- Botón para eliminar sección -->
+      <lib-button
+        [variant]="'secondary'"
+        [size]="'sm'"
+        (clicked)="removeSection(i)">
+        Eliminar sección
+      </lib-button>
     </div>
+  
+    <!-- Opciones para agregar nueva sección -->
+    <div class="flex gap-2 mb-4">
+      <lib-button
+        [variant]="'primary'"
+        [size]="'md'"
+        (clicked)="addSection('title')">
+        Añadir Título
+      </lib-button>
+      <lib-button
+        [variant]="'primary'"
+        [size]="'md'"
+        (clicked)="addSection('paragraph')">
+        Añadir Párrafo
+      </lib-button>
+      <lib-button
+        [variant]="'primary'"
+        [size]="'md'"
+        (clicked)="addSection('image')">
+        Añadir Imagen
+      </lib-button>
+    </div>
+  
+    <!-- Botón para guardar el artículo -->
+    <lib-button
+      [variant]="'primary'"
+      [size]="'md'"
+      (clicked)="guardarArticulo()"
+      [disabled]="!isArticleValid()">
+      Guardar Artículo
+    </lib-button>
   </div>
+  

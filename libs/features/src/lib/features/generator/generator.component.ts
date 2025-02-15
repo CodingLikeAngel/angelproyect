@@ -1,29 +1,86 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ContentGeneratorComponent } from './../../../../../../libs/angel-ui-components/src/lib/angel-ui-components/content-generator/content-generator.component';
 import { PostTitleComponent } from './components/title/post-title.component';
-import { PostContentComponent } from './components/content/post-content.component';
-
+import { PostContentComponent, Section } from './components/content/post-content.component';
+import { PostDescriptionComponent } from './components/description/post-description.component';
+import { AIContentService } from 'libs/angel-ui-components/src/lib/angel-ui-components/content-generator/ai-content.service';
 
 @Component({
   selector: 'lib-generator',
   standalone: true,
-  imports: [CommonModule, ContentGeneratorComponent, PostTitleComponent, PostContentComponent],
+  imports: [CommonModule, ContentGeneratorComponent, PostTitleComponent, PostContentComponent , PostDescriptionComponent],
   templateUrl: './generator.component.html',
   styleUrls: ['./generator.component.scss']
 })
-export class GeneratorComponent {
+export class GeneratorComponent implements OnInit {
   generatedContent = '';
   mostrarContenido = false; // Inicialmente el contenido no es visible
+  // Variables para título, contenido, y nuevas secciones
+  postDescription = '';
+  postDate = '';
+  postAuthor = '';
+
+  mostrarImagen = false;
+  mostrarDescripcion = false;
+  mostrarFechaYAutor = false;
+
+  title = 'Título de la publicación';
+  description = 'Descripción breve de la publicación.';
+  content = 'Contenido completo de la publicación.';
+  imageUrl = '';
+  isContentVisible = false;
+  constructor(private aiContentService: AIContentService) {}
+  
+  ngOnInit() {
+    // Asignar valores por defecto o desde un formulario, API, etc.
+    this.generatedContent = 'Título de mi post';
+    this.postDescription = 'Esta es una descripción corta del post.';
+    this.postDate = '14 de febrero, 2025';
+    this.postAuthor = 'Juan Pérez';
+    // Por defecto se puede dejar una imagen de placeholder o vacía
+    this.imageUrl = 'https://via.placeholder.com/800x400';
+
+    // Control de visibilidad de elementos
+    this.mostrarContenido = true;
+    this.mostrarImagen = true;
+    this.mostrarDescripcion = true;
+    this.mostrarFechaYAutor = true;
+  }
+  onDescriptionCompletada() {
+    console.log('Descripción completada');
+    // Lógica adicional si es necesaria
+  }
+
+  toggleContent() {
+    this.isContentVisible = !this.isContentVisible;
+  }
 
   onPasoCompletado() {
-    // Podemos hacer cualquier cosa, por ejemplo, cambiar una variable
     console.log('Título completado');
     this.mostrarContenido = true;
   }
 
-  // Cuando el paso 3 de PostContent se complete
+ 
+  async onArticleSaved(sections: Section[]): Promise<void> {
+    const rawHtml = sections.map(section => {
+      if (section.type === 'title') {
+        const formattedTitle = section.content.replace(/\n/g, '<br>');
+        return `<h2>${formattedTitle}</h2>`;
+      } else if (section.type === 'paragraph') {
+        const formattedParagraph = section.content.replace(/\n/g, '<br>');
+        return `<p>${formattedParagraph}</p>`;
+      } else if (section.type === 'image' && section.imageUrl) {
+        return `<img src="${section.imageUrl}" alt="Imagen del artículo" class="mb-4 max-w-full h-auto" />`;
+      }
+      return '';
+    }).join('');
+
+    // Llamar al servicio para embellecer el HTML
+    this.generatedContent = await this.aiContentService.beautifyHtml(rawHtml);
+  }
+
   onContentCompletado() {
     console.log('Contenido completado');
   }
@@ -32,5 +89,18 @@ export class GeneratorComponent {
     console.log('Contenido generado:', content);
     this.generatedContent = content;
   }
-}
 
+  // Método para manejar la subida de imagen
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file: File = input.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.imageUrl = e.target?.result as string;
+        this.mostrarImagen = true;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+}

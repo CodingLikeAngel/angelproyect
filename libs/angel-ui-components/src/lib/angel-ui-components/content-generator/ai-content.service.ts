@@ -47,4 +47,22 @@ export class AIContentService {
       return response.choices[0].message.content;
     }
   }
+
+
+  async beautifyHtml(htmlContent: string): Promise<string> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = {
+      contents: [{
+        parts: [{
+          text: `Por favor, formatea el siguiente contenido como HTML sin incluir delimitadores de código: ${htmlContent}`
+        }]
+      }]
+    };
+    const response = await firstValueFrom(
+      this.http.post<any>(`${this.geminiUrl}?key=${this.geminiKey}`, body, { headers })
+    );
+    return response.candidates[0].content.parts[0].text;
+  }
+  
+  
 }
