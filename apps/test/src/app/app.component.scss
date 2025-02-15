@@ -1,0 +1,22 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos */
+  }
+  .content {
+    margin-top: 60px; /* Ajusta este valor según la altura de tu encabezado */
+  }
+  :host {
+    position: relative; /* Asegura que los elementos secundarios se posicionen correctamente */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    // background-image: url('./../assets/mountains.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #416814;
+  }
+  
