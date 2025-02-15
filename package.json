@@ -5,7 +5,8 @@
   "scripts": {
     "create-stories": "nx g @nx/angular:stories angel-ui-components",
     "serve": "npx nx run angelProyect:serve",
-    "pre-render": "nx run angelProyect:prerender"
+    "pre-render": "nx run angelProyect:prerender",
+    "deploy": "gh-pages -d dist/apps/angelProyect/browser -r https://github.com/CodingLikeAngel/angelproyect"
   },
   "private": true,
   "dependencies": {
@@ -71,6 +72,7 @@
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-cypress": "^3.5.0",
+    "gh-pages": "^6.3.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-preset-angular": "~14.4.0",
