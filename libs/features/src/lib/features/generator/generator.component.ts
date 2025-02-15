@@ -6,6 +6,7 @@ import { PostTitleComponent } from './components/title/post-title.component';
 import { PostContentComponent, Section } from './components/content/post-content.component';
 import { PostDescriptionComponent } from './components/description/post-description.component';
 import { AIContentService } from 'libs/angel-ui-components/src/lib/angel-ui-components/content-generator/ai-content.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'lib-generator',
@@ -31,7 +32,7 @@ export class GeneratorComponent implements OnInit {
   content = 'Contenido completo de la publicación.';
   imageUrl = '';
   isContentVisible = false;
-  constructor(private aiContentService: AIContentService) {}
+  constructor(private aiContentService: AIContentService, private sanitizer: DomSanitizer) {}
   
   ngOnInit() {
     // Asignar valores por defecto o desde un formulario, API, etc.
@@ -61,9 +62,12 @@ export class GeneratorComponent implements OnInit {
     console.log('Título completado');
     this.mostrarContenido = true;
   }
-
- 
   async onArticleSaved(sections: Section[]): Promise<void> {
+    // Objeto para almacenar los marcadores y su HTML de imagen correspondiente.
+    const imagePlaceholders: { [key: string]: string } = {};
+    let imageCounter = 0;
+  
+    // Construir el HTML sin imágenes, insertando un marcador de posición en forma de <span>.
     const rawHtml = sections.map(section => {
       if (section.type === 'title') {
         const formattedTitle = section.content.replace(/\n/g, '<br>');
@@ -72,14 +76,35 @@ export class GeneratorComponent implements OnInit {
         const formattedParagraph = section.content.replace(/\n/g, '<br>');
         return `<p>${formattedParagraph}</p>`;
       } else if (section.type === 'image' && section.imageUrl) {
-        return `<img src="${section.imageUrl}" alt="Imagen del artículo" class="mb-4 max-w-full h-auto" />`;
+        // Crear un marcador único para la imagen.
+        const markerId = `IMAGE_PLACEHOLDER_${imageCounter}`;
+        const placeholder = `<span id="${markerId}"></span>`;
+        // Almacenar el HTML de la imagen correspondiente al marcador.
+        imagePlaceholders[markerId] = `<img src="${section.imageUrl}" alt="Imagen del artículo" class="mb-4 max-w-full h-auto" />`;
+        imageCounter++;
+        return placeholder;
       }
       return '';
     }).join('');
-
-    // Llamar al servicio para embellecer el HTML
-    this.generatedContent = await this.aiContentService.beautifyHtml(rawHtml);
+  
+    // Enviar solo el contenido textual (con marcadores) al servicio de embellecimiento.
+    const beautifiedHtml = await this.aiContentService.beautifyHtml(rawHtml);
+  
+    // Reemplazar los marcadores con el HTML de las imágenes.
+    let finalHtml = beautifiedHtml;
+    Object.keys(imagePlaceholders).forEach(key => {
+      // Genera el marcador que usaste en el HTML.
+      const marker = `<span id="${key}"></span>`;
+      finalHtml = finalHtml.replace(marker, imagePlaceholders[key]);
+    });
+  
+    // Si usas [innerHTML] en tu template, podrías necesitar bypass el sanitizador:
+    // this.generatedContent = this.sanitizer.bypassSecurityTrustHtml(finalHtml);
+  
+    // Asignar el HTML final con imágenes inyectadas.
+    this.generatedContent = finalHtml;
   }
+  
 
   onContentCompletado() {
     console.log('Contenido completado');

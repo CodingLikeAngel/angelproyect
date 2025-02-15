@@ -50,7 +50,6 @@ export class AIContentService {
     }
   }
 
-
   async beautifyHtml(htmlContent: string): Promise<string> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = {
@@ -63,7 +62,12 @@ export class AIContentService {
     const response = await firstValueFrom(
       this.http.post<any>(`${this.geminiUrl}?key=${this.geminiKey}`, body, { headers })
     );
-    return response.candidates[0].content.parts[0].text;
+    let result = response.candidates[0].content.parts[0].text;
+    
+    // Eliminar los delimitadores de código markdown (```html y ```)
+    result = result.replace(/```html\s*/g, '').replace(/\s*```/g, '');
+    
+    return result;
   }
   
   
