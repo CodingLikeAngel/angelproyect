@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'libs/angel-ui-components/src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OpenAIService {
-  private apiUrl = 'https://api.openai.com/v1/chat/completions';
-  private apiKey = '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';
-
+  
+  private openAiUrl = environment.openAiUrl;
+  private geminiUrl = environment.geminiUrl;
+  private  openAiKey = environment.openAiKey;
+  private geminiKey = environment.geminiKey;
   constructor(private http: HttpClient) {}
 
   sendMessage(messages: string[]): Observable<never> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.apiKey}`
+      'Authorization': `Bearer ${this.openAiKey}`
     });
 
     const body = {
@@ -22,6 +25,6 @@ export class OpenAIService {
       messages: messages.map(content => ({ role: 'user', content }))
     };
 
-    return this.http.post<never>(this.apiUrl, body, { headers });
+    return this.http.post<never>(this.openAiUrl, body, { headers });
   }
 }
