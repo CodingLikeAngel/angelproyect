@@ -1,0 +1,31 @@
+<div class="post-list" (scroll)="onScroll()">
+  <div class="post-card" *ngFor="let post of posts">
+    <lib-card
+      [image]="'https://api-production-ec1c.up.railway.app' + post.imagenes[0]?.url"
+      [title]="post.title"
+      [excerpt]="post.descripcion"
+      [date]="post.createdAt"
+      [author]="post.author"
+      [readMoreUrl]="post.readMoreUrl"
+      [category]="post.category"
+      [authorInitials]="post.authorInitials"
+      [tag]="post.tag"
+    >
+      <ng-container *ngIf="post.imagenes[0]?.url">
+        <img
+          [ngSrc]="'https://api-production-ec1c.up.railway.app' + post.imagenes[0]?.url"
+          [alt]="post.title"
+          [width]="300"
+          [height]="200"
+          [style.width.px]="300"
+          [style.height.px]="200"
+          [style.object-fit]="'cover'"
+          priority
+        />
+      </ng-container>
+    </lib-card>
+  </div>
+  <div *ngIf="isLoading" class="loading-spinner">
+    Cargando...
+  </div>
+</div>

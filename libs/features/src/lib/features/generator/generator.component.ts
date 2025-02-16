@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { ContentGeneratorComponent } from './../../../../../../libs/angel-ui-components/src/lib/angel-ui-components/content-generator/content-generator.component';
-import { PostTitleComponent } from './components/title/post-title.component';
 import { PostContentComponent, Section } from './components/content/post-content.component';
 import { PostDescriptionComponent } from './components/description/post-description.component';
-import { AIContentService } from 'libs/angel-ui-components/src/lib/angel-ui-components/content-generator/ai-content.service';
+import { PostTitleComponent } from './components/title/post-title.component';
+import { ContentGeneratorComponent } from '@angel/angel-ui-components';
+import { AIContentService } from '@angel/angel-ui-components';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+
 
 @Component({
   selector: 'lib-generator',

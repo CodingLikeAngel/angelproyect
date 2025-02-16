@@ -1,0 +1,49 @@
+Post Card Component
+Un componente que muestre la vista previa de un post. Puede incluir:
+
+Imagen de portada (thumbnail)
+Título del post
+Extracto o resumen del contenido
+Fecha de publicación y autor
+Botón o enlace "Leer más"
+Post List Component
+Componente encargado de listar múltiples Post Cards en un layout de grid o lista. Puedes incluir funcionalidades de paginación o scroll infinito para mejorar la experiencia.
+
+Post Detail Component
+Este componente muestra el contenido completo del post. Puede incluir:
+
+Título y subtítulo
+Imagen principal
+Contenido formateado (texto, imágenes, videos, etc.)
+Información del autor y fecha de publicación
+Botones de compartir en redes sociales
+Comment Section / Comment List Component
+Un área dedicada a los comentarios del post. Puede incluir:
+
+Lista de comentarios existentes
+Formulario para agregar nuevos comentarios
+Respuestas o hilos de comentarios
+Author Profile Component
+Un componente que muestra información sobre el autor, ideal para acompañar el Post Detail. Puede incluir:
+
+Imagen o avatar del autor
+Biografía corta
+Enlaces a redes sociales o a más posts del autor
+Tag/Category Filter Component
+Un sidebar o sección que permita filtrar posts por etiquetas o categorías. Esto mejora la navegación y la búsqueda de contenido relacionado.
+
+Search Component
+Un input de búsqueda especializado para localizar posts por palabras clave o etiquetas, con resultados en tiempo real o mediante un botón de búsqueda.
+
+Related Posts Component
+Al final de un post, muestra otros posts relacionados basados en etiquetas, categorías o similitud de contenido.
+
+Social Sharing Buttons Component
+Un conjunto de botones o íconos para compartir el post en diferentes redes sociales, facilitando la difusión del contenido.
+
+Pagination Component
+Si tienes muchos posts, un componente de paginación o navegación (anterior/siguiente) es ideal para dividir el contenido en páginas.
+
+Cada uno de estos componentes puede desarrollarse de forma modular y reutilizable. Puedes definir sus entradas (@Input) para parametrizarlos (por ejemplo, para recibir datos del post, configuración de estilos, etc.) y utilizar salidas (@Output) para emitir eventos (como clics en "Leer más" o en botones de compartir). Además, con Tailwind CSS podrás aplicar estilos de manera consistente y rápida en cada uno.
+
+Esta estrategia te ayudará a construir una interfaz de blog robusta, escalable y fácil de mantener, donde cada componente se encargue de una funcionalidad específica y puedas probarlos de manera aislada en Storybook.

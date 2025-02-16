@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:host {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  

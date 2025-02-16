@@ -1,7 +1,18 @@
 <lib-header></lib-header>
 <div class="content">
-  <router-outlet></router-outlet>
+
   <lib-chat></lib-chat>
 </div>
-<lib-generator></lib-generator>
+<!-- <lib-generator></lib-generator> -->
+
+<lib-content-generator
+(contentGenerated)="handleGeneratedContent($event)"
+class="relative block w-full p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+></lib-content-generator>
+<lib-upload-post></lib-upload-post>
+<lib-post-list></lib-post-list>
+
+<router-outlet></router-outlet>
+
+
 <lib-footer></lib-footer>
