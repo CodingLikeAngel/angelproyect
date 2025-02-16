@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +8,19 @@ import { Observable } from 'rxjs';
 export class PostService {
   private apiUrl = 'https://api-production-ec1c.up.railway.app/api';
 
+  private postCreated = new Subject<void>();  
+
   constructor(private http: HttpClient) {}
 
+  // Emite un evento cuando se crea un post
+  notifyPostCreated() {
+    this.postCreated.next();
+  }
 
+  // Observable para suscribirse a la creación de posts
+  get postCreated$() {
+    return this.postCreated.asObservable();
+  }
   // Crear una nueva publicación
   createPost(postData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/posts`, postData);

@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UploadPostService } from './upload-post.service';
+import { PostService } from '@angel/features';
 
 @Component({
   selector: 'lib-upload-post',
@@ -12,7 +13,7 @@ import { UploadPostService } from './upload-post.service';
 export class UploadPostComponent {
   postForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private uploadPostService: UploadPostService) {
+  constructor(private fb: FormBuilder, private uploadPostService: UploadPostService , private postService:  PostService) {
     this.postForm = this.fb.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
@@ -37,6 +38,7 @@ export class UploadPostComponent {
       }
       this.uploadPostService.createPost(formData).subscribe(response => {
         console.log('Post creado con éxito', response);
+        this.postService.notifyPostCreated(); // Notifica a los suscriptores
       }, error => {
         console.error('Error al crear el post', error);
       });

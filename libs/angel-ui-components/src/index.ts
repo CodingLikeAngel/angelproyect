@@ -6,4 +6,3 @@ export * from './lib/angel-ui-components/header/header.component';
 export * from './lib/angel-ui-components/footer/footer.component';
 export * from './lib/angel-ui-components/checkbox/checkbox.component';
 export * from './lib/angel-ui-components/input/input.component';
-export * from './lib/angel-ui-components/upload-post/upload-post.component';

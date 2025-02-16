@@ -1,7 +1,7 @@
-import { ChatComponent, FooterComponent, HeaderComponent ,  ContentGeneratorComponent , UploadPostComponent} from '@angel/angel-ui-components';
+import { ChatComponent, FooterComponent, HeaderComponent ,  ContentGeneratorComponent} from '@angel/angel-ui-components';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PostListComponent } from '@angel/features';
+import { PostListComponent, UploadPostComponent } from '@angel/features';
 // import { ContentGeneratorComponent } from './../../../../libs/angel-ui-components/src/lib/angel-ui-components/content-generator/content-generator.component';
 
 

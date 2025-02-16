@@ -1,7 +1,7 @@
 <div class="post-list" (scroll)="onScroll()">
   <div class="post-card" *ngFor="let post of posts">
     <lib-card
-      [image]="'https://api-production-ec1c.up.railway.app' + post.imagenes[0]?.url"
+      [image]="'https://api-production-ec1c.up.railway.app' + post.imagenes[0]?.url" 
       [title]="post.title"
       [excerpt]="post.descripcion"
       [date]="post.createdAt"

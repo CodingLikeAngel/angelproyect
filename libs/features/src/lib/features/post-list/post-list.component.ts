@@ -22,8 +22,17 @@ export class PostListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPosts();
+    this.setupPostCreationListener();
   }
 
+  private setupPostCreationListener(): void {
+    this.postService.postCreated$.subscribe(() => {
+      this.page = 1; // Reinicia la paginación si es necesario
+      this.loadPosts();
+    });
+  }
+
+  
   loadPosts(): void {
     if (this.isLoading) return;
     this.isLoading = true;
