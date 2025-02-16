@@ -21,13 +21,9 @@ export class PostService {
     return this.http.get(`${this.apiUrl}/posts/${postId}`);
   }
 
-
-// En tu servicio Angular (post.service.ts)
-getPost(postId: string): Observable<any> {
-  return this.http.get(`${this.apiUrl}/posts/${postId}`);
-}
-
-
+  getAllPosts(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/posts`);
+  }
 
 
 

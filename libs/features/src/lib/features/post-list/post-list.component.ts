@@ -28,14 +28,13 @@ export class PostListComponent implements OnInit {
     if (this.isLoading) return;
     this.isLoading = true;
 
-    const postId = '67b16cdfadccb5f5e1ee6e13'; // ID válido de tu documento
-    this.postService.getPost(postId).subscribe({
+    this.postService.getAllPosts().subscribe({
       next: (data) => {
-        this.posts = [data];
+        this.posts = data; // Asigna la lista de posts obtenida
         this.isLoading = false;
       },
       error: (err) => {
-        console.error(err);
+        console.error('Error al cargar los posts:', err);
         this.isLoading = false;
       },
     });
