@@ -12,10 +12,12 @@ export const appRoutes: Route[] = [
       { path: '', component: HomeComponent },
       { path: 'posts', component: PostListComponent },
       { path: 'upload-posts', component: UploadPostComponent },
+      { path: 'post/:id', component: PostContentComponent },
+      { path: 'home', component: HomeComponent },
       // Otras rutas que usan el layout principal...
     ]
   },
   // Ruta para el detalle del post con un layout distinto
-  { path: 'post/:id', component: PostContentComponent },
+//   { path: 'post/:id', component: PostContentComponent },
   { path: '**', redirectTo: '' }
 ];

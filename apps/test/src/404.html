@@ -1,3 +1,11 @@
+<!-- <!DOCTYPE html>
+<script>
+  const segment = 1;
+  sessionStorage.redirect = location.href.split('/').slice(segment).join('/');
+  location.replace(location.href.split('/').slice(0, segment).join('/'));
+</script> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,24 +15,18 @@
     <!-- <base href="/"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- <script>
+      (function(){
+        const redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script> -->
   </head>
   <body>
     <app-root></app-root>
-
-    <script type="text/javascript">
-      // Verificar si hay una redirección pendiente
-      var redirectPath = new URLSearchParams(window.location.search).get('redirect');
-      if (redirectPath) {
-        // Usar el enrutador de Angular para navegar a la ruta original
-        window.history.replaceState(null, '', redirectPath);
-      }
     </script>
-    <script type="text/javascript">
-      // Obtener la ruta actual
-      var currentPath = window.location.pathname;
-      // Redirigir a index.html manteniendo la ruta
-      window.location.replace('/index.html?redirect=' + currentPath);
-    </script>
-    
   </body>
 </html>
