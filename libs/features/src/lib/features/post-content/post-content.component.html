@@ -1,0 +1,41 @@
+<div *ngIf="post$ | async as post; else loading" class="post-detail">
+    <!-- Título y subtítulo -->
+    <h1 class="post-title">{{ post.title }}</h1>
+    <p class="post-subtitle">{{ post.descripcion }}</p>
+  
+    <!-- Información del autor y fecha -->
+    <div class="post-meta">
+      <span class="post-author">Por: {{ post.author }}</span>
+      <span class="post-date">{{ post.createdAt | date:'mediumDate' }}</span>
+    </div>
+  
+    <!-- Imagen principal -->
+    <div class="post-main-image" *ngIf="post.imagenes?.length">
+      <img 
+        [src]="'https://api-production-ec1c.up.railway.app' + post.imagenes[0].url"
+        [alt]="post.title" />
+    </div>
+  
+    <!-- Contenido formateado -->
+    <div class="post-content" [innerHTML]="post.content"></div>
+  
+    <!-- Botones de compartir (ejemplo básico) -->
+    <div class="post-share">
+      <button class="share-button">Compartir en Facebook</button>
+      <button class="share-button">Compartir en Twitter</button>
+      <!-- Puedes agregar más botones o utilizar librerías para compartir -->
+    </div>
+  
+    <!-- Sección de comentarios (placeholder o componente dedicado) -->
+    <div class="post-comments">
+      <p>Sección de comentarios</p>
+      <!-- Ejemplo: <app-comment-list [postId]="post._id"></app-comment-list> -->
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <div class="loading">
+      Cargando...
+    </div>
+  </ng-template>
+  

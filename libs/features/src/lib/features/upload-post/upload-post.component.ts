@@ -3,15 +3,17 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UploadPostService } from './upload-post.service';
 import { PostService } from '@angel/features';
+import { ContentGeneratorComponent } from '@angel/angel-ui-components';
 
 @Component({
   selector: 'lib-upload-post',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule , ContentGeneratorComponent],
   templateUrl: './upload-post.component.html',
   styleUrls: ['./upload-post.component.scss']
 })
 export class UploadPostComponent {
   postForm: FormGroup;
+  generatedContent = '';
 
   constructor(private fb: FormBuilder, private uploadPostService: UploadPostService , private postService:  PostService) {
     this.postForm = this.fb.group({
@@ -22,6 +24,14 @@ export class UploadPostComponent {
       imagenes: [null]
     });
   }
+
+
+  
+  handleGeneratedContent(content: string) {
+    console.log('Contenido generado:', content);
+    this.generatedContent = content;
+  }
+
 
   onSubmit() {
     if (this.postForm.valid) {
@@ -38,7 +48,7 @@ export class UploadPostComponent {
       }
       this.uploadPostService.createPost(formData).subscribe(response => {
         console.log('Post creado con éxito', response);
-        this.postService.notifyPostCreated(); // Notifica a los suscriptores
+        this.postService.notifyPostCreated(); 
       }, error => {
         console.error('Error al crear el post', error);
       });

@@ -1,9 +1,6 @@
-import { ChatComponent, FooterComponent, HeaderComponent ,  ContentGeneratorComponent} from '@angel/angel-ui-components';
+
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PostListComponent, UploadPostComponent } from '@angel/features';
-// import { ContentGeneratorComponent } from './../../../../libs/angel-ui-components/src/lib/angel-ui-components/content-generator/content-generator.component';
-
 
 
 
@@ -11,7 +8,7 @@ import { PostListComponent, UploadPostComponent } from '@angel/features';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [RouterModule, FooterComponent, HeaderComponent, ChatComponent , PostListComponent, ContentGeneratorComponent, UploadPostComponent],
+  imports: [RouterModule],
 })
 export class AppComponent {
   generatedContent = '';

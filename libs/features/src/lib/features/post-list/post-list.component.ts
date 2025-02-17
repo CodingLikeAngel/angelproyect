@@ -3,6 +3,8 @@ import { PostService } from './post.service';
 import { CardComponent } from '@angel/angel-ui-components';
 import { CommonModule } from '@angular/common';
 import { NgOptimizedImage } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -18,7 +20,14 @@ export class PostListComponent implements OnInit {
   totalPages = 1;
   isLoading = false;
 
-  constructor(private postService: PostService) {}
+
+  constructor(private postService: PostService, private router: Router) {}
+
+
+
+  navigateToUpload() {
+    this.router.navigate(['/upload-posts']);
+  }
 
   ngOnInit(): void {
     this.loadPosts();

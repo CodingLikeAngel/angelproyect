@@ -1,12 +1,26 @@
+<div class="mt-16">
+  <!-- Contenido principal -->
+
+  <div class="flex justify-center mt-20">
+    <button
+      (click)="navigateToUpload()"
+      class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75"
+    >
+      Get Started
+    </button>
+  </div>
+
 <div class="post-list" (scroll)="onScroll()">
+
   <div class="post-card" *ngFor="let post of posts">
+    
     <lib-card
       [image]="'https://api-production-ec1c.up.railway.app' + post.imagenes[0]?.url" 
       [title]="post.title"
       [excerpt]="post.descripcion"
       [date]="post.createdAt"
       [author]="post.author"
-      [readMoreUrl]="post.readMoreUrl"
+      [readMoreUrl]="'/post/' + post._id"
       [category]="post.category"
       [authorInitials]="post.authorInitials"
       [tag]="post.tag"
@@ -26,6 +40,7 @@
     </lib-card>
   </div>
   <div *ngIf="isLoading" class="loading-spinner">
-    Cargando...
+   
   </div>
+</div>
 </div>
