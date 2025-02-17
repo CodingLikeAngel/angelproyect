@@ -19,5 +19,12 @@
         window.history.replaceState(null, '', redirectPath);
       }
     </script>
+    <script type="text/javascript">
+      // Obtener la ruta actual
+      var currentPath = window.location.pathname;
+      // Redirigir a index.html manteniendo la ruta
+      window.location.replace('/index.html?redirect=' + currentPath);
+    </script>
+    
   </body>
 </html>
