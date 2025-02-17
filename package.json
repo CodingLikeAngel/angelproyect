@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "npm run serve --prod",
+    "start": "npm run serve",
     "create-stories": "nx g @nx/angular:stories angel-ui-components",
     "serve": "npx nx run angelProyect:serve",
     "pre-render": "nx run angelProyect:prerender",
