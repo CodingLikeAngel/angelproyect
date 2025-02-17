@@ -1,0 +1,53 @@
+<div class="max-w-6xl mx-auto p-6">
+    <!-- Encabezado -->
+    <header class="text-center mb-10">
+      <h1 class="text-4xl font-extrabold text-blue-700">🥾 Foro de Senderismo</h1>
+      <p class="text-gray-700 mt-2">
+        Explora las mejores rutas, comparte experiencias y encuentra compañeros para tus aventuras.
+      </p>
+    </header>
+  
+    <!-- Categorías destacadas -->
+    <section class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h2 class="text-xl font-semibold text-blue-800">Mejores Rutas</h2>
+        <p class="text-gray-600 mt-2">Descubre senderos recomendados por la comunidad.</p>
+      </div>
+      <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h2 class="text-xl font-semibold text-blue-800">Equipamiento</h2>
+        <p class="text-gray-600 mt-2">Reseñas y consejos sobre mochilas, botas y más.</p>
+      </div>
+      <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h2 class="text-xl font-semibold text-blue-800">Consejos y Seguridad</h2>
+        <p class="text-gray-600 mt-2">Información sobre preparación y prevención de riesgos.</p>
+      </div>
+    </section>
+  
+    <!-- Últimas publicaciones
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">📢 Últimas Publicaciones</h2>
+      <div class="grid gap-4">
+        <div class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900">"Ruta por los Picos de Europa"</h3>
+          <p class="text-gray-600 text-sm mt-1">Por <span class="font-semibold text-blue-600">Trekker92</span></p>
+        </div>
+        <div class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900">"¿Qué mochila recomendarían para rutas largas?"</h3>
+          <p class="text-gray-600 text-sm mt-1">Por <span class="font-semibold text-blue-600">MontañeroX</span></p>
+        </div>
+      </div>
+    </section>
+    -->
+
+
+    <lib-post-list [tag]="'senderismo'"></lib-post-list>
+
+
+    <!-- Botón para agregar publicación -->
+    <div class="text-center mt-10">
+      <button        (click)="navigateToUpload()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md">
+        ➕ Agregar publicación
+      </button>
+    </div>
+  </div>
+  

@@ -1,3 +1,5 @@
+<div class="mt-16">
+
 <div *ngIf="post$ | async as post; else loading" class="post-detail">
     <!-- Título y subtítulo -->
     <h1 class="post-title">{{ post.title }}</h1>
@@ -18,7 +20,7 @@
   
     <!-- Contenido formateado -->
     <div class="post-content" [innerHTML]="post.content"></div>
-  
+
     <!-- Botones de compartir (ejemplo básico) -->
     <div class="post-share">
       <button class="share-button">Compartir en Facebook</button>
@@ -38,4 +40,4 @@
       Cargando...
     </div>
   </ng-template>
-  
+</div>

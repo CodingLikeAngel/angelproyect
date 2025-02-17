@@ -1,29 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from './post.service';
 import { CardComponent } from '@angel/angel-ui-components';
 import { CommonModule } from '@angular/common';
 import { NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'lib-post-list',
   standalone: true,
-  imports : [CardComponent, CommonModule, NgOptimizedImage],
+  imports: [CardComponent, CommonModule, NgOptimizedImage],
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
- posts: any[] = [];
+  @Input() tag = ''; // El tag se pasa desde el componente padre
+
+  posts: any[] = [];
   page = 1;
   totalPages = 1;
   isLoading = false;
 
-
   constructor(private postService: PostService, private router: Router) {}
-
-
 
   navigateToUpload() {
     this.router.navigate(['/upload-posts']);
@@ -41,22 +38,37 @@ export class PostListComponent implements OnInit {
     });
   }
 
-  
   loadPosts(): void {
     if (this.isLoading) return;
     this.isLoading = true;
-
-    this.postService.getAllPosts().subscribe({
-      next: (data) => {
-        this.posts = data; // Asigna la lista de posts obtenida
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.error('Error al cargar los posts:', err);
-        this.isLoading = false;
-      },
-    });
+  
+    // Si el tag no está vacío, carga los posts por tag
+    if (this.tag) {
+      this.postService.getPostsByTag(this.tag).subscribe({
+        next: (data) => {
+          this.posts = data; // Asigna la lista de posts obtenida
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error('Error al cargar los posts por tag:', err);
+          this.isLoading = false;
+        },
+      });
+    } else {
+      // Si el tag está vacío, carga todos los posts
+      this.postService.getAllPosts().subscribe({
+        next: (data) => {
+          this.posts = data; // Asigna la lista de posts obtenida
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error('Error al cargar todos los posts:', err);
+          this.isLoading = false;
+        },
+      });
+    }
   }
+  
 
   onScroll(): void {
     if (this.page < this.totalPages) {

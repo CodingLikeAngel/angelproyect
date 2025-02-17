@@ -13,4 +13,8 @@ export class HeaderComponent {
   navigateToUpload() {
     this.router.navigate(['/upload-posts']);
   }
+
+  navigateToPosts() {
+    this.router.navigate(['/posts']);
+  }
 }

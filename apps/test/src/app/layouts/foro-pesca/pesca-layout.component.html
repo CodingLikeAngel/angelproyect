@@ -1,0 +1,57 @@
+<div class="max-w-6xl mx-auto p-6">
+    <!-- Sección de encabezado -->
+    <header class="text-center mb-10">
+      <h1 class="text-4xl font-extrabold text-blue-600">🎣 Foro de Pesca</h1>
+      <p class="text-gray-700 mt-2">
+        Comparte tus experiencias, técnicas y mejores capturas con la comunidad.
+      </p>
+    </header>
+  
+    <!-- Categorías destacadas -->
+    <section class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-blue-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h2 class="text-xl font-semibold text-blue-800">Pesca en agua dulce</h2>
+        <p class="text-gray-600 mt-2">Consejos para ríos, lagos y embalses.</p>
+      </div>
+      <div class="bg-blue-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h2 class="text-xl font-semibold text-blue-800">Pesca en agua salada</h2>
+        <p class="text-gray-600 mt-2">Técnicas para pesca en el mar y costa.</p>
+      </div>
+      <div class="bg-blue-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h2 class="text-xl font-semibold text-blue-800">Equipo y accesorios</h2>
+        <p class="text-gray-600 mt-2">Recomendaciones sobre cañas, carretes y señuelos.</p>
+      </div>
+    </section>
+  
+    <!-- Últimas publicaciones
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">📢 Últimas Publicaciones</h2>
+      <div class="grid gap-4">
+        <div class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900">"Mi captura más grande en el río Ebro"</h3>
+          <p class="text-gray-600 text-sm mt-1">Por <span class="font-semibold text-blue-600">Usuario123</span></p>
+        </div>
+        <div class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900">"Los mejores cebos para la lubina"</h3>
+          <p class="text-gray-600 text-sm mt-1">Por <span class="font-semibold text-blue-600">PescadorPRO</span></p>
+        </div>
+        <div class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900">"¿Cañas telescópicas o de tramos?"</h3>
+          <p class="text-gray-600 text-sm mt-1">Por <span class="font-semibold text-blue-600">AnzueloMaster</span></p>
+        </div>
+      </div>
+    </section>
+   -->
+
+
+   <lib-post-list [tag]="'pesca'"></lib-post-list>
+
+
+    <!-- Botón para agregar publicación -->
+    <div class="text-center mt-10">
+      <button  (click)="navigateToUpload()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md">
+        ➕ Agregar publicación
+      </button>
+    </div>
+  </div>
+  

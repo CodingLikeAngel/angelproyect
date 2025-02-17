@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      This is a starter component and can be deleted.
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     Delete this file and get started with your project!
+     Delete this file and Escribe tu post with your project!
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      -->
     <style>

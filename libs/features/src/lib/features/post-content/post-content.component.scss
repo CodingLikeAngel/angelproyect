@@ -72,3 +72,19 @@
     font-size: 1.2rem;
   }
   
+
+  .secondary-image {
+    position: relative;
+    opacity: 0.8; /* Puedes ajustar la opacidad */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .secondary-image img {
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  }
+  
+  .secondary-image:hover {
+    transform: scale(1.05); /* Efecto de aumento */
+  }
+  

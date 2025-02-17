@@ -21,6 +21,7 @@ export class PostService {
   get postCreated$() {
     return this.postCreated.asObservable();
   }
+
   // Crear una nueva publicación
   createPost(postData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/posts`, postData);
@@ -31,11 +32,13 @@ export class PostService {
     return this.http.get(`${this.apiUrl}/posts/${postId}`);
   }
 
+  // Obtener todos los posts
   getAllPosts(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/posts`);
   }
 
-
-
-
+  // Obtener posts por tag
+  getPostsByTag(tag: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/posts/tag/${tag}`);
+  }
 }
