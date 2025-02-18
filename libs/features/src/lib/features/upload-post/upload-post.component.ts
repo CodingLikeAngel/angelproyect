@@ -34,22 +34,31 @@ export class UploadPostComponent implements OnInit {
       tags: [''] // Añadir este nuevo control
     });
   }
-ngOnInit(): void {
+  ngOnInit(): void {
     this.route.paramMap.pipe(
       switchMap((params) => {
         const postTag = params.get('tag');
-        
+  
         // Mostrar input de tags solo si el tag está vacío o no existe
         this.showTagInput = !postTag; 
-        
+  
+        // Asignar el valor de 'tag$' correctamente
         if (postTag) {
-          return postTag;
+          this.tag$ = new Observable<string>((observer) => {
+            observer.next(postTag);  // Emitir el valor del tag recibido de la ruta
+            observer.complete();
+          });
         } else {
-          return '';
+          this.tag$ = new Observable<string>((observer) => {
+            observer.next('');  // Si no hay tag, emitir una cadena vacía
+            observer.complete();
+          });
         }
+        return this.tag$;
       })
-    ).subscribe();
+    ).subscribe();  // Se asegura que el Observable tag$ esté correctamente asignado
   }
+  
 
 
   handleGeneratedContent(content: string) {

@@ -85,14 +85,7 @@
 </div>
 
 
-    <!-- Content Generator -->
-    <div class="mt-10">
-      <lib-content-generator
-        (contentGenerated)="handleGeneratedContent($event)"
-        class="block w-full p-6 bg-indigo-50 rounded-xl shadow-sm hover:shadow-md transition-all
-               duration-300 border-2 border-dashed border-indigo-100 hover:border-indigo-200">
-      </lib-content-generator>
-    </div>
+
 
     <!-- Botón Submit -->
     <div class="pt-6 text-right">
@@ -107,5 +100,17 @@
         Crear Post
       </button>
     </div>
+
+
+    <!-- Content Generator -->
+    <div class="mt-10">
+      <lib-content-generator
+        (contentGenerated)="handleGeneratedContent($event)"
+        class="block w-full p-6 bg-indigo-50 rounded-xl shadow-sm hover:shadow-md transition-all
+               duration-300 border-2 border-dashed border-indigo-100 hover:border-indigo-200">
+      </lib-content-generator>
+    </div>
+
+
   </form>
 </div>
