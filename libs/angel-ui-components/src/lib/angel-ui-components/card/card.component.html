@@ -1,47 +1,52 @@
-<div class="post-card group bg-gradient-to-br from-white to-indigo-50 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 max-w-md mx-auto transform hover:-translate-y-1.5">
+<div class="post-card group bg-gradient-to-br"
+     [ngClass]="[dynamicStyles.background, dynamicStyles.text, 'rounded-2xl', 'overflow-hidden', 'shadow-xl', 'hover:shadow-2xl', 'transition-all', 'duration-300', 'max-w-md', 'mx-auto', 'transform', 'hover:-translate-y-1.5']">
     <!-- Contenedor de imagen con overlay degradado -->
     <div class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-t from-purple-800/60 to-transparent z-10"></div>
-        <img
-            [src]="image"
-            alt="Imagen del post"
-            class="object-cover w-full h-48 transform transition-transform duration-500 group-hover:scale-110"
-        />
+        <!-- Gradiente de overlay transparente más suave -->
+        <div class="absolute inset-0 bg-gradient-to-t"
+             [ngStyle]="{'background': dynamicStyles.gradientFrom + ', ' + dynamicStyles.gradientTo, 'z-index': '10'}"></div>
+        <img [src]="image"
+             alt="Imagen del post"
+             class="object-cover w-full h-48 transform transition-transform duration-500 group-hover:scale-110"/>
         <div class="absolute bottom-0 left-0 p-6 z-20">
             <h2 class="font-bold text-2xl mb-1 text-white drop-shadow-lg">
                 {{ title }}
             </h2>
-            <p class="text-indigo-100 font-medium">
-                {{ category }} <!-- Añade una categoría si es necesario -->
-            </p>
+            <p class="font-medium" [ngClass]="[dynamicStyles.text, 'text-white', 'font-semibold']">
+              {{ category }}
+          </p>
         </div>
     </div>
-    
+
     <div class="p-6 post-content space-y-4">
         <p class="text-gray-700 text-base leading-relaxed mb-4">
             {{ excerpt }}
         </p>
         <div class="flex items-center space-x-3 text-sm">
             <div class="flex-shrink-0">
-                <span class="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                <span class="w-8 h-8 bg-gradient-to-r"
+                      [ngStyle]="{'background': dynamicStyles.gradientFrom}"
+                      class="rounded-full flex items-center justify-center text-white font-bold">
                     {{ authorInitials }} <!-- Iniciales del autor -->
                 </span>
             </div>
             <div class="text-gray-600">
-                <p class="font-medium text-purple-700 hover:text-purple-900 transition-colors">{{ author }}</p>
-                <p class="text-sm text-pink-500">{{ date }}</p>
-            </div>
+              <p class="font-medium" [ngClass]="[dynamicStyles.text, 'text-black', 'drop-shadow-md']">{{ author }}</p>
+              <p class="text-sm" [ngClass]="[dynamicStyles.text, 'text-black', 'drop-shadow-md']">{{ date }}</p>
+          </div>
         </div>
     </div>
-    
-    <div class="px-6 pb-6 flex justify-between items-center bg-gradient-to-r from-purple-50 to-pink-50 rounded-b-2xl">
+
+    <div class="px-6 pb-6 flex justify-between items-center bg-gradient-to-r"
+         [ngStyle]="{'background': dynamicStyles.gradientTo}">
         <div class="text-sm space-x-2">
-            <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-semibold">#{{ tag }}</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold"
+                  [ngClass]="[dynamicStyles.background, dynamicStyles.text]">#{{ tag }}</span>
         </div>
-        <a 
-            [href]="readMoreUrl" 
-            class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-semibold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center"
-        >
+        <a [href]="readMoreUrl"
+           class="bg-gradient-to-r"
+           [ngStyle]="{'background': dynamicStyles.gradientFrom}"
+           [ngClass]="['hover:from-' + dynamicStyles.gradientFrom.split(' ')[1], 'hover:to-' + dynamicStyles.gradientTo.split(' ')[1], 'text-white', 'font-semibold', 'py-2', 'px-5', 'rounded-full', 'transition-all', 'duration-300', 'transform', 'hover:scale-105', 'shadow-lg', 'hover:shadow-xl', 'flex', 'items-center']">
             <span>Leer más</span>
             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
