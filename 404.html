@@ -2,32 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Test</title>
-    <base href="/angelproyect/">
+    <title>404 - Página No Encontrada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <base href="/angelproyect/">
+    <script>
+      // Obtener la URL actual
+      const currentUrl = window.location.href;
 
-    <!-- <script>
-      (function(){
-        const redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect != location.href) {
-          history.replaceState(null, null, redirect);
-        }
-      })();
-    </script> -->
+      // Extraer la parte de la URL después del dominio (en este caso "/angelproyect/")
+      const path = currentUrl.split("/angelproyect/")[1];
 
-    <style>
-      /* Tus estilos aquí */
-    </style>
-    <link rel="stylesheet" href="styles.2d726209dc511ceb.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="styles.2d726209dc511ceb.css"></noscript>
+      // Redirigir a la misma ruta que la actual, pero desde el inicio de la SPA
+      window.location.replace("/angelproyect/#/" + path);
+    </script>
   </head>
   <body>
-    <app-root></app-root>
-
-    <script src="runtime.d033fdb3394c612d.js" type="module"></script>
-    <script src="polyfills.408e420fa4123442.js" type="module"></script>
-    <script src="main.04b4973caeaff425.js" type="module"></script>
+    <p>Redirigiendo...</p>
   </body>
 </html>
