@@ -31,12 +31,12 @@
             {
               "type": "initial",
               "maximumWarning": "800kb",
-              "maximumError": "1mb"
+              "maximumError": "1.2mb"
             },
             {
               "type": "anyComponentStyle",
               "maximumWarning": "30kb",
-              "maximumError": "45kb"
+              "maximumError": "50kb"
             }
           ],
           "outputHashing": "all"

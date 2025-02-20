@@ -1,53 +1,103 @@
-<div class="max-w-6xl mx-auto p-6">
-    <!-- Encabezado -->
-    <header class="text-center mb-10">
-      <h1 class="text-4xl font-extrabold text-blue-700">🥾 Foro de Senderismo</h1>
-      <p class="text-gray-700 mt-2">
-        Explora las mejores rutas, comparte experiencias y encuentra compañeros para tus aventuras.
-      </p>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Descubre las mejores rutas de senderismo en las Montañas Leonesas. Guías, consejos y comunidad de aventureros."
+    />
+    <title>Montañas Leonesas - Senderismo & Aventura</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-sans antialiased bg-gray-50">
+    <!-- Barra de navegación -->
+ <lib-nav-bar></lib-nav-bar>
+    <!-- Hero Section -->
+    <header class="mountain-pattern text-white py-24 px-4">
+<lib-hero-section></lib-hero-section>
     </header>
-  
-    <!-- Categorías destacadas -->
-    <section class="grid md:grid-cols-3 gap-6 mb-12">
-      <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-semibold text-blue-800">Mejores Rutas</h2>
-        <p class="text-gray-600 mt-2">Descubre senderos recomendados por la comunidad.</p>
-      </div>
-      <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-semibold text-blue-800">Equipamiento</h2>
-        <p class="text-gray-600 mt-2">Reseñas y consejos sobre mochilas, botas y más.</p>
-      </div>
-      <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-semibold text-blue-800">Consejos y Seguridad</h2>
-        <p class="text-gray-600 mt-2">Información sobre preparación y prevención de riesgos.</p>
-      </div>
-    </section>
-  
-    <!-- Últimas publicaciones
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">📢 Últimas Publicaciones</h2>
-      <div class="grid gap-4">
-        <div class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900">"Ruta por los Picos de Europa"</h3>
-          <p class="text-gray-600 text-sm mt-1">Por <span class="font-semibold text-blue-600">Trekker92</span></p>
+
+    <!-- Sección de Rutas -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section
+        id="rutas"
+        class="mb-20"
+        itemscope
+        itemtype="https://schema.org/HikingTrail"
+      >
+      <h2  class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
+          Rutas Destacadas
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <lib-card-senderismo
+            *ngFor="let route of routes"
+            [routeName]="route.name"
+            [imageUrl]="route.imageUrl"
+            [difficulty]="route.difficulty"
+            [rating]="route.rating"
+            [reviews]="route.reviews"
+            [duration]="route.duration"
+            [distance]="route.distance"
+            [ascent]="route.ascent"
+            [description]="route.description"
+            [features]="route.features"
+            [link]="route.link"
+          >
+          </lib-card-senderismo>
         </div>
-        <div class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900">"¿Qué mochila recomendarían para rutas largas?"</h3>
-          <p class="text-gray-600 text-sm mt-1">Por <span class="font-semibold text-blue-600">MontañeroX</span></p>
-        </div>
-      </div>
+      </section>
+
+      <h2  class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
+        Post Destacados
+      </h2>
+
+      <section
+        class="grid md:grid-cols-3 gap-8 mb-16"
+        aria-label="Rutas de Senderismo"
+      >
+        <lib-card
+          *ngFor="let post of posts"
+          [image]="post.image"  
+          [title]="post.title"
+          [excerpt]="post.excerpt"
+          [date]="post.date"
+          [author]="post.author"
+          [readMoreUrl]="post.readMoreUrl"
+          [category]="post.category"
+          [tag]="post.tag"
+          [authorInitials]="post.authorInitials"
+        >
+        </lib-card>
+      </section>
+
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <lib-card-next-adventures></lib-card-next-adventures>
     </section>
-    -->
+    <section class="relative h-96 rounded-3xl overflow-hidden mb-16 mx-4 shadow-2xl">
+      <lib-section-image></lib-section-image>
+    </section>
+      <lib-caracteristicas></lib-caracteristicas>
 
+      <section id="comercios-locales" class="mt-20">
+        <h2  class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
+          Comercios Locales
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <lib-card-comercio
+            *ngFor="let comercio of comercios"
+            [nombre]="comercio.nombre"
+            [imagen]="  'https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6'"
+            [descripcion]="comercio.descripcion"
+            [direccion]="comercio.direccion"
+            [link]="comercio.link">
+          </lib-card-comercio>
+        </div>
+      </section>
 
-    <lib-post-list [tag]="'senderismo'"></lib-post-list>
-
-
-    <!-- Botón para agregar publicación -->
-    <div class="text-center mt-10">
-      <button        (click)="navigateToUpload()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md">
-        ➕ Agregar publicación
-      </button>
-    </div>
-  </div>
-  
+    </main>
+  </body>
+</html>

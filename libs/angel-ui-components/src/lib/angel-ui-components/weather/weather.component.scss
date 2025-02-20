@@ -1,0 +1,12 @@
+.weather-widget {
+    @apply p-4 bg-white rounded-lg shadow-md text-center;
+  
+    h3 {
+      @apply text-xl font-bold text-[#5a371a] mb-2;
+    }
+    
+    p {
+      @apply text-gray-700;
+    }
+  }
+  

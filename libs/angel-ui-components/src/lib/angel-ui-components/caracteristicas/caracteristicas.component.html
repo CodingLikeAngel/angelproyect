@@ -1,0 +1,91 @@
+<section class="py-16 relative">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Contenedor que envuelve las tarjetas y limita el fondo -->
+      <div class="relative overflow-hidden rounded-2xl">
+        <!-- Fondo animado contenido en el mismo contenedor -->
+        <div class="absolute inset-0">
+          <!-- Capa de gradiente estático -->
+          <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-black"></div>
+          <!-- Capa de gradiente animado -->
+          <div class="absolute inset-0 opacity-20 animate-spin-slow bg-[conic-gradient(from_90deg,#8B5CF6,#EC4899,#3B82F6,#8B5CF6)]"></div>
+        </div>
+        
+        <!-- Grid de tarjetas con padding para evitar que el fondo se asome demasiado -->
+        <div class="relative grid md:grid-cols-3 gap-8 p-8">
+          <!-- Tarjeta 1: Rutas por Zonas -->
+          <article class="feature-card bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-2xl transition-transform transform hover:scale-105">
+            <div class="icon-container bg-gradient-to-r from-yellow-300 to-yellow-500 p-4 rounded-xl w-max mx-auto mb-4">
+              <span class="text-3xl">📍</span>
+            </div>
+            <h3 class="text-2xl font-display font-bold text-center text-yellow-200 mb-4">
+              Rutas por Zonas
+            </h3>
+            <ul class="space-y-3 text-center text-gray-200">
+              <li class="hover:text-yellow-300 transition-colors py-1">
+                <span class="font-semibold">Montañas Centrales:</span> 15 rutas disponibles
+              </li>
+              <li class="hover:text-yellow-300 transition-colors py-1">
+                <span class="font-semibold">Rutas Familiares:</span> 8 itinerarios seguros
+              </li>
+              <li class="hover:text-yellow-300 transition-colors py-1">
+                <span class="font-semibold">Alta Montaña:</span> 6 desafíos expertos
+              </li>
+            </ul>
+          </article>
+    
+          <!-- Tarjeta 2: Equipamiento -->
+          <article class="feature-card bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-2xl transition-transform transform hover:scale-105">
+            <div class="icon-container bg-gradient-to-r from-green-300 to-green-500 p-4 rounded-xl w-max mx-auto mb-4">
+              <span class="text-3xl">🎒</span>
+            </div>
+            <h3 class="text-2xl font-display font-bold text-center text-green-200 mb-4">
+              Kit Recomendado
+            </h3>
+            <div class="grid grid-cols-2 gap-3 text-center">
+              <div class="bg-white/20 p-3 rounded-lg">
+                <span class="text-sm font-semibold text-green-200">Botas</span>
+                <p class="text-xs mt-1 text-green-100">Trekking profesional</p>
+              </div>
+              <div class="bg-white/20 p-3 rounded-lg">
+                <span class="text-sm font-semibold text-green-200">GPS</span>
+                <p class="text-xs mt-1 text-green-100">Garmin Fenix 7</p>
+              </div>
+              <div class="bg-white/20 p-3 rounded-lg">
+                <span class="text-sm font-semibold text-green-200">Ropa</span>
+                <p class="text-xs mt-1 text-green-100">Térmica/Capas</p>
+              </div>
+              <div class="bg-white/20 p-3 rounded-lg">
+                <span class="text-sm font-semibold text-green-200">Mochila</span>
+                <p class="text-xs mt-1 text-green-100">30-40L impermeable</p>
+              </div>
+            </div>
+          </article>
+          <!-- Tarjeta 3: Clima -->
+          <article class="feature-card weather-card bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-2xl transition-transform transform hover:scale-105">
+            <div class="icon-container bg-white/30 p-4 rounded-xl w-max mx-auto mb-4">
+              <span class="text-3xl">⛅</span>
+            </div>
+            <h3 class="text-2xl font-display font-bold text-center text-blue-200 mb-2">
+              Condiciones Actuales
+            </h3>
+            <div class="text-center">
+              <p class="text-4xl font-bold text-blue-200">21°C</p>
+              <p class="text-gray-200 mt-2">Parcialmente nublado</p>
+              <div class="mt-4 space-y-2">
+                <div class="flex justify-between text-sm text-blue-200">
+                  <span>Viento:</span>
+                  <span>12 km/h</span>
+                </div>
+                <div class="flex justify-between text-sm text-blue-200">
+                  <span>Humedad:</span>
+                  <span>65%</span>
+                </div>
+              </div>
+            </div>
+          </article>
+    
+        </div>
+      </div>
+    </div>
+  </section>
+  

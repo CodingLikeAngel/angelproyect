@@ -1,8 +1,30 @@
-/* Fondo degradado para secciones */
-.bg-green-100 {
-    background: linear-gradient(to bottom right, #f0fff4, #c6f6d5);
-  }
-  .bg-red-100 {
-    background: linear-gradient(to bottom right, #fff5f5, #feb2b2);
-  }
-  
+/* Estilos mejorados */
+body {
+  background-image: linear-gradient(to bottom, #f7fafc 0%, #edf2f7 100%);
+}
+
+.bg-green-50 {
+  background: #f0fff4;
+  border: 2px solid #c6f6d5;
+}
+
+.text-green-800 {
+  color: #2f855a;
+}
+
+.bg-green-700 {
+  background: #2f855a;
+}
+
+.hover\:bg-green-800:hover {
+  background: #276749;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+

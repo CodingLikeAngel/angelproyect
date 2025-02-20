@@ -1,56 +1,72 @@
-<div class="post-card group bg-gradient-to-br"
-     [ngClass]="[dynamicStyles.background, dynamicStyles.text, 'rounded-2xl', 'overflow-hidden', 'shadow-xl', 'hover:shadow-2xl', 'transition-all', 'duration-300', 'max-w-md', 'mx-auto', 'transform', 'hover:-translate-y-1.5']">
-    <!-- Contenedor de imagen con overlay degradado -->
-    <div class="relative overflow-hidden">
-        <!-- Gradiente de overlay transparente más suave -->
-        <div class="absolute inset-0 bg-gradient-to-t"
-             [ngStyle]="{'background': dynamicStyles.gradientFrom + ', ' + dynamicStyles.gradientTo, 'z-index': '10'}"></div>
-        <img [src]="image"
-             alt="Imagen del post"
-             class="object-cover w-full h-48 transform transition-transform duration-500 group-hover:scale-110"/>
-        <div class="absolute bottom-0 left-0 p-6 z-20">
-            <h2 class="font-bold text-2xl mb-1 text-white drop-shadow-lg">
-                {{ title }}
-            </h2>
-            <p class="font-medium" [ngClass]="[dynamicStyles.text, 'text-white', 'font-semibold']">
-              {{ category }}
-          </p>
-        </div>
+<article class="post-card group bg-gradient-to-br"
+         [ngClass]="[dynamicStyles.background, dynamicStyles.text, 'rounded-2xl', 'overflow-hidden', 'shadow-xl', 'hover:shadow-2xl', 'transition-all', 'duration-300', 'max-w-md', 'mx-auto', 'transform', 'hover:-translate-y-1.5']"
+         itemscope itemtype="https://schema.org/Article">
+  <!-- Contenedor de imagen con overlay degradado -->
+  <div class="relative overflow-hidden">
+    <!-- Gradiente de overlay transparente más suave -->
+    <div class="absolute inset-0 bg-gradient-to-t"
+         [ngStyle]="{'background': dynamicStyles.gradientFrom + ', ' + dynamicStyles.gradientTo, 'z-index': '10'}"></div>
+    <img [src]="image"
+         alt="Imagen del post"
+         class="object-cover w-full h-48 transform transition-transform duration-500 group-hover:scale-110"
+         itemprop="image"/>
+    <div class="absolute bottom-0 left-0 p-6 z-20">
+      <h2 class="font-bold text-2xl mb-1 text-white drop-shadow-lg" itemprop="headline">
+        {{ title }}
+      </h2>
+      <p class="font-medium" [ngClass]="[dynamicStyles.text, 'text-white', 'font-semibold']" itemprop="articleSection">
+        {{ category }}
+      </p>
     </div>
+  </div>
 
-    <div class="p-6 post-content space-y-4">
-        <p class="text-gray-700 text-base leading-relaxed mb-4">
-            {{ excerpt }}
+  <div class="p-6 post-content space-y-4">
+    <p class="text-gray-700 text-base leading-relaxed mb-4" itemprop="description">
+      {{ excerpt }}
+    </p>
+    <div class="flex items-center space-x-3 text-sm">
+      <div class="flex-shrink-0">
+        <!-- Se define la entidad del autor -->
+        <span class="w-8 h-8 bg-gradient-to-r"
+              [ngStyle]="{'background': dynamicStyles.gradientFrom} "
+              class="rounded-full flex items-center justify-center text-white font-bold"
+              itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <meta itemprop="name" [content]="author">
+          {{ authorInitials }}
+        </span>
+      </div>
+      <div class="text-gray-600">
+        <p class="font-medium" [ngClass]="[dynamicStyles.text, 'text-black', 'drop-shadow-md']">
+          <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <meta itemprop="name" [content]="author">
+            {{ author }}
+          </span>
         </p>
-        <div class="flex items-center space-x-3 text-sm">
-            <div class="flex-shrink-0">
-                <span class="w-8 h-8 bg-gradient-to-r"
-                      [ngStyle]="{'background': dynamicStyles.gradientFrom}"
-                      class="rounded-full flex items-center justify-center text-white font-bold">
-                    {{ authorInitials }} <!-- Iniciales del autor -->
-                </span>
-            </div>
-            <div class="text-gray-600">
-              <p class="font-medium" [ngClass]="[dynamicStyles.text, 'text-black', 'drop-shadow-md']">{{ author }}</p>
-              <p class="text-sm" [ngClass]="[dynamicStyles.text, 'text-black', 'drop-shadow-md']">{{ date }}</p>
-          </div>
-        </div>
+        <p class="text-sm" [ngClass]="[dynamicStyles.text, 'text-black', 'drop-shadow-md']">
+          <time itemprop="datePublished" [attr.datetime]="date">{{ date }}</time>
+        </p>
+      </div>
     </div>
+  </div>
 
-    <div class="px-6 pb-6 flex justify-between items-center bg-gradient-to-r"
-         [ngStyle]="{'background': dynamicStyles.gradientTo}">
-        <div class="text-sm space-x-2">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold"
-                  [ngClass]="[dynamicStyles.background, dynamicStyles.text]">#{{ tag }}</span>
-        </div>
-        <a [href]="readMoreUrl"
-           class="bg-gradient-to-r"
-           [ngStyle]="{'background': dynamicStyles.gradientFrom}"
-           [ngClass]="['hover:from-' + dynamicStyles.gradientFrom.split(' ')[1], 'hover:to-' + dynamicStyles.gradientTo.split(' ')[1], 'text-white', 'font-semibold', 'py-2', 'px-5', 'rounded-full', 'transition-all', 'duration-300', 'transform', 'hover:scale-105', 'shadow-lg', 'hover:shadow-xl', 'flex', 'items-center']">
-            <span>Leer más</span>
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-        </a>
+  <div class="px-6 pb-6 flex justify-between items-center bg-gradient-to-r"
+       [ngStyle]="{'background': dynamicStyles.gradientTo}">
+    <div class="text-sm space-x-2">
+      <span class="px-3 py-1 rounded-full text-xs font-semibold"
+            [ngClass]="[dynamicStyles.background, dynamicStyles.text]"
+            itemprop="keywords">
+        #{{ tag }}
+      </span>
     </div>
-</div>
+    <a [href]="readMoreUrl"
+       class="bg-gradient-to-r mt-4"
+       [ngStyle]="{'background': dynamicStyles.gradientFrom}"
+       [ngClass]="['hover:from-' + dynamicStyles.gradientFrom.split(' ')[1], 'hover:to-' + dynamicStyles.gradientTo.split(' ')[1], 'text-white', 'font-semibold', 'py-2', 'px-5', 'rounded-full', 'transition-all', 'duration-300', 'transform', 'hover:scale-105', 'shadow-lg', 'hover:shadow-xl', 'flex', 'items-center']"
+       itemprop="mainEntityOfPage">
+      <span>Leer más</span>
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
+    </a>
+  </div>
+</article>

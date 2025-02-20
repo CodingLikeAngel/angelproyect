@@ -1,19 +1,31 @@
-/* libs/shared-ui/src/lib/styles.scss */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
 .post-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-    overflow-y: auto;
-    max-height: 80vh; // Ajusta según tus necesidades
+  display: flex;
+  flex-wrap: wrap; /* Permite que los posts se acomoden en varias filas */
+  justify-content: flex-start; /* Alinea los posts desde la izquierda */
+  gap: 1rem; /* Espacio entre posts */
+  overflow-y: auto;
+  max-height: 80vh; /* Ajusta según necesidad */
+  padding: 1rem;
+}
+
+.post-card {
+  width: calc(33.333% - 1rem); /* 3 columnas en pantallas grandes */
+  min-width: 300px; /* Evita que se haga demasiado pequeño */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+/* 🔹 Media queries para ajustar en diferentes tamaños de pantalla */
+@media (max-width: 1024px) {
+  .post-card {
+    width: calc(50% - 1rem); /* 2 columnas en pantallas medianas */
   }
-  
-  .loading-spinner {
-    text-align: center;
-    padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .post-card {
+    width: 100%; /* 1 columna en pantallas pequeñas */
   }
-  
+}

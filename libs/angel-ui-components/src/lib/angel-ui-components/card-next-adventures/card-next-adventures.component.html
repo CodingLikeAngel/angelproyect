@@ -1,0 +1,46 @@
+
+<h2  class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
+      Próximas Aventuras
+    </h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <article
+        *ngFor="let adventure of adventures"
+        class="bg-white rounded-xl shadow-lg overflow-hidden card-hover"
+      >
+        <img
+          [src]="adventure.imageUrl"
+          [alt]="adventure.title"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm bg-[#8B4513] text-white px-3 py-1 rounded-full">
+              {{ adventure.difficulty }}
+            </span>
+            <span class="text-sm text-[#8B4513]">⭐ {{ adventure.rating }}</span>
+          </div>
+          <h3 class="text-xl font-display font-bold text-[#5a371a]">
+            {{ adventure.title }}
+          </h3>
+          <p class="text-gray-600 mt-2">
+            {{ adventure.date }} - {{ adventure.spots }} plazas disponibles
+          </p>
+          <div class="mt-4 flex items-center">
+            <div class="flex -space-x-2">
+              <img
+                *ngFor="let guide of adventure.guides"
+                class="w-8 h-8 rounded-full border-2 border-white"
+                [src]="guide.photo"
+                [alt]="guide.name"
+              />
+            </div>
+            <span class="ml-3 text-sm text-[#8B4513]">
+                Guiado por {{ getGuideNames(adventure) }}
+              </span>
+              
+          </div>
+        </div>
+      </article>
+    </div>
+
+  

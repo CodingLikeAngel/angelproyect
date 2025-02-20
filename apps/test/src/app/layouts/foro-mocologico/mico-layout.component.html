@@ -1,57 +1,72 @@
-<div class="max-w-6xl mx-auto p-6">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🍄 Foro de Hongos y Setas</title>
+  <meta name="description" content="Aprende, comparte y descubre sobre el fascinante mundo de los hongos y setas.">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-green-50 to-amber-50">
+  <div class="max-w-6xl mx-auto p-6">
+    
     <!-- Encabezado -->
-    <header class="text-center mb-10">
-      <h1 class="text-4xl font-extrabold text-green-700">🍄 Foro de Hongos y Setas</h1>
-      <p class="text-gray-700 mt-2">
+    <header class="text-center mb-12">
+      <h1 class="text-5xl font-extrabold text-green-900 mb-4">
+        🍄 Foro de Hongos y Setas
+      </h1>
+      <p class="text-lg text-gray-700 mt-2 max-w-2xl mx-auto">
         Aprende, comparte y descubre sobre el fascinante mundo de los hongos y setas.
       </p>
     </header>
-  
+    
     <!-- Categorías destacadas -->
     <section class="grid md:grid-cols-3 gap-6 mb-12">
-      <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-semibold text-green-800">Identificación de Setas</h2>
+      <div class="bg-green-50 p-5 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h2 class="text-xl font-semibold text-green-900">Identificación de Setas</h2>
         <p class="text-gray-600 mt-2">Comparte fotos y ayuda a identificar especies.</p>
       </div>
-      <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-semibold text-green-800">Rutas y Lugares</h2>
-        <p class="text-gray-600 mt-2">Los mejores lugares para la recolección.</p>
+      <div class="bg-green-50 p-5 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h2 class="text-xl font-semibold text-green-900">Rutas y Lugares</h2>
+        <p class="text-gray-600 mt-2">Descubre los mejores lugares para la recolección.</p>
       </div>
-      <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-semibold text-green-800">Toxicidad y Seguridad</h2>
-        <p class="text-gray-600 mt-2">Aprende sobre especies peligrosas.</p>
-      </div>
-    </section>
-  
-    <!-- Últimas publicaciones
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">📢 Últimas Publicaciones</h2>
-      <div class="grid gap-4">
-        <div class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900">"¿Qué tipo de seta es esta?"</h3>
-          <p class="text-gray-600 text-sm mt-1">Por <span class="font-semibold text-green-600">SetasHunter</span></p>
-        </div>
-        <div class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900">"Setas comestibles vs. venenosas"</h3>
-          <p class="text-gray-600 text-sm mt-1">Por <span class="font-semibold text-green-600">FungiLover</span></p>
-        </div>
+      <div class="bg-green-50 p-5 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h2 class="text-xl font-semibold text-green-900">Toxicidad y Seguridad</h2>
+        <p class="text-gray-600 mt-2">Infórmate sobre especies peligrosas y cómo evitarlas.</p>
       </div>
     </section>
-   -->
-
-   
-<lib-post-list [tag]="'micologia'"></lib-post-list>
-
-  
-  
-   <!-- Botón para agregar publicación -->
+    
+    <!-- Contenido adicional: Guía de Identificación y Uso -->
+    <section class="mb-14">
+      <div class="bg-white shadow-xl rounded-2xl p-8">
+        <h2 class="text-3xl font-bold text-green-900 mb-4">Guía de Identificación y Uso</h2>
+        <p class="text-gray-700 text-lg mb-6">
+          Explora nuestra guía completa para aprender a identificar diferentes especies de hongos y setas. Conoce sus características, hábitats ideales y consejos de seguridad para disfrutar de la micología de manera responsable.
+        </p>
+        <ul class="list-disc pl-5 text-gray-700">
+          <li class="mb-2"><strong>Características Visuales:</strong> Aprende a reconocer colores, formas y texturas distintivas.</li>
+          <li class="mb-2"><strong>Hábitats:</strong> Descubre dónde es más probable encontrar cada especie.</li>
+          <li class="mb-2"><strong>Precauciones:</strong> Consejos para evitar especies tóxicas y disfrutar de la recolección segura.</li>
+          <li class="mb-2"><strong>Usos Culinarios:</strong> Ideas para incorporar hongos comestibles en recetas (siempre con la identificación correcta).</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Lista de publicaciones -->
+    <section class="mb-14">
+      <lib-post-list [tag]="'micologia'"></lib-post-list>
+    </section>
+    
+    <!-- Botón para agregar publicación -->
     <div class="text-center mt-10">
       <button 
-      (click)="navigateToUpload()"
-      class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md">
-       
+        (click)="navigateToUpload()"
+        class="bg-green-700 hover:bg-green-800 text-white font-bold py-4 px-8 rounded-2xl shadow-lg transition-all transform hover:scale-105">
         ➕ Agregar publicación
       </button>
+      <p class="text-gray-600 mt-4 text-sm">Comparte tus hallazgos, recetas y consejos sobre hongos y setas</p>
     </div>
-  </div>
   
+  </div>
+</body>
+</html>

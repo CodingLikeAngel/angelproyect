@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-
+const animatePlugin = require('tailwindcss-animate');
 
 module.exports = {
   content: [
@@ -19,12 +19,17 @@ module.exports = {
         'green-100': '#ccffcc',
         'green-700': '#006600',
         'amber-200': '#e2c16b', // Puedes añadir otros colores si lo deseas
-        'amber-700': '#7f5d2e', 
+        'amber-700': '#7f5d2e',
+      },
+      animation: {
+        'spin-slow': 'spin 10s linear infinite',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        // Puedes añadir más animaciones personalizadas aquí
       },
     },
   },
   plugins: [
-    require('tailwindcss-animate'),
+    animatePlugin,
     // ... otros plugins ...
   ],
   options: {

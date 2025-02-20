@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senderismo en León - Foro de Rutas y Excursiones | MontañasLeonesas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#FFF8F0]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Encabezado mejorado -->
+    <header class="text-center mb-12 space-y-6">
+      <div class="inline-block bg-[#F5DEB3] rounded-full p-4 shadow-lg">
+        <span class="text-4xl">🏔️</span>
+      </div>
+      <h1 class="text-5xl font-black bg-gradient-to-r from-[#8B4513] to-[#A0522D] bg-clip-text text-transparent">
+        Senderismo en León
+      </h1>
+      <p class="text-xl text-gray-700 mt-4 max-w-3xl mx-auto leading-relaxed">
+        Explora las <span class="font-semibold text-[#8B4513]">rutas más espectaculares</span> de la provincia. Comparte experiencias y conecta con la <span class="font-semibold text-[#8B4513]">comunidad montañera</span> leonesa.
+      </p>
+    </header>
+
+
+    <!-- Tarjetas destacadas de rutas -->
+    <section class="grid md:grid-cols-1 gap-8 mb-16">
+      <!-- Rutas Top -->
+      <!-- <div class="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <div class="flex items-center mb-4">
+          <div class="bg-[#F5DEB3] p-3 rounded-lg">
+            <span class="text-2xl">🗺️</span>
+          </div>
+          <h2 class="text-2xl font-bold text-[#8B4513] ml-4">Rutas Top</h2>
+        </div>
+
+        <div class="h-96 overflow-y-auto">
+          <lib-post-list 
+            [tag]="'senderismo'" 
+            class="flex flex-col items-center gap-2">
+          </lib-post-list>
+        </div>
+      </div> -->
+
+      <!-- Rutas Populares -->
+      <div class="bg-white rounded-2xl p-6 shadow-xl">
+        <div class="flex items-center mb-6">
+          <div class="bg-[#F5DEB3] p-3 rounded-lg">
+            <span class="text-2xl">🥇</span>
+          </div>
+          <h2 class="text-2xl font-bold text-[#8B4513] ml-4">Rutas Populares</h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-[#8B4513] text-white">
+              <tr>
+                <th class="p-4 text-left rounded-tl-lg">Ruta</th>
+                <th class="p-4 text-left">Distancia</th>
+                <th class="p-4 text-left rounded-tr-lg">Dificultad</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#D2B48C]">
+              <tr class="hover:bg-[#F5EBDD] transition-colors">
+                <td class="p-4 font-medium">Ruta del Cares</td>
+                <td class="p-4">12 km</td>
+                <td class="p-4"><span class="badge bg-[#A0522D]">Moderada</span></td>
+              </tr>
+              <tr class="hover:bg-[#F5EBDD] transition-colors">
+                <td class="p-4 font-medium">Lagos de Saliencia</td>
+                <td class="p-4">9 km</td>
+                <td class="p-4"><span class="badge bg-[#A0522D]">Fácil</span></td>
+              </tr>
+              <tr class="hover:bg-[#F5EBDD] transition-colors">
+                <td class="p-4 font-medium">Peña Ubiña</td>
+                <td class="p-4">14 km</td>
+                <td class="p-4"><span class="badge bg-[#A0522D]">Difícil</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+        <!-- Sección de características -->
+        <section class="grid md:grid-cols-3 gap-6 mb-16">
+            <article class="feature-card">
+              <div class="icon-container bg-[#F5DEB3] p-4 rounded-lg flex justify-center items-center">
+                <span class="text-2xl">📍</span>
+              </div>
+              <h3 class="feature-title text-center mt-2 text-xl font-bold text-[#8B4513]">Rutas por Zonas</h3>
+              <ul class="feature-list text-center mt-2 text-gray-700">
+                <li>Montañas Centrales</li>
+                <li>Rutas Familiares</li>
+                <li>Alta Montaña</li>
+              </ul>
+            </article>
+            <article class="feature-card">
+              <div class="icon-container bg-[#F5DEB3] p-4 rounded-lg flex justify-center items-center">
+                <span class="text-2xl">🎒</span>
+              </div>
+              <h3 class="feature-title text-center mt-2 text-xl font-bold text-[#8B4513]">Equipamiento</h3>
+              <div class="tag-cloud text-center mt-2">
+                <span class="tag inline-block bg-[#F5DEB3] text-[#8B4513] px-3 py-1 rounded-full mr-1">Botas Trekking</span>
+                <span class="tag inline-block bg-[#F5DEB3] text-[#8B4513] px-3 py-1 rounded-full mr-1">Ropa Técnica</span>
+                <span class="tag inline-block bg-[#F5DEB3] text-[#8B4513] px-3 py-1 rounded-full">GPS</span>
+              </div>
+            </article>
+            <article class="feature-card">
+              <div class="icon-container bg-[#F5DEB3] p-4 rounded-lg flex justify-center items-center">
+                <span class="text-2xl">⛅</span>
+              </div>
+              <h3 class="feature-title text-center mt-2 text-xl font-bold text-[#8B4513]">Clima Actual</h3>
+              <p class="text-center text-gray-600 mt-2">21°C - Parcialmente nublado</p>
+              <div class="mt-4 text-sm text-center text-[#8B4513]">Condiciones ideales para senderismo</div>
+            </article>
+          </section>
+      
+
+    <!-- Sección de consejos -->
+    <section class="bg-white rounded-2xl p-8 shadow-xl mb-16">
+      <h2 class="text-3xl font-bold text-[#8B4513] mb-6 flex items-center">
+        <span class="mr-3">⚠️</span> Consejos Esenciales
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="flex items-start">
+          <span class="text-[#A0522D] mr-3 mt-1">✅</span>
+          <div>
+            <h4 class="font-semibold text-lg">Preparación</h4>
+            <p class="text-gray-600">Consulta siempre el pronóstico meteorológico</p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <span class="text-[#A0522D] mr-3 mt-1">💧</span>
+          <div>
+            <h4 class="font-semibold text-lg">Hidratación</h4>
+            <p class="text-gray-600">Lleva mínimo 2 litros de agua por persona</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Mejorado -->
+    <div class="text-center">
+      <button class="cta-button bg-[#8B4513] hover:bg-[#A0522D] text-white font-bold py-4 px-8 rounded-2xl shadow-lg transition transform hover:scale-105">
+        <span class="mr-2">🥾</span> Comparte Tu Experiencia
+      </button>
+      <p class="text-gray-600 mt-4 text-sm">Inspira a otros montañeros leoneses</p>
+    </div>
+
+  </div>
+</body>
+</html>

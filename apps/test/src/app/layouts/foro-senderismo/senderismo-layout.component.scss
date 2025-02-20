@@ -1,7 +1,45 @@
-/* Fondo degradado para secciones */
-.bg-green-100 {
-  background: linear-gradient(to bottom right, #ffc187e3, #521b02);
+/* .badge */
+.badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium text-white;
 }
-.bg-red-100 {
-  background: linear-gradient(to bottom right, #fff5f5, #feb2b2);
+
+/* .feature-card */
+.feature-card {
+  @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
 }
+
+/* .icon-container */
+.icon-container {
+  @apply p-4 rounded-xl inline-block mb-4;
+}
+
+/* .feature-title */
+.feature-title {
+  @apply text-2xl font-bold text-green-800 mb-4;
+}
+
+/* .feature-list li */
+.feature-list li {
+  @apply mb-2 text-gray-700 before:content-['·'] before:mr-2 before:text-green-600;
+}
+
+/* .tag */
+.tag {
+  @apply inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm mr-2 mb-2;
+}
+
+/* .cta-button */
+.cta-button {
+  @apply bg-green-700 hover:bg-green-800 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center;
+}
+
+
+.font-display { font-family: 'Merriweather', serif; }
+.mountain-pattern {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+}
+.card-hover { transition: transform 0.3s ease; }
+.card-hover:hover { transform: translateY(-5px); }
