@@ -1,0 +1,51 @@
+<section class="py-16 bg-[radial-gradient(ellipse_at_center,_#0a1a3d_0%,_#1e3a8a_70%,_#3b82f6_100%)]">
+    <div class="max-w-5xl mx-auto bg-[rgba(255,255,255,0.05)] rounded-3xl shadow-[0_0_40px_rgba(59,130,246,0.5)] overflow-hidden backdrop-blur-md border border-[rgba(255,255,255,0.1)]">
+      <!-- Header -->
+      <div class="flex items-center gap-6 p-8 bg-[linear-gradient(120deg,_#3b82f6_0%,_#a855f7_50%,_#ec4899_100%)] relative overflow-hidden">
+        <div class="text-4xl animate-pulse">✨</div>
+        <h2 class="text-4xl font-extrabold text-white tracking-tight drop-shadow-lg hover:scale-105 transition-transform duration-300">
+          Rutas Populares
+        </h2>
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-[rgba(255,255,255,0.2)] rounded-full blur-3xl animate-float"></div>
+      </div>
+      <!-- Table -->
+      <div class="p-10 overflow-x-auto">
+        <table class="w-full border-collapse text-white font-light">
+          <thead class="bg-[rgba(255,255,255,0.1)]">
+            <tr class="text-left uppercase text-sm tracking-wider">
+              <th class="p-4 font-semibold text-neon-cyan">Ruta</th>
+              <th class="p-4 font-semibold text-neon-cyan">Distancia</th>
+              <th class="p-4 font-semibold text-neon-cyan">Dificultad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let ruta of rutas"
+              [ngClass]="{
+                'bg-[rgba(34,197,94,0.15)]': ruta.dificultad === 'facil',
+                'bg-[rgba(234,179,8,0.15)]': ruta.dificultad === 'moderada',
+                'bg-[rgba(239,68,68,0.15)]': ruta.dificultad === 'dificil'
+              }"
+              class="hover:bg-[rgba(255,255,255,0.05)] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] rounded-lg mb-2"
+            >
+              <td class="p-4">{{ ruta.nombre }}</td>
+              <td class="p-4">{{ ruta.distancia }}</td>
+              <td class="p-4">
+                <span
+                  [ngClass]="{
+                    'bg-[rgba(34,197,94,0.3)] text-green-300': ruta.dificultad === 'facil',
+                    'bg-[rgba(234,179,8,0.3)] text-yellow-300': ruta.dificultad === 'moderada',
+                    'bg-[rgba(239,68,68,0.3)] text-red-300': ruta.dificultad === 'dificil'
+                  }"
+                  class="inline-block px-4 py-1 text-sm font-medium rounded-full shadow-md hover:brightness-125 transition-all duration-200"
+                >
+                  {{ ruta.dificultad }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  

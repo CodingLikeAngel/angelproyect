@@ -5,194 +5,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Descubre las mejores rutas de senderismo en las Montañas Leonesas. Guías, consejos y comunidad de aventureros."
+      content="Explora rutas épicas de senderismo en las Montañas Leonesas con guías inmersivas y una comunidad apasionada."
     />
-    <title>Montañas Leonesas - Senderismo & Aventura</title>
+    <title>Montañas Leonesas - Senderismo 2030</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Orbitron:wght@400;700&display=swap"
       rel="stylesheet"
     />
-  </head>
-  <body class="font-sans antialiased bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
-    <div class="min-h-screen bg-opacity-90 bg-gradient-to-br from-gray-900/30 via-blue-900/20 to-gray-900/30">
-      <!-- Barra de navegación -->
-      <lib-nav-bar></lib-nav-bar>
+    <style>
+      :root {
+        --neon-cyan: #00e5ff;
+        --neon-pink: #ec4899;
+        --neon-green: #22c55e;
+      }
 
-      <!-- Hero Section -->
-      <!-- <div *ngIf="!isMobile"> -->
-        <header class="text-white py-24 px-4">
-          <div class="max-w-7xl mx-auto text-center">
-            <lib-hero-section></lib-hero-section>
+      .animate-float {
+        animation: float 5s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+      }
+
+      .animate-glow {
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      @keyframes glow {
+        0%, 100% { filter: brightness(100%); }
+        50% { filter: brightness(120%); }
+      }
+
+      .mountain-pattern {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
+                    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased bg-[radial-gradient(ellipse_at_top,_#0a1a3d_0%,_#1e3a8a_50%,_#3b82f6_100%)] text-white">
+    <div class="min-h-screen bg-opacity-90 relative overflow-hidden">
+      <!-- Efecto de partículas de fondo -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="w-64 h-64 bg-[rgba(59,130,246,0.2)] rounded-full blur-3xl animate-float absolute top-10 left-20"></div>
+        <div class="w-96 h-96 bg-[rgba(236,72,153,0.15)] rounded-full blur-3xl animate-float absolute bottom-20 right-40 delay-1000"></div>
+      </div>
+
+      <!-- Barra de navegación -->
+      <lib-nav-bar class="fixed top-0 w-full z-20 bg-[rgba(10,26,61,0.8)] backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.4)]"></lib-nav-bar>
+
+      <!-- Contenido principal -->
+      <div class="pt-24">
+        <!-- Hero Section -->
+        <header class="text-center py-32 px-4 relative">
+          <div class="max-w-7xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold font-orbitron bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-pink)] to-[var(--neon-green)] animate-glow">
+              Montañas Leonesas 2030
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mt-4 max-w-3xl mx-auto">
+              Vive la aventura del futuro en rutas épicas y conecta con una comunidad vibrante.
+            </p>
+            <lib-hero-section class="mt-8"></lib-hero-section>
           </div>
         </header>
-      <!-- </div> -->
 
-      <!-- Sección principal -->
-      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Sección de Rutas -->
-        <section
-          id="rutas"
-          class="mb-6 space-y-12"
-          itemscope
-          itemtype="https://schema.org/HikingTrail"
-        >
-          <div class="text-center mb-6">
-            <h2 class="text-4xl font-bold text-white mb-4 transform transition-all duration-300 hover:scale-105">
-              <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-200">
+        <!-- Sección principal -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <!-- Sección de Rutas -->
+          <section id="rutas" class="mb-24 space-y-16">
+            <div class="text-center mb-12">
+              <h2 class="text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-pink)] hover:scale-105 transition-transform duration-300">
                 Rutas Destacadas
-              </span>
-            </h2>
-            <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-              Descubre las rutas más espectaculares de las Montañas Leonesas
-            </p>
-          </div>
-
-          <!-- Contenedor de tarjetas -->
-          <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-8">
-            <lib-card-senderismo
-              *ngFor="let route of routes"
-              class="transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              [routeName]="route.name"
-              [imageUrl]="route.imageUrl"
-              [difficulty]="route.difficulty"
-              [rating]="route.rating"
-              [reviews]="route.reviews"
-              [duration]="route.duration"
-              [distance]="route.distance"
-              [ascent]="route.ascent"
-              [description]="route.description"
-              [features]="route.features"
-              [link]="route.link"
-            >
-            </lib-card-senderismo>
-          </div>
-
-          <!-- Versión móvil -->
-          <div *ngIf="isMobile" class="space-y-8">
-            <lib-card-senderismo
-              *ngIf="routes && routes.length > 0"
-              [routeName]="routes[currentRouteIndex].name"
-              [imageUrl]="routes[currentRouteIndex].imageUrl"
-              [difficulty]="routes[currentRouteIndex].difficulty"
-              [rating]="routes[currentRouteIndex].rating"
-              [reviews]="routes[currentRouteIndex].reviews"
-              [duration]="routes[currentRouteIndex].duration"
-              [distance]="routes[currentRouteIndex].distance"
-              [ascent]="routes[currentRouteIndex].ascent"
-              [description]="routes[currentRouteIndex].description"
-              [features]="routes[currentRouteIndex].features"
-              [link]="routes[currentRouteIndex].link"
-            >
-            </lib-card-senderismo>
-
-            <!-- Controles móviles -->
-            <div class="flex justify-center space-x-4">
-              <button
-                class="px-6 py-3 bg-orange-500/90 hover:bg-orange-600 text-white rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
-                (click)="changeRoute(-1)"
-                [disabled]="currentRouteIndex === 0"
-              >
-                ← Anterior
-              </button>
-              <button
-                class="px-6 py-3 bg-orange-500/90 hover:bg-orange-600 text-white rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
-                (click)="changeRoute(1)"
-                [disabled]="currentRouteIndex === routes.length - 1"
-              >
-                Siguiente →
-              </button>
+              </h2>
+              <p class="text-lg text-gray-300 mt-4 max-w-2xl mx-auto">
+                Explora senderos futuristas en las Montañas Leonesas
+              </p>
             </div>
-          </div>
-        </section>
 
-        <!-- Sección de Posts -->
-        <section class="mb-16 space-y-12">
-          <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-white mb-4 transform transition-all duration-300 hover:scale-105">
-              <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-cyan-200">
+            <!-- Contenedor de tarjetas (Desktop) -->
+            <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-10">
+              <lib-card-senderismo
+                *ngFor="let route of routes"
+                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]"
+                [routeName]="route.name"
+                [imageUrl]="route.imageUrl"
+                [difficulty]="route.difficulty"
+                [rating]="route.rating"
+                [reviews]="route.reviews"
+                [duration]="route.duration"
+                [distance]="route.distance"
+                [ascent]="route.ascent"
+                [description]="route.description"
+                [features]="route.features"
+                [link]="route.link"
+              >
+              </lib-card-senderismo>
+            </div>
+
+            <!-- Versión móvil -->
+            <div *ngIf="isMobile" class="space-y-10">
+              <lib-card-senderismo
+                *ngIf="routes && routes.length > 0"
+                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6"
+                [routeName]="routes[currentRouteIndex].name"
+                [imageUrl]="routes[currentRouteIndex].imageUrl"
+                [difficulty]="routes[currentRouteIndex].difficulty"
+                [rating]="routes[currentRouteIndex].rating"
+                [reviews]="routes[currentRouteIndex].reviews"
+                [duration]="routes[currentRouteIndex].duration"
+                [distance]="routes[currentRouteIndex].distance"
+                [ascent]="routes[currentRouteIndex].ascent"
+                [description]="routes[currentRouteIndex].description"
+                [features]="routes[currentRouteIndex].features"
+                [link]="routes[currentRouteIndex].link"
+              >
+              </lib-card-senderismo>
+
+              <!-- Controles móviles -->
+              <div class="flex justify-center space-x-6">
+                <button
+                  class="px-8 py-3 bg-[var(--neon-cyan)] text-black font-bold rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--neon-pink)] hover:scale-110"
+                  (click)="changeRoute(-1)"
+                  [disabled]="currentRouteIndex === 0"
+                >
+                  ← Anterior
+                </button>
+                <button
+                  class="px-8 py-3 bg-[var(--neon-cyan)] text-black font-bold rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--neon-pink)] hover:scale-110"
+                  (click)="changeRoute(1)"
+                  [disabled]="currentRouteIndex === routes.length - 1"
+                >
+                  Siguiente →
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Sección de Posts -->
+          <section class="mb-24 space-y-16">
+            <div class="text-center mb-12">
+              <h2 class="text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-green)] to-[var(--neon-cyan)] hover:scale-105 transition-transform duration-300">
                 Últimos Posts
-              </span>
-            </h2>
-            <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-              Descubre las últimas publicaciones de nuestra comunidad
-            </p>
-          </div>
-
-          <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-8">
-            <lib-card
-              *ngFor="let post of posts"
-              class="transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              [image]="post.image"
-              [title]="post.title"
-              [excerpt]="post.excerpt"
-              [date]="post.date"
-              [author]="post.author"
-              [readMoreUrl]="post.readMoreUrl"
-              [category]="post.category"
-              [tag]="post.tag"
-              [authorInitials]="post.authorInitials"
-            >
-            </lib-card>
-          </div>
-
-          <!-- Versión móvil -->
-          <div *ngIf="isMobile" class="space-y-8">
-            <lib-card
-              *ngIf="posts && posts.length > 0"
-              [image]="posts[currentPostIndex].image"
-              [title]="posts[currentPostIndex].title"
-              [excerpt]="posts[currentPostIndex].excerpt"
-              [date]="posts[currentPostIndex].date"
-              [author]="posts[currentPostIndex].author"
-              [readMoreUrl]="posts[currentPostIndex].readMoreUrl"
-              [category]="posts[currentPostIndex].category"
-              [tag]="posts[currentPostIndex].tag"
-              [authorInitials]="posts[currentPostIndex].authorInitials"
-            >
-            </lib-card>
-
-            <!-- Controles móviles -->
-            <div class="flex justify-center space-x-4">
-              <button
-                class="px-6 py-3 bg-green-500/90 hover:bg-green-600 text-white rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
-                (click)="changePost(-1)"
-                [disabled]="currentPostIndex === 0"
-              >
-                ← Anterior
-              </button>
-              <button
-                class="px-6 py-3 bg-green-500/90 hover:bg-green-600 text-white rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
-                (click)="changePost(1)"
-                [disabled]="currentPostIndex === posts.length - 1"
-              >
-                Siguiente →
-              </button>
+              </h2>
+              <p class="text-lg text-gray-300 mt-4 max-w-2xl mx-auto">
+                Noticias y relatos de nuestra comunidad del 2030
+              </p>
             </div>
-          </div>
-        </section>
 
+            <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-10">
+              <lib-card
+                *ngFor="let post of posts"
+                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]"
+                [image]="post.image"
+                [title]="post.title"
+                [excerpt]="post.excerpt"
+                [date]="post.date"
+                [author]="post.author"
+                [readMoreUrl]="post.readMoreUrl"
+                [category]="post.category"
+                [tag]="post.tag"
+                [authorInitials]="post.authorInitials"
+              >
+              </lib-card>
+            </div>
 
+            <!-- Versión móvil -->
+            <div *ngIf="isMobile" class="space-y-10">
+              <lib-card
+                *ngIf="posts && posts.length > 0"
+                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6"
+                [image]="posts[currentPostIndex].image"
+                [title]="posts[currentPostIndex].title"
+                [excerpt]="posts[currentPostIndex].excerpt"
+                [date]="posts[currentPostIndex].date"
+                [author]="posts[currentPostIndex].author"
+                [readMoreUrl]="posts[currentPostIndex].readMoreUrl"
+                [category]="posts[currentPostIndex].category"
+                [tag]="posts[currentPostIndex].tag"
+                [authorInitials]="posts[currentPostIndex].authorInitials"
+              >
+              </lib-card>
 
-        <!-- Otras secciones -->
-        <section class="my-16">
+              <!-- Controles móviles -->
+              <div class="flex justify-center space-x-6">
+                <button
+                  class="px-8 py-3 bg-[var(--neon-green)] text-black font-bold rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--neon-cyan)] hover:scale-110"
+                  (click)="changePost(-1)"
+                  [disabled]="currentPostIndex === 0"
+                >
+                  ← Anterior
+                </button>
+                <button
+                  class="px-8 py-3 bg-[var(--neon-green)] text-black font-bold rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--neon-cyan)] hover:scale-110"
+                  (click)="changePost(1)"
+                  [disabled]="currentPostIndex === posts.length - 1"
+                >
+                  Siguiente →
+                </button>
+              </div>
+            </div>
+          </section>
 
-          <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-white mb-4 transform transition-all duration-300 hover:scale-105">
-              <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-200">
+          <!-- Sección de Próximas Aventuras -->
+          <section class="my-24">
+            <div class="text-center mb-12">
+              <h2 class="text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-cyan)] hover:scale-105 transition-transform duration-300">
                 Próximas Aventuras
-              </span>
-            </h2>
-            <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-              Descubre las próximas aventuras que se realizarán en grupo
-            </p>
-          </div>
-          <lib-card-next-adventures class="rounded-2xl overflow-hidden shadow-2xl"></lib-card-next-adventures>
-        </section>
+              </h2>
+              <p class="text-lg text-gray-300 mt-4 max-w-2xl mx-auto">
+                Únete a las expediciones grupales del futuro
+              </p>
+            </div>
+            <lib-card-next-adventures class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-3xl shadow-[0_0_30px_rgba(236,72,153,0.4)] overflow-hidden transform hover:scale-102 transition-all duration-300"></lib-card-next-adventures>
+          </section>
 
-        <section class="my-16">
-          <lib-caracteristicas class="space-y-8"></lib-caracteristicas>
-        </section>
-      </main>
+          <!-- Sección de Características -->
+          <section class="my-24">
+            <lib-caracteristicas class="space-y-12 bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-3xl p-8 shadow-[0_0_30px_rgba(59,130,246,0.3)]"></lib-caracteristicas>
+          </section>
+        </main>
+      </div>
     </div>
   </body>
 </html>

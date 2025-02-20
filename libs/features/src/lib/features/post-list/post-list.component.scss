@@ -1,31 +1,70 @@
+:host {
+  display: block;
+}
+
 .post-list {
-  display: flex;
-  flex-wrap: wrap; /* Permite que los posts se acomoden en varias filas */
-  justify-content: flex-start; /* Alinea los posts desde la izquierda */
-  gap: 1rem; /* Espacio entre posts */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-height: 85vh;
   overflow-y: auto;
-  max-height: 80vh; /* Ajusta según necesidad */
-  padding: 1rem;
+  position: relative;
 }
 
 .post-card {
-  width: calc(33.333% - 1rem); /* 3 columnas en pantallas grandes */
-  min-width: 300px; /* Evita que se haga demasiado pequeño */
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  background: transparent; /* El fondo lo maneja lib-card */
+  border-radius: 1.5rem;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);
+  }
 }
 
-/* 🔹 Media queries para ajustar en diferentes tamaños de pantalla */
+/* Spinner futurista */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  .animate-spin {
+    border-color: rgba(0, 229, 255, 0.3);
+    border-top-color: var(--neon-cyan);
+    animation: spin 1s linear infinite;
+  }
+}
+
+/* Animación de entrada */
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Variables globales */
+:root {
+  --neon-cyan: #00e5ff;
+  --neon-pink: #ec4899;
+  --neon-green: #22c55e;
+}
+
+/* Media queries */
 @media (max-width: 1024px) {
-  .post-card {
-    width: calc(50% - 1rem); /* 2 columnas en pantallas medianas */
+  .post-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  .post-card {
-    width: 100%; /* 1 columna en pantallas pequeñas */
+  .post-list {
+    grid-template-columns: 1fr;
+    padding: 1rem;
   }
 }

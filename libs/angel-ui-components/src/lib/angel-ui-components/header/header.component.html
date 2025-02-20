@@ -1,116 +1,136 @@
-<header class="bg-white shadow-sm fixed w-full z-50">
-  <nav class="container mx-auto px-4">
+<header
+  class="fixed w-full z-50 bg-[rgba(10,26,61,0.9)] backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+>
+  <nav class="container mx-auto px-6 py-4">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
       <a href="#" class="flex items-center">
-        <span class="text-2xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors">FORO LEÓN</span>
+        <span
+          class="text-4xl font-orbitron font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-pink)] animate-glow hover:scale-105 transition-transform duration-300"
+        >
+          FORO LEÓN
+        </span>
       </a>
 
       <!-- Menú Desktop -->
-      <div class="hidden md:flex items-center gap-6">
-        <a href="foro-main/foro-pesca" 
-           class="text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+      <div class="hidden md:flex items-center gap-10">
+        <a
+          href="foro-main/foro-pesca"
+          class="nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:scale-105 transition-all duration-300 relative group"
+        >
           Foro Pesca
+          <span
+            class="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--neon-pink)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+          ></span>
         </a>
-        <a href="foro-main/foro-senderismo" 
-           class="text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+        <a
+          href="foro-main/foro-senderismo"
+          class="nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:scale-105 transition-all duration-300 relative group"
+        >
           Foro Senderismo
+          <span
+            class="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--neon-pink)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+          ></span>
         </a>
-        <a href="foro-main/foro-micologico" 
-           class="text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+        <a
+          href="foro-main/foro-micologico"
+          class="nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:scale-105 transition-all duration-300 relative group"
+        >
           Foro Micológico
+          <span
+            class="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--neon-pink)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+          ></span>
         </a>
-        <a href="foro-main/foro-gastronomico" 
-           class="text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+        <a
+          href="foro-main/foro-gastronomico"
+          class="nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:scale-105 transition-all duration-300 relative group"
+        >
           Foro Gastronómico
+          <span
+            class="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--neon-pink)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+          ></span>
         </a>
 
-        <div class="flex gap-3 ml-4">
+        <div class="flex gap-4 ml-8">
           <button
             (click)="navigateToUpload()"
-            class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md 
-                   hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 
-                   focus:ring-indigo-500 focus:ring-offset-2"
+            class="cta-button bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black animate-pulse shadow-[0_0_15px_rgba(0,229,255,0.5)]"
           >
             Escribe tu post
           </button>
           <button
             (click)="navigateToPosts()"
-            class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md 
-                   hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 
-                   focus:ring-blue-500 focus:ring-offset-2"
+            class="cta-button bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-yellow)] hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black animate-pulse shadow-[0_0_15px_rgba(236,72,153,0.5)]"
           >
             Ver posts
           </button>
         </div>
       </div>
 
-<!-- Botón Mobile -->
-<!-- Botón Mobile -->
-<!-- Botón Mobile -->
-<!-- Botón Mobile -->
-<button
-  class="md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 
-         focus:ring-indigo-500 transition-all bg-indigo-600"
-  (click)="isMobileMenuOpen = !isMobileMenuOpen"
-  aria-label="Toggle mobile menu"
->
-  <svg class="w-6 h-6 transform transition-transform text-white" 
-       [ngClass]="{ 'rotate-90': isMobileMenuOpen }" 
-       fill="none" 
-       stroke="currentColor"
-       viewBox="0 0 24 24">
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M4 6h16M4 12h16M4 18h16"
-    ></path>
-  </svg>
-</button>
-
-
-
-
+      <!-- Botón Mobile -->
+      <button
+        class="md:hidden p-3 rounded-lg bg-[var(--neon-cyan)] hover:bg-[var(--neon-pink)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]"
+        (click)="isMobileMenuOpen = !isMobileMenuOpen"
+        aria-label="Toggle mobile menu"
+      >
+        <svg
+          class="w-6 h-6 text-white transform transition-transform duration-300"
+          [ngClass]="{ 'rotate-90': isMobileMenuOpen }"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
     </div>
 
     <!-- Menú Mobile -->
     <div
-      class="md:hidden overflow-hidden transition-all duration-300"
-      [class]="isMobileMenuOpen ? 'max-h-96' : 'max-h-0'"
+      class="md:hidden overflow-hidden transition-all duration-500 bg-[rgba(10,26,61,0.95)] backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.3)]"
+      [ngClass]="isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'"
     >
-      <div class="px-2 pt-2 pb-4 space-y-3 border-t mt-2">
-        <a href="foro-main/foro-pesca" 
-           class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-lg">
+      <div class="px-6 py-6 space-y-4">
+        <a
+          href="foro-main/foro-pesca"
+          class="mobile-nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:bg-[rgba(255,255,255,0.05)]"
+        >
           Foro Pesca
         </a>
-        <a href="foro-main/foro-senderismo" 
-           class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-lg">
+        <a
+          href="foro-main/foro-senderismo"
+          class="mobile-nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:bg-[rgba(255,255,255,0.05)]"
+        >
           Foro Senderismo
         </a>
-        <a href="foro-main/foro-micologico" 
-           class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-lg">
+        <a
+          href="foro-main/foro-micologico"
+          class="mobile-nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:bg-[rgba(255,255,255,0.05)]"
+        >
           Foro Micológico
         </a>
-        <a href="foro-main/foro-gastronomico" 
-           class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-lg">
+        <a
+          href="foro-main/foro-gastronomico"
+          class="mobile-nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:bg-[rgba(255,255,255,0.05)]"
+        >
           Foro Gastronómico
         </a>
 
-        <div class="pt-4 space-y-2">
+        <div class="pt-4 space-y-4">
           <button
             (click)="navigateToUpload()"
-            class="w-full px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md 
-                   hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 
-                   focus:ring-indigo-500 focus:ring-offset-2"
+            class="mobile-cta-button bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black animate-pulse shadow-[0_0_15px_rgba(0,229,255,0.5)]"
           >
             Escribe tu post
           </button>
           <button
             (click)="navigateToPosts()"
-            class="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md 
-                   hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 
-                   focus:ring-blue-500 focus:ring-offset-2"
+            class="mobile-cta-button bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-yellow)] hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black animate-pulse shadow-[0_0_15px_rgba(236,72,153,0.5)]"
           >
             Ver posts
           </button>

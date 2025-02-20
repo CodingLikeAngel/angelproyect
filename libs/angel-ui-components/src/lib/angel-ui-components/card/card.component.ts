@@ -6,9 +6,9 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
   imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
+  standalone: true,
 })
 export class CardComponent implements OnChanges {
-  // Inputs
   @Input() image = '';
   @Input() title = '';
   @Input() excerpt = '';
@@ -33,11 +33,9 @@ export class CardComponent implements OnChanges {
   };
 
   ngOnChanges(changes: SimpleChanges): void {
-    // Al detectar cambios, actualizamos los estilos dinámicos con la función
     this.dynamicStyles = this.getColorForTag();
   }
 
-  // Función para obtener los colores dinámicamente según el tag
   getColorForTag() {
     const tagStyles: {
       [key: string]: {
@@ -48,40 +46,37 @@ export class CardComponent implements OnChanges {
       };
     } = {
       pesca: {
-        background: 'bg-blue-100',
-        text: 'text-blue-700',
-        gradientFrom: 'rgb(59 130 246)', // azul
-        gradientTo: 'rgb(37 99 235)', // azul más oscuro
+        background: 'bg-[rgba(59,130,246,0.2)]',
+        text: 'text-cyan-300',
+        gradientFrom: 'rgba(59,130,246,0.8)',
+        gradientTo: 'rgba(37,99,235,0.8)',
       },
       gastronomia: {
-        background: 'bg-red-100',
-        text: 'text-red-700',
-        gradientFrom: 'rgb(248 113 113)', // rojo
-        gradientTo: 'rgb(220 38 38)', // rojo más oscuro
+        background: 'bg-[rgba(236,72,153,0.2)]',
+        text: 'text-pink-300',
+        gradientFrom: 'rgba(236,72,153,0.8)',
+        gradientTo: 'rgba(219,39,119,0.8)',
       },
       micologia: {
-        // Aquí usamos verde
-        background: 'bg-green-100',
-        text: 'text-green-700',
-        gradientFrom: 'rgb(34 197 94)', // verde claro
-        gradientTo: 'rgb(22 163 74)', // verde más oscuro
+        background: 'bg-[rgba(34,197,94,0.2)]',
+        text: 'text-green-300',
+        gradientFrom: 'rgba(34,197,94,0.8)',
+        gradientTo: 'rgba(22,163,74,0.8)',
       },
       senderismo: {
-        background: 'bg-amber-100', // Fondo en tono ámbar más suave
-        text: 'text-amber-600', // Texto en tono ámbar moderado
-        gradientFrom: 'rgb(34 197 94)', // gris
-        gradientTo: 'rgb(22 163 74)', // gris más oscuro
+        background: 'bg-[rgba(234,179,8,0.2)]',
+        text: 'text-yellow-300',
+        gradientFrom: 'rgba(234,179,8,0.8)',
+        gradientTo: 'rgba(202,138,4,0.8)',
       },
-
       default: {
-        background: 'bg-gray-100',
-        text: 'text-gray-700',
-        gradientFrom: 'rgb(107 114 128)', // gris
-        gradientTo: 'rgb(75 85 99)', // gris más oscuro
+        background: 'bg-[rgba(107,114,128,0.2)]',
+        text: 'text-gray-300',
+        gradientFrom: 'rgba(107,114,128,0.8)',
+        gradientTo: 'rgba(75,85,99,0.8)',
       },
     };
 
-    console.log(this.tag.toLowerCase());
     return tagStyles[this.tag.toLowerCase()] || tagStyles['default'];
   }
 }

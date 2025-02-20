@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:host {
+  top: 10vh;
+  position: fixed;
+  width: 100%;
+  z-index: 40;
+}
+
+.nav-link {
+  @apply font-orbitron font-medium text-lg relative;
+}
+
+.mobile-nav-link {
+  @apply block px-6 py-3 text-lg font-orbitron font-medium rounded-xl transition-all duration-300 hover:scale-105;
+}
+
+/* Animaciones */
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { filter: brightness(100%); }
+  50% { filter: brightness(120%); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Variables neón */
+:root {
+  --neon-cyan: #00e5ff;
+  --neon-pink: #ec4899;
+  --neon-green: #22c55e;
+  --neon-yellow: #eab308;
+}

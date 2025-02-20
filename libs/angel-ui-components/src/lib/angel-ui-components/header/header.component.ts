@@ -6,17 +6,21 @@ import { Router } from '@angular/router';
   selector: 'lib-header',
   imports: [CommonModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  standalone: true,
 })
 export class HeaderComponent {
   isMobileMenuOpen = false;
+
   constructor(private router: Router) {}
 
   navigateToUpload() {
     this.router.navigate(['/upload-posts']);
+    this.isMobileMenuOpen = false;
   }
 
   navigateToPosts() {
     this.router.navigate(['/posts']);
+    this.isMobileMenuOpen = false;
   }
 }

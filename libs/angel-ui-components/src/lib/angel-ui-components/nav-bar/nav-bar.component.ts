@@ -5,10 +5,10 @@ import { CommonModule } from '@angular/common';
   selector: 'lib-nav-bar',
   imports: [CommonModule],
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.scss',
+  styleUrls: ['./nav-bar.component.scss'],
+  standalone: true,
 })
 export class NavBarComponent {
-
   isMenuOpen = false;
 
   toggleMenu() {

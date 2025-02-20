@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CardComponent, CommonModule, NgOptimizedImage],
   templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.scss']
+  styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
-  @Input() tag = ''; // El tag se pasa desde el componente padre
+  @Input() tag = '';
 
   posts: any[] = [];
   page = 1;
@@ -33,7 +33,7 @@ export class PostListComponent implements OnInit {
 
   private setupPostCreationListener(): void {
     this.postService.postCreated$.subscribe(() => {
-      this.page = 1; // Reinicia la paginación si es necesario
+      this.page = 1;
       this.loadPosts();
     });
   }
@@ -41,37 +41,25 @@ export class PostListComponent implements OnInit {
   loadPosts(): void {
     if (this.isLoading) return;
     this.isLoading = true;
-  
-    // Si el tag no está vacío, carga los posts por tag
-    if (this.tag) {
-      this.postService.getPostsByTag(this.tag).subscribe({
-        next: (data) => {
-          this.posts = data; // Asigna la lista de posts obtenida
-          this.isLoading = false;
-        },
-        error: (err) => {
-          console.error('Error al cargar los posts por tag:', err);
-          this.isLoading = false;
-        },
-      });
-    } else {
-      // Si el tag está vacío, carga todos los posts
-      this.postService.getAllPosts().subscribe({
-        next: (data) => {
-          this.posts = data; // Asigna la lista de posts obtenida
-          this.isLoading = false;
-        },
-        error: (err) => {
-          console.error('Error al cargar todos los posts:', err);
-          this.isLoading = false;
-        },
-      });
-    }
+
+    const loadMethod = this.tag
+      ? this.postService.getPostsByTag(this.tag)
+      : this.postService.getAllPosts();
+
+    loadMethod.subscribe({
+      next: (data) => {
+        this.posts = this.tag ? data : [...this.posts, ...data]; // Acumula posts si no hay tag
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Error al cargar los posts:', err);
+        this.isLoading = false;
+      },
+    });
   }
-  
 
   onScroll(): void {
-    if (this.page < this.totalPages) {
+    if (this.page < this.totalPages && !this.isLoading) {
       this.page++;
       this.loadPosts();
     }
