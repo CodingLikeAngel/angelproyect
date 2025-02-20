@@ -1,11 +1,11 @@
 <article class="post-card group bg-gradient-to-br"
-         [ngClass]="[dynamicStyles.background, dynamicStyles.text, 'rounded-2xl', 'overflow-hidden', 'shadow-xl', 'hover:shadow-2xl', 'transition-all', 'duration-300', 'max-w-md', 'mx-auto', 'transform', 'hover:-translate-y-1.5']"
+         [ngClass]="['rounded-2xl', 'overflow-hidden', 'shadow-xl', 'hover:shadow-2xl', 'transition-all', 'duration-300', 'max-w-md', 'mx-auto', 'transform', 'hover:-translate-y-1.5']"
          itemscope itemtype="https://schema.org/Article">
   <!-- Contenedor de imagen con overlay degradado -->
   <div class="relative overflow-hidden">
     <!-- Gradiente de overlay transparente más suave -->
     <div class="absolute inset-0 bg-gradient-to-t"
-         [ngStyle]="{'background': dynamicStyles.gradientFrom + ', ' + dynamicStyles.gradientTo, 'z-index': '10'}"></div>
+         [ngStyle]="{ 'z-index': '-10'}"></div>
     <img [src]="image"
          alt="Imagen del post"
          class="object-cover w-full h-48 transform transition-transform duration-500 group-hover:scale-110"
@@ -14,14 +14,14 @@
       <h2 class="font-bold text-2xl mb-1 text-white drop-shadow-lg" itemprop="headline">
         {{ title }}
       </h2>
-      <p class="font-medium" [ngClass]="[dynamicStyles.text, 'text-white', 'font-semibold']" itemprop="articleSection">
+      <p class="font-medium" [ngClass]="[ 'text-white', 'font-semibold']" itemprop="articleSection">
         {{ category }}
       </p>
     </div>
   </div>
 
-  <div class="p-6 post-content space-y-4">
-    <p class="text-gray-700 text-base leading-relaxed mb-4" itemprop="description">
+  <div class="p-6 post-content space-y-4 bg-black">
+    <p class="text-white text-base leading-relaxed mb-4" itemprop="description">
       {{ excerpt }}
     </p>
     <div class="flex items-center space-x-3 text-sm">
@@ -42,7 +42,7 @@
             {{ author }}
           </span>
         </p>
-        <p class="text-sm" [ngClass]="[dynamicStyles.text, 'text-black', 'drop-shadow-md']">
+        <p class="text-sm" [ngClass]="[dynamicStyles.text, 'drop-shadow-md']">
           <time itemprop="datePublished" [attr.datetime]="date">{{ date }}</time>
         </p>
       </div>

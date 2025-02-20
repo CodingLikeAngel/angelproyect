@@ -1,29 +1,49 @@
 <nav class="bg-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center">
-          <a href="#" class="flex-shrink-0 flex items-center">
-            <img
-              class="h-8 w-8"
-              src="https://img.icons8.com/color/48/mountain--v1.png"
-              alt="Logo"
-            />
-            <span class="ml-2 text-xl font-display font-bold text-[#5a371a]"
-              >Montañas Leonesas</span
-            >
-          </a>
-        </div>
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#" class="text-gray-700 hover:text-[#8B4513] font-medium"
-            >Rutas</a
-          >
-          <a href="#" class="text-gray-700 hover:text-[#8B4513] font-medium"
-            >Blog</a
-          >
-          <a href="#" class="text-gray-700 hover:text-[#8B4513] font-medium"
-            >Contacto</a
-          >
-        </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Contenedor principal: en mobile se organiza en columna y en escritorio en fila -->
+    <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-16 py-4 md:py-0">
+      <!-- Sección del logo -->
+      <div class="flex items-center w-full justify-center md:justify-start">
+        <a href="#" class="flex items-center">
+          <img
+            class="h-8 w-8"
+            src="https://img.icons8.com/color/48/mountain--v1.png"
+            alt="Logo"
+          />
+          <span class="ml-4 text-xl font-display font-bold text-[#5a371a]">
+            Montañas Leonesas
+          </span>
+        </a>
+      </div>
+
+      <!-- Botón de hamburguesa para mobile: se separa con margen superior -->
+      <div class="mt-4 md:mt-0 flex items-center md:hidden">
+        <button (click)="toggleMenu()" class="text-gray-700 hover:text-[#8B4513]">
+          <span class="sr-only">Abrir menú</span>
+          <svg class="w-6 h-6 transition-transform duration-300" 
+               [ngClass]="{'rotate-180': isMenuOpen}" 
+               fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Opciones de navegación para escritorio -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#" class="text-gray-700 hover:text-[#8B4513] font-medium">Rutas</a>
+        <a href="#" class="text-gray-700 hover:text-[#8B4513] font-medium">Blog</a>
+        <a href="#" class="text-gray-700 hover:text-[#8B4513] font-medium">Contacto</a>
       </div>
     </div>
-  </nav>
+
+    <!-- Menú Móvil: se muestra al activar el botón -->
+    <div class="md:hidden overflow-hidden transition-all duration-300 z-50"
+         [ngClass]="{'h-auto opacity-100': isMenuOpen, 'h-0 opacity-0': !isMenuOpen}">
+      <div class="px-2 pt-2 pb-4 space-y-3 border-t">
+        <a href="#" (click)="toggleMenu()" class="block px-4 py-3 text-gray-700 hover:text-[#8B4513] hover:bg-gray-50 rounded-lg">Rutas</a>
+        <a href="#" (click)="toggleMenu()" class="block px-4 py-3 text-gray-700 hover:text-[#8B4513] hover:bg-gray-50 rounded-lg">Blog</a>
+        <a href="#" (click)="toggleMenu()" class="block px-4 py-3 text-gray-700 hover:text-[#8B4513] hover:bg-gray-50 rounded-lg">Contacto</a>
+      </div>
+    </div>
+  </div>
+</nav>

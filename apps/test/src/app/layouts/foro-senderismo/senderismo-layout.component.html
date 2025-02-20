@@ -9,178 +9,190 @@
     />
     <title>Montañas Leonesas - Senderismo & Aventura</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="font-sans antialiased bg-gray-50">
-    <!-- Barra de navegación -->
- <lib-nav-bar></lib-nav-bar>
-    <!-- Hero Section -->
-    <header class="mountain-pattern text-white py-24 px-4">
-<lib-hero-section></lib-hero-section>
-    </header>
+  <body class="font-sans antialiased bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
+    <div class="min-h-screen bg-opacity-90 bg-gradient-to-br from-gray-900/30 via-blue-900/20 to-gray-900/30">
+      <!-- Barra de navegación -->
+      <lib-nav-bar></lib-nav-bar>
 
-    <!-- Sección de Rutas -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <section
-      id="rutas"
-      class="mb-20"
-      itemscope
-      itemtype="https://schema.org/HikingTrail"
-    >
-      <h2 class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
-        Rutas Destacadas
-      </h2>
-    
-      <!-- Sección para escritorio -->
-      <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-8">
-        <lib-card-senderismo
-          *ngFor="let route of routes"
-          [routeName]="route.name"
-          [imageUrl]="route.imageUrl"
-          [difficulty]="route.difficulty"
-          [rating]="route.rating"
-          [reviews]="route.reviews"
-          [duration]="route.duration"
-          [distance]="route.distance"
-          [ascent]="route.ascent"
-          [description]="route.description"
-          [features]="route.features"
-          [link]="route.link"
+      <!-- Hero Section -->
+      <!-- <div *ngIf="!isMobile"> -->
+        <header class="text-white py-24 px-4">
+          <div class="max-w-7xl mx-auto text-center">
+            <lib-hero-section></lib-hero-section>
+          </div>
+        </header>
+      <!-- </div> -->
+
+      <!-- Sección principal -->
+      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Sección de Rutas -->
+        <section
+          id="rutas"
+          class="mb-6 space-y-12"
+          itemscope
+          itemtype="https://schema.org/HikingTrail"
         >
-        </lib-card-senderismo>
-      </div>
-    
-      <!-- Sección para móvil -->
-      <div *ngIf="isMobile" class="grid gap-8">
-        <!-- Mostrar solo un post según el índice actual -->
-        <lib-card-senderismo
-          *ngIf="routes && routes.length > 0"
-          [routeName]="routes[currentRouteIndex].name"
-          [imageUrl]="routes[currentRouteIndex].imageUrl"
-          [difficulty]="routes[currentRouteIndex].difficulty"
-          [rating]="routes[currentPostIndex].rating"
-          [reviews]="routes[currentRouteIndex].reviews"
-          [duration]="routes[currentRouteIndex].duration"
-          [distance]="routes[currentRouteIndex].distance"
-          [ascent]="routes[currentRouteIndex].ascent"
-          [description]="routes[currentRouteIndex].description"
-          [features]="routes[currentRouteIndex].features"
-          [link]="routes[currentRouteIndex].link"
-        >
-        </lib-card-senderismo>
-    
-        <!-- Botones para navegar por los posts -->
-        <div class="flex justify-center mt-4">
-          <button
-            class="px-4 py-2 bg-blue-500 text-white rounded-md"
-            (click)="changeRoute(-1)"
-            [disabled]="currentRouteIndex === 0"
-          >
-            Anterior
-          </button>
-          <button
-            class="px-4 py-2 bg-blue-500 text-white rounded-md ml-4"
-            (click)="changeRoute(1)"
-            [disabled]="currentRouteIndex === routes.length - 1"
-          >
-            Siguiente
-          </button>
-        </div>
-      </div>
-    </section>
+          <div class="text-center mb-6">
+            <h2 class="text-4xl font-bold text-white mb-4 transform transition-all duration-300 hover:scale-105">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-200">
+                Rutas Destacadas
+              </span>
+            </h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+              Descubre las rutas más espectaculares de las Montañas Leonesas
+            </p>
+          </div>
 
-      <h2  class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
-        Post Destacados
-      </h2>
+          <!-- Contenedor de tarjetas -->
+          <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-8">
+            <lib-card-senderismo
+              *ngFor="let route of routes"
+              class="transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              [routeName]="route.name"
+              [imageUrl]="route.imageUrl"
+              [difficulty]="route.difficulty"
+              [rating]="route.rating"
+              [reviews]="route.reviews"
+              [duration]="route.duration"
+              [distance]="route.distance"
+              [ascent]="route.ascent"
+              [description]="route.description"
+              [features]="route.features"
+              [link]="route.link"
+            >
+            </lib-card-senderismo>
+          </div>
 
-      <section *ngIf="!isMobile"
-        class="grid md:grid-cols-3 gap-8 mb-16"
-        aria-label="Rutas de Senderismo"
-      >
-        <lib-card
-          *ngFor="let post of posts"
-          [image]="post.image"  
-          [title]="post.title"
-          [excerpt]="post.excerpt"
-          [date]="post.date"
-          [author]="post.author"
-          [readMoreUrl]="post.readMoreUrl"
-          [category]="post.category"
-          [tag]="post.tag"
-          [authorInitials]="post.authorInitials"
-        >
-        </lib-card>
-      </section>
+          <!-- Versión móvil -->
+          <div *ngIf="isMobile" class="space-y-8">
+            <lib-card-senderismo
+              *ngIf="routes && routes.length > 0"
+              [routeName]="routes[currentRouteIndex].name"
+              [imageUrl]="routes[currentRouteIndex].imageUrl"
+              [difficulty]="routes[currentRouteIndex].difficulty"
+              [rating]="routes[currentRouteIndex].rating"
+              [reviews]="routes[currentRouteIndex].reviews"
+              [duration]="routes[currentRouteIndex].duration"
+              [distance]="routes[currentRouteIndex].distance"
+              [ascent]="routes[currentRouteIndex].ascent"
+              [description]="routes[currentRouteIndex].description"
+              [features]="routes[currentRouteIndex].features"
+              [link]="routes[currentRouteIndex].link"
+            >
+            </lib-card-senderismo>
+
+            <!-- Controles móviles -->
+            <div class="flex justify-center space-x-4">
+              <button
+                class="px-6 py-3 bg-orange-500/90 hover:bg-orange-600 text-white rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
+                (click)="changeRoute(-1)"
+                [disabled]="currentRouteIndex === 0"
+              >
+                ← Anterior
+              </button>
+              <button
+                class="px-6 py-3 bg-orange-500/90 hover:bg-orange-600 text-white rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
+                (click)="changeRoute(1)"
+                [disabled]="currentRouteIndex === routes.length - 1"
+              >
+                Siguiente →
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección de Posts -->
+        <section class="mb-16 space-y-12">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-white mb-4 transform transition-all duration-300 hover:scale-105">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-cyan-200">
+                Últimos Posts
+              </span>
+            </h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+              Descubre las últimas publicaciones de nuestra comunidad
+            </p>
+          </div>
+
+          <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-8">
+            <lib-card
+              *ngFor="let post of posts"
+              class="transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              [image]="post.image"
+              [title]="post.title"
+              [excerpt]="post.excerpt"
+              [date]="post.date"
+              [author]="post.author"
+              [readMoreUrl]="post.readMoreUrl"
+              [category]="post.category"
+              [tag]="post.tag"
+              [authorInitials]="post.authorInitials"
+            >
+            </lib-card>
+          </div>
+
+          <!-- Versión móvil -->
+          <div *ngIf="isMobile" class="space-y-8">
+            <lib-card
+              *ngIf="posts && posts.length > 0"
+              [image]="posts[currentPostIndex].image"
+              [title]="posts[currentPostIndex].title"
+              [excerpt]="posts[currentPostIndex].excerpt"
+              [date]="posts[currentPostIndex].date"
+              [author]="posts[currentPostIndex].author"
+              [readMoreUrl]="posts[currentPostIndex].readMoreUrl"
+              [category]="posts[currentPostIndex].category"
+              [tag]="posts[currentPostIndex].tag"
+              [authorInitials]="posts[currentPostIndex].authorInitials"
+            >
+            </lib-card>
+
+            <!-- Controles móviles -->
+            <div class="flex justify-center space-x-4">
+              <button
+                class="px-6 py-3 bg-green-500/90 hover:bg-green-600 text-white rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
+                (click)="changePost(-1)"
+                [disabled]="currentPostIndex === 0"
+              >
+                ← Anterior
+              </button>
+              <button
+                class="px-6 py-3 bg-green-500/90 hover:bg-green-600 text-white rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
+                (click)="changePost(1)"
+                [disabled]="currentPostIndex === posts.length - 1"
+              >
+                Siguiente →
+              </button>
+            </div>
+          </div>
+        </section>
 
 
 
-      <section *ngIf="isMobile"
+        <!-- Otras secciones -->
+        <section class="my-16">
 
-  class="grid md:grid-cols-3 gap-8 mb-16"
-  aria-label="Rutas de Senderismo"
->
-  <!-- Mostrar solo un post según el índice actual -->
-  <lib-card
-    *ngIf="posts && posts.length > 0"
-    [image]="posts[currentPostIndex].image"
-    [title]="posts[currentPostIndex].title"
-    [excerpt]="posts[currentPostIndex].excerpt"
-    [date]="posts[currentPostIndex].date"
-    [author]="posts[currentPostIndex].author"
-    [readMoreUrl]="posts[currentPostIndex].readMoreUrl"
-    [category]="posts[currentPostIndex].category"
-    [tag]="posts[currentPostIndex].tag"
-    [authorInitials]="posts[currentPostIndex].authorInitials"
-  >
-  </lib-card>
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-white mb-4 transform transition-all duration-300 hover:scale-105">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-200">
+                Próximas Aventuras
+              </span>
+            </h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+              Descubre las próximas aventuras que se realizarán en grupo
+            </p>
+          </div>
+          <lib-card-next-adventures class="rounded-2xl overflow-hidden shadow-2xl"></lib-card-next-adventures>
+        </section>
 
-  <!-- Botones para navegar por los posts -->
-  <div class="flex justify-center mt-4">
-    <button
-      class="px-4 py-2 bg-blue-500 text-white rounded-md"
-      (click)="changePost(-1)"
-      [disabled]="currentPostIndex === 0"
-    >
-      Anterior
-    </button>
-    <button
-      class="px-4 py-2 bg-blue-500 text-white rounded-md ml-4"
-      (click)="changePost(1)"
-      [disabled]="currentPostIndex === posts.length - 1"
-    >
-      Siguiente
-    </button>
-  </div>
-</section>
-
-
-
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <lib-card-next-adventures></lib-card-next-adventures>
-    </section>
-    <section class="relative h-96 rounded-3xl overflow-hidden mb-16 mx-4 shadow-2xl">
-      <lib-section-image></lib-section-image>
-    </section>
-      <lib-caracteristicas></lib-caracteristicas>
-
-      <section id="comercios-locales" class="mt-20">
-        <h2  class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
-          Comercios Locales
-        </h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <lib-card-comercio
-            *ngFor="let comercio of comercios"
-            [nombre]="comercio.nombre"
-            [imagen]="  'https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6'"
-            [descripcion]="comercio.descripcion"
-            [direccion]="comercio.direccion"
-            [link]="comercio.link">
-          </lib-card-comercio>
-        </div>
-      </section>
-
-    </main>
+        <section class="my-16">
+          <lib-caracteristicas class="space-y-8"></lib-caracteristicas>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
