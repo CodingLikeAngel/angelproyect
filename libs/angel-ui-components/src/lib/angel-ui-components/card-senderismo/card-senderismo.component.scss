@@ -3,3 +3,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@media (max-width: 768px) {
+    .flex-wrap {
+      gap: 4rem; /* Reduce el espacio entre cards si es necesario */
+    }
+    article {
+      width: 100%; /* Fuerza que las cards ocupen todo el ancho en tablets */
+      max-width: 400px; /* Limita el ancho máximo para mejor control */
+      margin: 0 auto; /* Centra las cards */
+    }
+  }

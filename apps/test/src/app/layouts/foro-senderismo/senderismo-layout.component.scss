@@ -43,3 +43,44 @@
 }
 .card-hover { transition: transform 0.3s ease; }
 .card-hover:hover { transform: translateY(-5px); }
+
+
+
+// Animación de entrada
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+// Estilos generales
+body {
+  @apply bg-gradient-to-br from-green-900 via-blue-900 to-gray-900;
+}
+
+section {
+  @apply px-4 sm:px-6 lg:px-8 py-12 max-w-7xl mx-auto;
+}
+
+button {
+  @apply focus:outline-none focus:ring-2;
+}
+
+// Ajustes responsivos
+@media (max-width: 640px) {
+  h2 {
+    @apply text-3xl;
+  }
+  p {
+    @apply text-base;
+  }
+}
