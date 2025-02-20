@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PostListComponent } from '@angel/features';
 import { CardComponent, CardNextAdventuresComponent, CardSenderismoComponent, WeatherComponent, SectionImageComponent, CaracteristicasComponent, HeroSectionComponent, NavBarComponent, CardComercioComponent } from '@angel/angel-ui-components';
+import { DeviceDetectorService } from 'ngx-device-detector';
+import { HammerModule } from '@angular/platform-browser';
 
 
 interface Ruta {
@@ -21,11 +23,15 @@ interface Ruta {
 
 @Component({
   selector: 'app-senderismo-layout',
-  imports: [CommonModule, PostListComponent , CardComponent, WeatherComponent,CardSenderismoComponent, CardNextAdventuresComponent, SectionImageComponent,CaracteristicasComponent, HeroSectionComponent, NavBarComponent, CardComercioComponent],
+  imports: [HammerModule,CommonModule, PostListComponent , CardComponent, WeatherComponent,CardSenderismoComponent, CardNextAdventuresComponent, SectionImageComponent,CaracteristicasComponent, HeroSectionComponent, NavBarComponent, CardComercioComponent],
   templateUrl: './senderismo-layout.component.html',
   styleUrl: './senderismo-layout.component.scss',
 })
-export class SenderismoLayoutComponent {
+export class SenderismoLayoutComponent implements AfterViewInit {
+
+  private hammer: HammerManager | undefined;
+
+
   posts: any[] = [
     {
       image: './cares.jpg',
@@ -126,9 +132,44 @@ export class SenderismoLayoutComponent {
       link: '/ruta/las-medulas',
     },
   ];
+isMobile= false;
   
-    constructor(private router: Router) {}
-  
+constructor(private deviceService: DeviceDetectorService, private router : Router,private el: ElementRef) {
+  this.isMobile = this.deviceService.isMobile();
+}
+    currentRouteIndex = 0;
+    currentPostIndex = 0;  // Índice del post actual
+
+
+
+  ngAfterViewInit() {
+    const element = this.el.nativeElement.querySelector('.rutas-container');
+    this.hammer = new Hammer(element);
+
+    this.hammer.on('swipeleft', () => this.changeRoute(1));
+    this.hammer.on('swiperight', () => this.changeRoute(-1));
+  }
+
+
+    // Función para cambiar el post visible
+    changePost(direction: number) {
+      const newIndex = this.currentPostIndex + direction;
+      // Asegurarse de que no se salga de los límites del array
+      if (newIndex >= 0 && newIndex < this.posts.length) {
+        this.currentPostIndex = newIndex;
+      }
+    }
+
+
+    changeRoute(direction: number) {
+      const newIndex = this.currentRouteIndex + direction;
+      // Asegurarse de que no se salga de los límites del array
+      if (newIndex >= 0 && newIndex < this.routes.length) {
+        this.currentRouteIndex = newIndex;
+      }
+    }
+
+
     navigateToUpload() {
       this.router.navigate(['/upload-posts/senderismo']);
     }

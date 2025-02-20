@@ -24,38 +24,78 @@
     <!-- Sección de Rutas -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <section
-        id="rutas"
-        class="mb-20"
-        itemscope
-        itemtype="https://schema.org/HikingTrail"
-      >
-      <h2  class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
-          Rutas Destacadas
-        </h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <lib-card-senderismo
-            *ngFor="let route of routes"
-            [routeName]="route.name"
-            [imageUrl]="route.imageUrl"
-            [difficulty]="route.difficulty"
-            [rating]="route.rating"
-            [reviews]="route.reviews"
-            [duration]="route.duration"
-            [distance]="route.distance"
-            [ascent]="route.ascent"
-            [description]="route.description"
-            [features]="route.features"
-            [link]="route.link"
+      id="rutas"
+      class="mb-20"
+      itemscope
+      itemtype="https://schema.org/HikingTrail"
+    >
+      <h2 class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
+        Rutas Destacadas
+      </h2>
+    
+      <!-- Sección para escritorio -->
+      <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-8">
+        <lib-card-senderismo
+          *ngFor="let route of routes"
+          [routeName]="route.name"
+          [imageUrl]="route.imageUrl"
+          [difficulty]="route.difficulty"
+          [rating]="route.rating"
+          [reviews]="route.reviews"
+          [duration]="route.duration"
+          [distance]="route.distance"
+          [ascent]="route.ascent"
+          [description]="route.description"
+          [features]="route.features"
+          [link]="route.link"
+        >
+        </lib-card-senderismo>
+      </div>
+    
+      <!-- Sección para móvil -->
+      <div *ngIf="isMobile" class="grid gap-8">
+        <!-- Mostrar solo un post según el índice actual -->
+        <lib-card-senderismo
+          *ngIf="routes && routes.length > 0"
+          [routeName]="routes[currentRouteIndex].name"
+          [imageUrl]="routes[currentRouteIndex].imageUrl"
+          [difficulty]="routes[currentRouteIndex].difficulty"
+          [rating]="routes[currentPostIndex].rating"
+          [reviews]="routes[currentRouteIndex].reviews"
+          [duration]="routes[currentRouteIndex].duration"
+          [distance]="routes[currentRouteIndex].distance"
+          [ascent]="routes[currentRouteIndex].ascent"
+          [description]="routes[currentRouteIndex].description"
+          [features]="routes[currentRouteIndex].features"
+          [link]="routes[currentRouteIndex].link"
+        >
+        </lib-card-senderismo>
+    
+        <!-- Botones para navegar por los posts -->
+        <div class="flex justify-center mt-4">
+          <button
+            class="px-4 py-2 bg-blue-500 text-white rounded-md"
+            (click)="changeRoute(-1)"
+            [disabled]="currentRouteIndex === 0"
           >
-          </lib-card-senderismo>
+            Anterior
+          </button>
+          <button
+            class="px-4 py-2 bg-blue-500 text-white rounded-md ml-4"
+            (click)="changeRoute(1)"
+            [disabled]="currentRouteIndex === routes.length - 1"
+          >
+            Siguiente
+          </button>
         </div>
-      </section>
+      </div>
+    </section>
 
       <h2  class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight mb-6">
         Post Destacados
       </h2>
 
-      <section
+      <section *ngIf="!isMobile"
         class="grid md:grid-cols-3 gap-8 mb-16"
         aria-label="Rutas de Senderismo"
       >
@@ -73,6 +113,49 @@
         >
         </lib-card>
       </section>
+
+
+
+      <section *ngIf="isMobile"
+
+  class="grid md:grid-cols-3 gap-8 mb-16"
+  aria-label="Rutas de Senderismo"
+>
+  <!-- Mostrar solo un post según el índice actual -->
+  <lib-card
+    *ngIf="posts && posts.length > 0"
+    [image]="posts[currentPostIndex].image"
+    [title]="posts[currentPostIndex].title"
+    [excerpt]="posts[currentPostIndex].excerpt"
+    [date]="posts[currentPostIndex].date"
+    [author]="posts[currentPostIndex].author"
+    [readMoreUrl]="posts[currentPostIndex].readMoreUrl"
+    [category]="posts[currentPostIndex].category"
+    [tag]="posts[currentPostIndex].tag"
+    [authorInitials]="posts[currentPostIndex].authorInitials"
+  >
+  </lib-card>
+
+  <!-- Botones para navegar por los posts -->
+  <div class="flex justify-center mt-4">
+    <button
+      class="px-4 py-2 bg-blue-500 text-white rounded-md"
+      (click)="changePost(-1)"
+      [disabled]="currentPostIndex === 0"
+    >
+      Anterior
+    </button>
+    <button
+      class="px-4 py-2 bg-blue-500 text-white rounded-md ml-4"
+      (click)="changePost(1)"
+      [disabled]="currentPostIndex === posts.length - 1"
+    >
+      Siguiente
+    </button>
+  </div>
+</section>
+
+
 
       <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <lib-card-next-adventures></lib-card-next-adventures>
