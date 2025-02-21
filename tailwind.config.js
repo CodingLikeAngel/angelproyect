@@ -10,11 +10,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'neon-cyan': '#00e5ff',    // Valor directo en lugar de var()
+        // Colores originales que mantienes
+        'neon-cyan': '#00e5ff',
         'neon-pink': '#ec4899',
         'neon-green': '#22c55e',
         'neon-yellow': '#eab308',
-        // Resto de tus colores...
+
+        // Nuevos colores más bonitos
+        'midnight-indigo': '#1e1b4b',   // Fondo profundo y elegante
+        'aurora-teal': '#34d399',       // Teal vibrante y fresco
+        'sunset-rose': '#fb7185',       // Rosa cálido y moderno
+        'starlight-violet': '#a78bfa',  // Violeta claro y sofisticado
+        'moon-glow': '#f8fafc',         // Blanco cremoso para contraste
+
+        // Resto de tus colores originales
         'mountain-brown': {
           100: '#f5e8d9',
           200: '#e2c16b',
@@ -75,9 +84,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        display: ['Merriweather', 'serif'], // Para títulos y logo
-        sans: ['Open Sans', 'sans-serif'],  // Para texto general
-        orbitron: ['Orbitron', 'sans-serif'], // Añadimos Orbitron
+        display: ['Merriweather', 'serif'],
+        sans: ['Open Sans', 'sans-serif'],
+        orbitron: ['Orbitron', 'sans-serif'],
       },
     },
   },

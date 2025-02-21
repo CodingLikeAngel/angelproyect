@@ -2,16 +2,13 @@
   class="fixed w-full z-50 bg-[rgba(10,26,61,0.9)] backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.3)]"
 >
   <nav class="container mx-auto px-3 py-2">
-    <div class="flex justify-between items-center h-12">
+    <div class="flex items-center justify-between h-14">
       <!-- Logo -->
-      <a href="#" class="flex items-center flex-shrink-0">
-        <span
-          class="text-2xl font-orbitron font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-pink)] animate-glow hover:scale-105 transition-transform duration-300"
-        >
+      <a href="/" (click)="navigateHome($event)" class="flex items-center group">
+        <span class="text-2xl font-orbitron font-bold bg-gradient-to-r from-aurora-teal to-sunset-rose bg-clip-text text-transparent animate-gradient transition-all duration-300 group-hover:brightness-125">
           FORO LEÓN
         </span>
       </a>
-
       <!-- Menú Desktop -->
       <div class="hidden md:flex items-center gap-3 flex-shrink-0">
         <a
@@ -54,13 +51,13 @@
         <div class="flex gap-2 ml-2">
           <button
             (click)="navigateToUpload()"
-            class="cta-button bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black font-semibold animate-pulse shadow-[0_0_15px_rgba(0,229,255,0.5)] hover:shadow-[0_0_25px_rgba(0,229,255,0.8)]"
+            class="cta-button bg-gradient-to-r from-neon-cyan to-neon-green hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black font-semibold"
           >
             Escribe tu post
           </button>
           <button
             (click)="navigateToPosts()"
-            class="cta-button bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-yellow)] hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black font-semibold animate-pulse shadow-[0_0_15px_rgba(236,72,153,0.5)] hover:shadow-[0_0_25px_rgba(236,72,153,0.8)]"
+            class="cta-button bg-gradient-to-r from-neon-pink to-neon-yellow hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black font-semibold"
           >
             Ver posts
           </button>
@@ -124,13 +121,13 @@
         <div class="pt-3 space-y-3">
           <button
             (click)="navigateToUpload()"
-            class="mobile-cta-button bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black font-semibold animate-pulse shadow-[0_0_15px_rgba(0,229,255,0.5)] hover:shadow-[0_0_25px_rgba(0,229,255,0.8)]"
+            class="mobile-cta-button bg-gradient-to-r from-neon-cyan to-neon-green hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black font-semibold"
           >
             Escribe tu post
           </button>
           <button
             (click)="navigateToPosts()"
-            class="mobile-cta-button bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-yellow)] hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black font-semibold animate-pulse shadow-[0_0_15px_rgba(236,72,153,0.5)] hover:shadow-[0_0_25px_rgba(236,72,153,0.8)]"
+            class="mobile-cta-button bg-gradient-to-r from-neon-pink to-neon-yellow hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black font-semibold"
           >
             Ver posts
           </button>

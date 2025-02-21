@@ -1,87 +1,42 @@
-<div class="relative overflow-hidden bg-[radial-gradient(ellipse_at_top,#0a1a3d_0%,#1e3a8a_50%,#3b82f6_100%)] min-h-screen p-4">
-  <!-- Partículas de fondo -->
+<div class="relative overflow-hidden bg-trail-blue-100 min-h-screen p-6">
+  <!-- Fondo dinámico -->
   <div class="absolute inset-0 pointer-events-none">
-    <div class="w-64 h-64 bg-[rgba(59,130,246,0.2)] rounded-full blur-3xl animate-float absolute top-10 left-1/4"></div>
-    <div class="w-96 h-96 bg-[rgba(236,72,153,0.15)] rounded-full blur-3xl animate-float absolute bottom-20 right-1/3 delay-1000"></div>
+    <div class="w-72 h-72 bg-[rgba(0,229,255,0.2)] rounded-full blur-3xl animate-float absolute top-1/5 left-1/5 opacity-70"></div>
+    <div class="w-96 h-96 bg-[rgba(52,211,153,0.15)] rounded-full blur-3xl animate-float absolute bottom-1/4 right-1/4 delay-1000 opacity-60"></div>
   </div>
 
-  <!-- Contenido principal -->
-  <div class="max-w-6xl mx-auto relative z-10">
-    <!-- Sección de encabezado -->
-    <header class="text-center mb-8">
-      <h1
-        class="text-4xl md:text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] animate-glow"
-      >
+  <!-- Contenido -->
+  <div class="max-w-5xl mx-auto relative z-10">
+    <header class="text-center mb-10">
+      <h1 class="text-5xl md:text-6xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--aurora-teal)] animate-glow drop-shadow-[0_0_10px_rgba(0,229,255,0.7)]">
         Pesca 2030 🎣
       </h1>
-      <p class="text-lg md:text-xl text-gray-300 mt-2 animate-fade-in">
-        Lanza tu anzuelo al futuro: comparte capturas épicas y secretos del agua.
+      <p class="text-xl md:text-2xl text-[var(--moon-glow)] mt-3 font-sans animate-fade-in">
+        Sumérgete en los ríos del futuro en León.
       </p>
     </header>
 
-    <!-- Categorías destacadas -->
-    <section class="grid md:grid-cols-3 gap-4 mb-8">
-      <div
-        class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md p-4 rounded-xl shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] transition-all duration-300 animate-fade-in"
-      >
-        <h2 class="text-lg font-orbitron font-semibold text-[var(--neon-cyan)]">
-          Agua Dulce
-        </h2>
-        <p class="text-sm text-gray-300 mt-1">Ríos y lagos del mañana.</p>
+    <!-- Categorías -->
+    <section class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-[rgba(255,255,255,0.05)] backdrop-blur-lg p-5 rounded-2xl shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.7)] transition-all duration-300 animate-fade-in">
+        <h2 class="text-xl font-orbitron font-semibold text-[var(--neon-cyan)]">Ríos Leoneses</h2>
+        <p class="text-sm text-[var(--moon-glow)] mt-2">Truchas en el Esla y Porma.</p>
       </div>
-      <div
-        class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md p-4 rounded-xl shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] transition-all duration-300 animate-fade-in"
-        style="animation-delay: 0.1s;"
-      >
-        <h2 class="text-lg font-orbitron font-semibold text-[var(--neon-cyan)]">
-          Agua Salada
-        </h2>
-        <p class="text-sm text-gray-300 mt-1">Mares y costas futuristas.</p>
+      <div class="bg-[rgba(255,255,255,0.05)] backdrop-blur-lg p-5 rounded-2xl shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.7)] transition-all duration-300 animate-fade-in" style="animation-delay: 0.1s;">
+        <h2 class="text-xl font-orbitron font-semibold text-[var(--neon-cyan)]">Embalses</h2>
+        <p class="text-sm text-[var(--moon-glow)] mt-2">Lucios en Riaño.</p>
       </div>
-      <div
-        class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md p-4 rounded-xl shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] transition-all duration-300 animate-fade-in"
-        style="animation-delay: 0.2s;"
-      >
-        <h2 class="text-lg font-orbitron font-semibold text-[var(--neon-cyan)]">
-          Equipo 2030
-        </h2>
-        <p class="text-sm text-gray-300 mt-1">Tecnología para pescadores.</p>
+      <div class="bg-[rgba(255,255,255,0.05)] backdrop-blur-lg p-5 rounded-2xl shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.7)] transition-all duration-300 animate-fade-in" style="animation-delay: 0.2s;">
+        <h2 class="text-xl font-orbitron font-semibold text-[var(--neon-cyan)]">Tech 2030</h2>
+        <p class="text-sm text-[var(--moon-glow)] mt-2">Cañas del futuro.</p>
       </div>
     </section>
 
-
-    <!-- Botón para agregar publicación -->
-    <div class="text-center mt-6 animate-fade-in-up" style="animation-delay: 0.4s;">
-      <button
-        (click)="navigateToUpload()"
-        class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] text-black font-orbitron font-semibold rounded-full shadow-[0_0_15px_rgba(0,229,255,0.5)] hover:shadow-[0_0_25px_rgba(0,229,255,0.8)] transition-all duration-300 transform hover:scale-105 animate-pulse"
-      >
-        ➕ Lanza tu Post
+    <!-- Botón -->
+    <div class="text-center animate-fade-in-up" style="animation-delay: 0.3s;">
+      <button class="px-8 py-4 bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--aurora-teal)] text-black font-orbitron font-bold rounded-full shadow-[0_0_20px_rgba(0,229,255,0.6)] hover:shadow-[0_0_40px_rgba(0,229,255,0.9)] transition-all duration-300 transform hover:scale-105">
+        ➕ Lanza tu Captura
       </button>
-
     </div>
-
-
-
-            <!-- Sección de Próximas Aventuras -->
-            <section class="my-12">
-              <div class="text-center mb-6">
-                <h2 class="text-4xl md:text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-cyan)] hover:scale-105 transition-transform duration-300">
-                  Próximas Aventuras
-                </h2>
-                <p class="text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
-                  Únete a las expediciones grupales del futuro
-                </p>
-              </div>
-              <lib-card-next-adventures class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-3xl shadow-[0_0_30px_rgba(236,72,153,0.4)] overflow-hidden transform hover:scale-102 transition-all duration-300"></lib-card-next-adventures>
-            </section>
-  
-            <!-- Sección de Características -->
-            <section class="my-12">
-              <lib-caracteristicas class="space-y-6 bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-3xl p-8 shadow-[0_0_30px_rgba(59,130,246,0.3)]"></lib-caracteristicas>
-            </section>
-
-
-
   </div>
 </div>

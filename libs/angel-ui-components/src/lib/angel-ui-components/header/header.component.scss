@@ -1,50 +1,90 @@
+/* libs/shared-ui/src/lib/styles.scss */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.header {
-  transition: all 0.3s ease;
-}
+
 
 .nav-link {
-  @apply font-orbitron text-base font-semibold relative whitespace-nowrap; /* Reducido de text-lg a text-base */
+  @apply relative text-aurora-teal font-orbitron font-medium text-base 
+         hover:text-sunset-rose transition-colors duration-300 
+         after:content-[''] after:absolute after:bottom-0 after:left-0 
+         after:w-full after:h-[2px] after:bg-starlight-violet 
+         after:scale-x-0 after:origin-center after:transition-transform 
+         after:duration-300 hover:after:scale-x-100;
 }
 
+// .cta-button {
+//   @apply px-4 py-2 rounded-lg font-orbitron text-sm font-medium 
+//          transition-all duration-1000 hover:scale-105 hover:brightness-125 
+//          shadow-[0_4px_14px_rgba(52,211,153,0.3)];
+// }
+
+
 .cta-button {
-  @apply px-4 py-2 rounded-xl font-orbitron text-sm font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2; /* Reducido de px-6 py-3 a px-4 py-2, text-base a text-sm */
+  @apply px-4 py-2 rounded-lg font-orbitron text-sm font-medium;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(52, 211, 153, 0.3), 0 0 15px rgba(0, 229, 255, 0.5);
+  animation: pulseGlow 1.5s infinite ease-in-out;
+}
+
+.cta-button:hover {
+  transform: scale(1.05) translateY(-2px);
+  filter: brightness(1.25);
+  box-shadow: 0 6px 20px rgba(52, 211, 153, 0.5), 0 0 25px rgba(0, 229, 255, 0.8);
+}
+
+/* Definición de la animación pulseGlow */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(52, 211, 153, 0.3), 0 0 15px rgba(0, 229, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 4px 14px rgba(52, 211, 153, 0.4), 0 0 20px rgba(0, 229, 255, 0.7);
+  }
+}
+
+/* Ajuste específico para el segundo botón (si necesitas colores diferentes) */
+.cta-button:nth-child(2) {
+  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.3), 0 0 15px rgba(236, 72, 153, 0.5);
+}
+
+.cta-button:nth-child(2):hover {
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5), 0 0 25px rgba(236, 72, 153, 0.8);
 }
 
 .mobile-nav-link {
-  @apply block px-6 py-3 text-base font-orbitron font-semibold rounded-xl transition-all duration-300 hover:scale-105; /* Reducido de text-lg a text-base */
+  @apply block px-4 py-2 text-aurora-teal font-orbitron font-medium 
+         hover:text-sunset-rose hover:bg-[rgba(248,250,252,0.05)] 
+         rounded-lg transition-all duration-300;
 }
 
 .mobile-cta-button {
-  @apply w-full px-4 py-2 rounded-xl font-orbitron text-sm font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2; /* Reducido de px-6 py-3 a px-4 py-2, text-base a text-sm */
+  @apply w-full px-4 py-2 mt-2 rounded-lg font-orbitron text-sm font-medium 
+         transition-all duration-300 hover:scale-105 hover:brightness-125 
+         shadow-[0_4px_14px_rgba(52,211,153,0.3)];
 }
 
-/* Animaciones */
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
+/* Asegurarse de que animate-gradient esté bien definido */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-@keyframes glow {
-  0%, 100% { filter: brightness(100%); }
-  50% { filter: brightness(120%); }
+/* Estilos base */
+.animate-gradient {
+  background-size: 200% 100%;
+  animation: gradient 4s ease-in-out infinite;
 }
 
-.animate-pulse {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-/* Variables neón */
-:root {
-  --neon-cyan: #00e5ff;
-  --neon-pink: #ec4899;
-  --neon-green: #22c55e;
-  --neon-yellow: #eab308;
+/* Opcional: efecto adicional en hover para el enlace */
+.group:hover .animate-gradient {
+  transform: scale(1.05);
 }

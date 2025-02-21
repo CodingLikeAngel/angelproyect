@@ -1,34 +1,18 @@
-<nav
-  class="bg-[rgba(10,26,61,0.9)] backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.3)]"
->
+<nav class="mt-2 bg-midnight-indigo backdrop-blur-md shadow-[0_0_20px_rgba(167,139,250,0.3)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
     <!-- Fondo de partículas -->
-    <div
-      class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#0a1a3d_0%,#1e3a8a_50%,#3b82f6_100%)] opacity-50 pointer-events-none"
-    >
-      <div
-        class="w-32 h-32 bg-[rgba(34,197,94,0.15)] rounded-full blur-3xl animate-float absolute top-1/4 left-1/5"
-      ></div>
-      <div
-        class="w-48 h-48 bg-[rgba(0,229,255,0.1)] rounded-full blur-3xl animate-float absolute bottom-1/3 right-1/4 delay-1000"
-      ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[rgba(30,27,75,0.8)] to-[rgba(52,211,153,0.2)] opacity-40 pointer-events-none">
+      <div class="w-32 h-32 bg-[rgba(251,113,133,0.15)] rounded-full blur-3xl animate-float absolute top-1/4 left-1/5"></div>
+      <div class="w-48 h-48 bg-[rgba(167,139,250,0.1)] rounded-full blur-3xl animate-float absolute bottom-1/3 right-1/4 delay-1000"></div>
     </div>
 
     <!-- Contenedor principal -->
-    <div
-      class="flex justify-between items-center h-14 py-2 relative z-10"
-    >
+    <div class="flex justify-between items-center h-14 py-2 relative z-10">
       <!-- Sección del logo -->
       <div class="flex items-center">
-        <a href="#" class="flex items-center">
-          <img
-            class="h-8 w-8 animate-glow"
-            src="https://img.icons8.com/color/48/mountain--v1.png"
-            alt="Logo"
-          />
-          <span
-            class="ml-2 text-xl font-orbitron font-bold text-[var(--neon-green)] drop-shadow-[0_2px_4px_rgba(0,229,255,0.8)] animate-glow hover:scale-105 transition-transform duration-300"
-          >
+        <a href="/" (click)="preventNavigation($event)" class="flex items-center">
+          <img class="h-8 w-8 animate-glow" src="https://img.icons8.com/color/48/mountain--v1.png" alt="Logo" />
+          <span class="ml-2 text-xl font-orbitron font-bold text-aurora-teal bg-gradient-to-r from-aurora-teal to-sunset-rose bg-clip-text text-transparent animate-gradient hover:scale-105 transition-transform duration-300">
             Montañas Leonesas
           </span>
         </a>
@@ -37,9 +21,9 @@
       <!-- Botón de hamburguesa para mobile -->
       <div class="flex items-center md:hidden">
         <button
-          (click)="toggleMenu()"
-          class="p-2 rounded-full bg-[var(--neon-green)] hover:bg-[var(--neon-cyan)] text-black transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]"
-        >
+        (click)="toggleMenu($event)"
+        class="p-2 rounded-full bg-aurora-teal text-moon-glow hover:bg-sunset-rose transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-starlight-violet relative z-50"
+      >
           <span class="sr-only">Abrir menú</span>
           <svg
             class="w-5 h-5 transition-transform duration-300"
@@ -47,13 +31,12 @@
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
+              [attr.d]="isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'"
             ></path>
           </svg>
         </button>
@@ -61,63 +44,21 @@
 
       <!-- Opciones de navegación para escritorio -->
       <div class="hidden md:flex items-center space-x-8">
-        <a
-          href="#"
-          class="nav-link text-[var(--neon-green)] hover:text-[var(--neon-cyan)] hover:scale-105 transition-all duration-300 relative group"
-        >
-          Rutas
-          <span
-            class="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--neon-cyan)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
-          ></span>
-        </a>
-        <a
-          href="#"
-          class="nav-link text-[var(--neon-green)] hover:text-[var(--neon-cyan)] hover:scale-105 transition-all duration-300 relative group"
-        >
-          Blog
-          <span
-            class="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--neon-cyan)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
-          ></span>
-        </a>
-        <a
-          href="#"
-          class="nav-link text-[var(--neon-green)] hover:text-[var(--neon-cyan)] hover:scale-105 transition-all duration-300 relative group"
-        >
-          Contacto
-          <span
-            class="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--neon-cyan)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
-          ></span>
-        </a>
+        <a href="/rutas" (click)="navigate($event, 'rutas')" class="nav-link text-moon-glow hover:text-sunset-rose">Rutas</a>
+        <a href="/blog" (click)="navigate($event, 'blog')" class="nav-link text-moon-glow hover:text-sunset-rose">Blog</a>
+        <a href="/contacto" (click)="navigate($event, 'contacto')" class="nav-link text-moon-glow hover:text-sunset-rose">Contacto</a>
       </div>
     </div>
 
     <!-- Menú Móvil -->
     <div
-      class="md:hidden overflow-hidden transition-all duration-500 bg-[rgba(10,26,61,0.95)] backdrop-blur-md shadow-[0_0_20px_rgba(34,197,94,0.3)] relative z-50"
+      class="md:hidden overflow-hidden transition-all duration-500 bg-[rgba(30,27,75,0.95)] backdrop-blur-md shadow-[0_0_20px_rgba(167,139,250,0.3)] relative z-50"
       [ngClass]="{'max-h-64 opacity-100': isMenuOpen, 'max-h-0 opacity-0': !isMenuOpen}"
     >
       <div class="px-4 pt-4 pb-6 space-y-4">
-        <a
-          href="#"
-          (click)="toggleMenu()"
-          class="mobile-nav-link text-[var(--neon-green)] hover:text-[var(--neon-cyan)] hover:bg-[rgba(255,255,255,0.05)]"
-        >
-          Rutas
-        </a>
-        <a
-          href="#"
-          (click)="toggleMenu()"
-          class="mobile-nav-link text-[var(--neon-green)] hover:text-[var(--neon-cyan)] hover:bg-[rgba(255,255,255,0.05)]"
-        >
-          Blog
-        </a>
-        <a
-          href="#"
-          (click)="toggleMenu()"
-          class="mobile-nav-link text-[var(--neon-green)] hover:text-[var(--neon-cyan)] hover:bg-[rgba(255,255,255,0.05)]"
-        >
-          Contacto
-        </a>
+        <a href="/rutas" (click)="navigateAndClose($event, 'rutas')" class="mobile-nav-link text-moon-glow hover:text-sunset-rose hover:bg-[rgba(248,250,252,0.05)]">Rutas</a>
+        <a href="/blog" (click)="navigateAndClose($event, 'blog')" class="mobile-nav-link text-moon-glow hover:text-sunset-rose hover:bg-[rgba(248,250,252,0.05)]">Blog</a>
+        <a href="/contacto" (click)="navigateAndClose($event, 'contacto')" class="mobile-nav-link text-moon-glow hover:text-sunset-rose hover:bg-[rgba(248,250,252,0.05)]">Contacto</a>
       </div>
     </div>
   </div>
