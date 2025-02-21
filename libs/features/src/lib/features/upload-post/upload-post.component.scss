@@ -1,4 +1,101 @@
-/* libs/shared-ui/src/lib/styles.scss */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-glow-success {
+  animation: glowSuccess 2s ease-in-out infinite;
+}
+
+@keyframes glowSuccess {
+  0%, 100% { filter: brightness(100%); }
+  50% { filter: brightness(130%); }
+}
+
+/* Estilo para campos inválidos */
+.invalid-field {
+  border-color: var(--neon-error) !important;
+  border-width: 4px !important;
+  box-shadow: 0 0 20px rgba(255, 65, 65, 0.8), 0 0 30px rgba(255, 65, 65, 0.6) !important;
+  background-color: rgba(255, 100, 100, 0.1) !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Variables neón */
+:root {
+  --neon-cyan: #00e5ff;
+  --neon-pink: #ec4899;
+  --neon-green: #22c55e;
+  --neon-yellow: #eab308;
+  --neon-error: #ff4141; /* Rojo vibrante para errores */
+}
+
+/* Estilo para el select multiple */
+select[multiple] {
+  height: auto;
+  min-height: 3.5rem;
+}
+
+/* Estilo para opciones del select */
+option {
+  padding: 0.5rem;
+}
+
+/* Estilo para mensajes */
+.text-sm {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Mensaje de error */
+.error-text {
+  color: #ff4141;
+  background: rgba(255, 65, 65, 0.1);
+  box-shadow: 0 0 10px rgba(255, 65, 65, 0.5);
+}
+
+/* Mensaje de éxito */
+.success-text {
+  color: #00e5ff; /* Cambiado a cyan para contraste */
+  background: rgba(0, 229, 255, 0.1); /* Fondo cyan suave */
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5); /* Sombra cyan */
+}

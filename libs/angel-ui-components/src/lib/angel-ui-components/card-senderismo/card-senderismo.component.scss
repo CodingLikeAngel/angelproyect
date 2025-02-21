@@ -1,17 +1,92 @@
-
-/* libs/shared-ui/src/lib/styles.scss */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:host {
+  display: block;
+}
 
-@media (max-width: 768px) {
-    .flex-wrap {
-      gap: 4rem; /* Reduce el espacio entre cards si es necesario */
-    }
-    article {
-      width: 100%; /* Fuerza que las cards ocupen todo el ancho en tablets */
-      max-width: 400px; /* Limita el ancho máximo para mejor control */
-      margin: 0 auto; /* Centra las cards */
-    }
+/* Animaciones */
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { filter: brightness(100%); }
+  50% { filter: brightness(120%); }
+}
+
+/* Variables neón */
+:root {
+  --neon-cyan: #00e5ff;
+  --neon-pink: #ec4899;
+  --neon-green: #22c55e;
+  --neon-yellow: #eab308;
+}
+
+/* Estilos generales */
+article {
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Ajuste para móvil */
+@media (max-width: 768px) {
+  /* Contenedor principal móvil */
+  .p-6.flex.justify-center {
+    padding: 1.5rem;
+  }
+
+  /* Contenedor de la tarjeta y puntos */
+  .w-full.max-w-md.mx-auto {
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Tarjeta */
+  article {
+    max-width: none;
+  }
+
+  /* Footer móvil */
+  .flex.flex-col.sm\:flex-row.justify-between.items-center.gap-4 {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  /* Botones laterales */
+  button {
+    flex-shrink: 0;
+  }
+
+  /* Botón "Ver detalles completos" */
+  a.bg-gradient-to-r {
+    flex-grow: 1;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Indicadores de progreso */
+  .flex.justify-center.mt-4.space-x-2 {
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}

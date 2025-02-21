@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'lib-hero-section',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './hero-section.component.html',
-  styleUrl: './hero-section.component.scss',
+  styleUrls: ['./hero-section.component.scss'],
 })
 export class HeroSectionComponent {}

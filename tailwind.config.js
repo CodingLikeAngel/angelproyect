@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-
 const animatePlugin = require('tailwindcss-animate');
 
 module.exports = {
@@ -11,6 +10,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'neon-cyan': '#00e5ff',    // Valor directo en lugar de var()
+        'neon-pink': '#ec4899',
+        'neon-green': '#22c55e',
+        'neon-yellow': '#eab308',
+        // Resto de tus colores...
         'mountain-brown': {
           100: '#f5e8d9',
           200: '#e2c16b',

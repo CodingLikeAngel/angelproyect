@@ -1,24 +1,81 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
+import { trigger, transition, style, animate } from '@angular/animations';
+import * as Hammer from 'hammerjs'; // Importación corregida
 
 @Component({
   selector: 'lib-card',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  standalone: true,
+  animations: [
+    trigger('slideAnimation', [
+      transition(':increment', [
+        style({ transform: 'translateX(100%)', opacity: 0 }),
+        animate('500ms ease-in-out', style({ transform: 'translateX(0)', opacity: 1 }))
+      ]),
+      transition(':decrement', [
+        style({ transform: 'translateX(-100%)', opacity: 0 }),
+        animate('500ms ease-in-out', style({ transform: 'translateX(0)', opacity: 1 }))
+      ])
+    ])
+  ]
 })
-export class CardComponent implements OnChanges {
-  @Input() image = '';
-  @Input() title = '';
-  @Input() excerpt = '';
-  @Input() date = '';
-  @Input() author = '';
-  @Input() readMoreUrl = '';
-  @Input() category = 'Blog';
-  @Input() authorInitials = 'UA';
-  @Input() tag = 'actualidad';
+export class CardComponent implements OnInit, AfterViewInit {
+  @Input() posts: any[] = [
+    {
+      image: './cares.jpg',
+      title: 'Ruta del Cares',
+      excerpt: 'El "Desfiladero Divino", una ruta tallada en la roca entre León y Asturias.',
+      date: '2025-02-19',
+      author: 'Juan Pérez',
+      readMoreUrl: './cares.jpg',
+      category: 'Senderismo',
+      tag: 'senderismo',
+      authorInitials: 'JP',
+    },
+    {
+      image: './lago-babia.jpg',
+      title: 'Lago de Babia',
+      excerpt: 'Un recorrido impresionante por la Reserva de la Biosfera de Babia, León.',
+      date: '2025-02-19',
+      author: 'María Gómez',
+      readMoreUrl: './lago-babia.jpg',
+      category: 'Senderismo',
+      tag: 'senderismo',
+      authorInitials: 'MG',
+    },
+    {
+      image: './busmayor.jpg',
+      title: 'Hayedo de Busmayor',
+      excerpt: 'Una mágica ruta entre bosques de hayas, ideal para disfrutar del otoño en León.',
+      date: '2025-02-19',
+      author: 'Carlos Fernández',
+      readMoreUrl: './busmayor.jpg',
+      category: 'Senderismo',
+      tag: 'senderismo',
+      authorInitials: 'CF',
+    },
+  ];
+
+  @Input() index = 0;
+  @Input() image = this.posts[this.index].image;
+  @Input() title = this.posts[this.index].title;
+  @Input() excerpt = this.posts[this.index].excerpt;
+  @Input() date = this.posts[this.index].date;
+  @Input() author = this.posts[this.index].author;
+  @Input() readMoreUrl = this.posts[this.index].readMoreUrl;
+  @Input() category = this.posts[this.index].category;
+  @Input() authorInitials = this.posts[this.index].authorInitials;
+  @Input() tag = this.posts[this.index].tag;
   @Input() showCategoryOverlay = true;
+
+  isMobile = false;
+  currentPostIndex = 0;
+
+  @ViewChild('postCard', { static: false }) postCard!: ElementRef;
 
   dynamicStyles: {
     background: string;
@@ -32,8 +89,26 @@ export class CardComponent implements OnChanges {
     gradientTo: '',
   };
 
-  ngOnChanges(changes: SimpleChanges): void {
+  constructor(private deviceService: DeviceDetectorService) {}
+
+  ngOnInit() {
+    this.isMobile = this.deviceService.isMobile();
     this.dynamicStyles = this.getColorForTag();
+  }
+
+  ngAfterViewInit() {
+    if (this.isMobile && this.postCard) {
+      const hammer = new Hammer(this.postCard.nativeElement);
+
+      hammer.on('swipeleft', () => {
+        this.changePost(1);
+        console.log('Swipe left detected');
+      });
+
+      hammer.on('swiperight', () => {
+        this.changePost(-1);
+      });
+    }
   }
 
   getColorForTag() {
@@ -78,5 +153,22 @@ export class CardComponent implements OnChanges {
     };
 
     return tagStyles[this.tag.toLowerCase()] || tagStyles['default'];
+  }
+
+  changePost(direction: number) {
+    const newIndex = this.currentPostIndex + direction;
+    if (newIndex >= 0 && newIndex < this.posts.length) {
+      this.currentPostIndex = newIndex;
+      this.image = this.posts[this.currentPostIndex].image;
+      this.title = this.posts[this.currentPostIndex].title;
+      this.excerpt = this.posts[this.currentPostIndex].excerpt;
+      this.date = this.posts[this.currentPostIndex].date;
+      this.author = this.posts[this.currentPostIndex].author;
+      this.readMoreUrl = this.posts[this.currentPostIndex].readMoreUrl;
+      this.category = this.posts[this.currentPostIndex].category;
+      this.authorInitials = this.posts[this.currentPostIndex].authorInitials;
+      this.tag = this.posts[this.currentPostIndex].tag;
+      this.dynamicStyles = this.getColorForTag();
+    }
   }
 }

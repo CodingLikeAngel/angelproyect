@@ -7,19 +7,19 @@
 }
 
 .nav-link {
-  @apply font-orbitron text-lg font-semibold relative;
+  @apply font-orbitron text-base font-semibold relative whitespace-nowrap; /* Reducido de text-lg a text-base */
 }
 
 .cta-button {
-  @apply px-6 py-3 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply px-4 py-2 rounded-xl font-orbitron text-sm font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2; /* Reducido de px-6 py-3 a px-4 py-2, text-base a text-sm */
 }
 
 .mobile-nav-link {
-  @apply block px-6 py-3 text-lg font-orbitron font-semibold rounded-xl transition-all duration-300 hover:scale-105;
+  @apply block px-6 py-3 text-base font-orbitron font-semibold rounded-xl transition-all duration-300 hover:scale-105; /* Reducido de text-lg a text-base */
 }
 
 .mobile-cta-button {
-  @apply w-full px-6 py-3 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply w-full px-4 py-2 rounded-xl font-orbitron text-sm font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2; /* Reducido de px-6 py-3 a px-4 py-2, text-base a text-sm */
 }
 
 /* Animaciones */
@@ -32,13 +32,13 @@
   50% { filter: brightness(120%); }
 }
 
-.animate-float {
-  animation: float 5s ease-in-out infinite;
+.animate-pulse {
+  animation: pulse 2s infinite;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 /* Variables neón */

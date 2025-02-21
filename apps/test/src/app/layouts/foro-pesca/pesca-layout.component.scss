@@ -1,5 +1,62 @@
-/* Estilos personalizados para mejorar la apariencia */
-.bg-blue-100 {
-    background: linear-gradient(to bottom right, #ebf8ff, #bee3f8);
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { filter: brightness(100%); }
+  50% { filter: brightness(120%); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Variables neón */
+:root {
+  --neon-cyan: #00e5ff;
+  --neon-pink: #ec4899;
+  --neon-green: #22c55e;
+  --neon-yellow: #eab308;
+}

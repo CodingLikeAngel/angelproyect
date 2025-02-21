@@ -2,10 +2,10 @@
   display: block;
 }
 
-/* Animaciones */
+/* Animaciones simplificadas */
 .animate-fade-in-up {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(15px);
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
@@ -16,28 +16,15 @@
   }
 }
 
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-@keyframes glow {
-  0%, 100% { filter: brightness(100%); }
-  50% { filter: brightness(120%); }
-}
-
-.animate-float {
-  animation: float 5s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
 /* Variables neón */
 :root {
   --neon-cyan: #00e5ff;
   --neon-pink: #ec4899;
   --neon-green: #22c55e;
   --neon-yellow: #eab308;
+}
+
+/* Estilo para la tarjeta en móvil */
+article {
+  max-width: 100%;
 }

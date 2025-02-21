@@ -16,18 +16,18 @@
 
     <!-- Contenedor principal -->
     <div
-      class="flex flex-col md:flex-row justify-between items-center h-auto md:h-16 py-4 md:py-0 relative z-10"
+      class="flex justify-between items-center h-14 py-2 relative z-10"
     >
       <!-- Sección del logo -->
-      <div class="flex items-center w-full justify-center md:justify-start">
+      <div class="flex items-center">
         <a href="#" class="flex items-center">
           <img
-            class="h-10 w-10 animate-glow"
+            class="h-8 w-8 animate-glow"
             src="https://img.icons8.com/color/48/mountain--v1.png"
             alt="Logo"
           />
           <span
-            class="ml-4 text-2xl font-orbitron font-bold text-[var(--neon-green)] drop-shadow-[0_2px_4px_rgba(0,229,255,0.8)] animate-glow hover:scale-105 transition-transform duration-300"
+            class="ml-2 text-xl font-orbitron font-bold text-[var(--neon-green)] drop-shadow-[0_2px_4px_rgba(0,229,255,0.8)] animate-glow hover:scale-105 transition-transform duration-300"
           >
             Montañas Leonesas
           </span>
@@ -35,14 +35,14 @@
       </div>
 
       <!-- Botón de hamburguesa para mobile -->
-      <div class="mt-4 md:mt-0 flex items-center md:hidden">
+      <div class="flex items-center md:hidden">
         <button
           (click)="toggleMenu()"
-          class="p-3 rounded-full bg-[var(--neon-green)] hover:bg-[var(--neon-cyan)] text-black transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]"
+          class="p-2 rounded-full bg-[var(--neon-green)] hover:bg-[var(--neon-cyan)] text-black transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]"
         >
           <span class="sr-only">Abrir menú</span>
           <svg
-            class="w-6 h-6 transition-transform duration-300"
+            class="w-5 h-5 transition-transform duration-300"
             [ngClass]="{'rotate-180': isMenuOpen}"
             fill="none"
             stroke="currentColor"
@@ -60,7 +60,7 @@
       </div>
 
       <!-- Opciones de navegación para escritorio -->
-      <div class="hidden md:flex items-center space-x-10">
+      <div class="hidden md:flex items-center space-x-8">
         <a
           href="#"
           class="nav-link text-[var(--neon-green)] hover:text-[var(--neon-cyan)] hover:scale-105 transition-all duration-300 relative group"

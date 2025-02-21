@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
@@ -61,12 +61,12 @@ interface Post {
     CardComercioComponent
   ],
   templateUrl: './senderismo-layout.component.html',
-  styleUrls: ['./senderismo-layout.component.scss'],
+  styleUrls: ['./senderismo-layout.component.scss']
 })
-export class SenderismoLayoutComponent implements AfterViewInit {
+export class SenderismoLayoutComponent implements AfterViewInit, OnDestroy {
   isMobile = false;
-  currentRouteIndex = 0;
-  currentPostIndex = 0;
+  currentSectionIndex = 0;
+  sections: string[] = ['hero', 'rutas', 'posts', 'adventures', 'features'];
 
   routes: Route[] = [
     {
@@ -95,7 +95,6 @@ export class SenderismoLayoutComponent implements AfterViewInit {
       features: ['Sendero bien señalizado', 'Miradores naturales', 'Fauna y flora autóctona'],
       link: '/ruta/ruta-de-los-calderones',
     },
-    
     {
       name: 'Ruta de las Minas de Oro de Las Médulas',
       imageUrl: './medulas.jpg',
@@ -156,33 +155,42 @@ export class SenderismoLayoutComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const element = this.el.nativeElement.querySelector('#rutas');
-    const hammer = new Hammer(element);
-    hammer.on('swipeleft', () => this.changeRoute(1));
-    hammer.on('swiperight', () => this.changeRoute(-1));
+    document.addEventListener('keydown', this.handleKeydown.bind(this));
   }
 
-  @HostListener('swipeleft', ['$event'])
-  onSwipeLeft() {
-    this.changeRoute(1);
+  handleKeydown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        if (this.currentSectionIndex < this.sections.length - 1) {
+          this.currentSectionIndex++;
+          this.scrollToSection(this.sections[this.currentSectionIndex]);
+        }
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        if (this.currentSectionIndex > 0) {
+          this.currentSectionIndex--;
+          this.scrollToSection(this.sections[this.currentSectionIndex]);
+        }
+        break;
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        this.scrollToSection('rutas');
+        break;
+    }
   }
 
-  @HostListener('swiperight', ['$event'])
-  onSwipeRight() {
-    this.changeRoute(-1);
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
-  changeIndex(currentIndex: number, items: any[], direction: number): number {
-    const newIndex = currentIndex + direction;
-    return newIndex >= 0 && newIndex < items.length ? newIndex : currentIndex;
-  }
-
-  changeRoute(direction: number) {
-    this.currentRouteIndex = this.changeIndex(this.currentRouteIndex, this.routes, direction);
-  }
-
-  changePost(direction: number) {
-    this.currentPostIndex = this.changeIndex(this.currentPostIndex, this.posts, direction);
+  ngOnDestroy() {
+    document.removeEventListener('keydown', this.handleKeydown.bind(this));
   }
 
   navigateToUpload() {

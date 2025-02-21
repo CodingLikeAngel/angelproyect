@@ -7,88 +7,73 @@
       name="description"
       content="Explora rutas épicas de senderismo en las Montañas Leonesas con guías inmersivas y una comunidad apasionada."
     />
-    <title>Montañas Leonesas - Senderismo 2030</title>
+    <title style="color: #eab308;">Montañas Leonesas - Senderismo 2030</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Orbitron:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --neon-cyan: #00e5ff;
-        --neon-pink: #ec4899;
-        --neon-green: #22c55e;
-      }
-
-      .animate-float {
-        animation: float 5s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-15px); }
-      }
-
-      .animate-glow {
-        animation: glow 2s ease-in-out infinite;
-      }
-
-      @keyframes glow {
-        0%, 100% { filter: brightness(100%); }
-        50% { filter: brightness(120%); }
-      }
-
-      .mountain-pattern {
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
-                    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-        background-size: cover;
-        background-position: center;
-      }
-    </style>
   </head>
-  <body class="font-sans antialiased bg-[radial-gradient(ellipse_at_top,_#0a1a3d_0%,_#1e3a8a_50%,_#3b82f6_100%)] text-white">
+  <body class="font-sans antialiased bg-[radial-gradient(ellipse_at_top,#0a1a3d_0%,#1e3a8a_50%,#3b82f6_100%)] text-white overflow-x-hidden">
     <div class="min-h-screen bg-opacity-90 relative overflow-hidden">
-      <!-- Efecto de partículas de fondo -->
+      <!-- Partículas de fondo -->
       <div class="absolute inset-0 pointer-events-none">
-        <div class="w-64 h-64 bg-[rgba(59,130,246,0.2)] rounded-full blur-3xl animate-float absolute top-10 left-20"></div>
-        <div class="w-96 h-96 bg-[rgba(236,72,153,0.15)] rounded-full blur-3xl animate-float absolute bottom-20 right-40 delay-1000"></div>
+        <div class="w-64 h-64 bg-[rgba(59,130,246,0.2)] rounded-full blur-3xl animate-float absolute top-10 left-20 opacity-70"></div>
+        <div class="w-96 h-96 bg-[rgba(236,72,153,0.15)] rounded-full blur-3xl animate-float absolute bottom-20 right-40 delay-1000 opacity-60"></div>
+        <div class="w-48 h-48 bg-[rgba(34,197,94,0.2)] rounded-full blur-2xl animate-float-slow absolute top-1/3 right-1/4 opacity-50"></div>
       </div>
 
       <!-- Barra de navegación -->
-      <lib-nav-bar class="fixed top-0 w-full z-20 bg-[rgba(10,26,61,0.8)] backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.4)]"></lib-nav-bar>
+      <lib-nav-bar class="mt-2 fixed top-0 w-full z-30 bg-[rgba(10,26,61,0.85)] backdrop-blur-lg shadow-[0_0_25px_rgba(59,130,246,0.5)] transition-all duration-300 md:mt-6"></lib-nav-bar>
 
       <!-- Contenido principal -->
-      <div class="pt-24">
+      <div class="pt-16">
         <!-- Hero Section -->
-        <header class="text-center py-32 px-4 relative">
-          <div class="max-w-7xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-bold font-orbitron bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-pink)] to-[var(--neon-green)] animate-glow">
+        <header id="hero" class="text-center py-6 px-4 relative z-10">
+          <div class="max-w-7xl mx-auto animate-fade-in-up">
+            <h1 class="text-4xl md:text-7xl font-bold font-orbitron bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-green animate-glow">
               Montañas Leonesas 2030
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mt-4 max-w-3xl mx-auto">
-              Vive la aventura del futuro en rutas épicas y conecta con una comunidad vibrante.
+            <p class="text-lg md:text-2xl text-gray-300 mt-3 max-w-3xl mx-auto">
+              Vive la aventura del futuro en rutas épicas.
             </p>
-            <lib-hero-section class="mt-8"></lib-hero-section>
+            <lib-hero-section class="mt-6"></lib-hero-section>
+          </div>
+          <div class="flex justify-center mt-8">
+            <button 
+              (keydown)="handleKeydown($event)"
+              (click)="scrollToSection('rutas')"
+              class="focus:outline-none scroll-button"
+              aria-label="Scroll to routes section">
+              <svg 
+                class="w-12 h-12 text-neon-cyan drop-shadow-[0_0_6px_rgba(0,229,255,0.9)] animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+              </svg>
+            </button>
           </div>
         </header>
 
         <!-- Sección principal -->
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
           <!-- Sección de Rutas -->
-          <section id="rutas" class="mb-24 space-y-16">
-            <div class="text-center mb-12">
-              <h2 class="text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-pink)] hover:scale-105 transition-transform duration-300">
+          <section id="rutas" class="mb-16 space-y-10 relative">
+            <div class="text-center mb-8 animate-fade-in-up" style="animation-delay: 0.2s;">
+              <h2 class="text-4xl md:text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan to-neon-pink hover:scale-105 transition-transform duration-300">
                 Rutas Destacadas
               </h2>
-              <p class="text-lg text-gray-300 mt-4 max-w-2xl mx-auto">
+              <p class="text-lg text-gray-300 mt-3 max-w-2xl mx-auto">
                 Explora senderos futuristas en las Montañas Leonesas
               </p>
             </div>
-
-            <!-- Contenedor de tarjetas (Desktop) -->
-            <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-10">
+          
+            <!-- Versión escritorio -->
+            <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-8">
               <lib-card-senderismo
-                *ngFor="let route of routes"
-                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]"
+                *ngFor="let route of routes; let i = index"
+                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6 transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] animate-fade-in-up"
+                [style.animation-delay]="i * 0.1 + 's'"
                 [routeName]="route.name"
                 [imageUrl]="route.imageUrl"
                 [difficulty]="route.difficulty"
@@ -100,64 +85,49 @@
                 [description]="route.description"
                 [features]="route.features"
                 [link]="route.link"
-              >
-              </lib-card-senderismo>
+              ></lib-card-senderismo>
             </div>
-
+          
             <!-- Versión móvil -->
-            <div *ngIf="isMobile" class="space-y-10">
+            <div *ngIf="isMobile" class="flex justify-center">
               <lib-card-senderismo
-                *ngIf="routes && routes.length > 0"
-                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6"
-                [routeName]="routes[currentRouteIndex].name"
-                [imageUrl]="routes[currentRouteIndex].imageUrl"
-                [difficulty]="routes[currentRouteIndex].difficulty"
-                [rating]="routes[currentRouteIndex].rating"
-                [reviews]="routes[currentRouteIndex].reviews"
-                [duration]="routes[currentRouteIndex].duration"
-                [distance]="routes[currentRouteIndex].distance"
-                [ascent]="routes[currentRouteIndex].ascent"
-                [description]="routes[currentRouteIndex].description"
-                [features]="routes[currentRouteIndex].features"
-                [link]="routes[currentRouteIndex].link"
-              >
-              </lib-card-senderismo>
-
-              <!-- Controles móviles -->
-              <div class="flex justify-center space-x-6">
-                <button
-                  class="px-8 py-3 bg-[var(--neon-cyan)] text-black font-bold rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--neon-pink)] hover:scale-110"
-                  (click)="changeRoute(-1)"
-                  [disabled]="currentRouteIndex === 0"
-                >
-                  ← Anterior
-                </button>
-                <button
-                  class="px-8 py-3 bg-[var(--neon-cyan)] text-black font-bold rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--neon-pink)] hover:scale-110"
-                  (click)="changeRoute(1)"
-                  [disabled]="currentRouteIndex === routes.length - 1"
-                >
-                  Siguiente →
-                </button>
-              </div>
+                class="w-full max-w-md bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6 transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] animate-fade-in-up"
+                [routes]="routes"
+              ></lib-card-senderismo>
+            </div>
+          
+            <div class="flex justify-center mt-8">
+              <button 
+                (keydown)="handleKeydown($event)"
+                (click)="scrollToSection('posts')"
+                class="focus:outline-none scroll-button"
+                aria-label="Scroll to posts section">
+                <svg 
+                  class="w-12 h-12 text-neon-cyan drop-shadow-[0_0_6px_rgba(0,229,255,0.9)] animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
             </div>
           </section>
 
           <!-- Sección de Posts -->
-          <section class="mb-24 space-y-16">
-            <div class="text-center mb-12">
-              <h2 class="text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-green)] to-[var(--neon-cyan)] hover:scale-105 transition-transform duration-300">
+          <section id="posts" class="mb-16 space-y-10 relative">
+            <div class="text-center mb-8 animate-fade-in-up" style="animation-delay: 0.3s;">
+              <h2 class="text-4xl md:text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-cyan hover:scale-105 transition-transform duration-300">
                 Últimos Posts
               </h2>
-              <p class="text-lg text-gray-300 mt-4 max-w-2xl mx-auto">
+              <p class="text-lg text-gray-300 mt-3 max-w-2xl mx-auto">
                 Noticias y relatos de nuestra comunidad del 2030
               </p>
             </div>
-
-            <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-10">
+            <div *ngIf="!isMobile" class="grid md:grid-cols-3 gap-8">
               <lib-card
-                *ngFor="let post of posts"
-                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]"
+                *ngFor="let post of posts; let i = index"
+                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6 transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] animate-fade-in-up"
+                [style.animation-delay]="i * 0.1 + 's'"
                 [image]="post.image"
                 [title]="post.title"
                 [excerpt]="post.excerpt"
@@ -167,66 +137,69 @@
                 [category]="post.category"
                 [tag]="post.tag"
                 [authorInitials]="post.authorInitials"
-              >
-              </lib-card>
+              ></lib-card>
             </div>
-
-            <!-- Versión móvil -->
-            <div *ngIf="isMobile" class="space-y-10">
+            <div *ngIf="isMobile" class="flex justify-center">
               <lib-card
-                *ngIf="posts && posts.length > 0"
-                class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6"
-                [image]="posts[currentPostIndex].image"
-                [title]="posts[currentPostIndex].title"
-                [excerpt]="posts[currentPostIndex].excerpt"
-                [date]="posts[currentPostIndex].date"
-                [author]="posts[currentPostIndex].author"
-                [readMoreUrl]="posts[currentPostIndex].readMoreUrl"
-                [category]="posts[currentPostIndex].category"
-                [tag]="posts[currentPostIndex].tag"
-                [authorInitials]="posts[currentPostIndex].authorInitials"
-              >
-              </lib-card>
-
-              <!-- Controles móviles -->
-              <div class="flex justify-center space-x-6">
-                <button
-                  class="px-8 py-3 bg-[var(--neon-green)] text-black font-bold rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--neon-cyan)] hover:scale-110"
-                  (click)="changePost(-1)"
-                  [disabled]="currentPostIndex === 0"
-                >
-                  ← Anterior
-                </button>
-                <button
-                  class="px-8 py-3 bg-[var(--neon-green)] text-black font-bold rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--neon-cyan)] hover:scale-110"
-                  (click)="changePost(1)"
-                  [disabled]="currentPostIndex === posts.length - 1"
-                >
-                  Siguiente →
-                </button>
-              </div>
+                class="w-full max-w-md bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.3)] p-6 transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] animate-fade-in-up"
+                [posts]="posts"
+              ></lib-card>
+            </div>
+            <div class="flex justify-center mt-8">
+              <button 
+                (keydown)="handleKeydown($event)"
+                (click)="scrollToSection('adventures')"
+                class="focus:outline-none scroll-button"
+                aria-label="Scroll to adventures section">
+                <svg 
+                  class="w-12 h-12 text-neon-cyan drop-shadow-[0_0_6px_rgba(0,229,255,0.9)] animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
             </div>
           </section>
 
           <!-- Sección de Próximas Aventuras -->
-          <section class="my-24">
-            <div class="text-center mb-12">
-              <h2 class="text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-cyan)] hover:scale-105 transition-transform duration-300">
+          <section id="adventures" class="my-16 animate-fade-in-up relative" style="animation-delay: 0.4s;">
+            <div class="text-center mb-8">
+              <h2 class="text-4xl md:text-5xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-pink to-neon-cyan hover:scale-105 transition-transform duration-300">
                 Próximas Aventuras
               </h2>
-              <p class="text-lg text-gray-300 mt-4 max-w-2xl mx-auto">
+              <p class="text-lg text-gray-300 mt-3 max-w-2xl mx-auto">
                 Únete a las expediciones grupales del futuro
               </p>
             </div>
-            <lib-card-next-adventures class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-3xl shadow-[0_0_30px_rgba(236,72,153,0.4)] overflow-hidden transform hover:scale-102 transition-all duration-300"></lib-card-next-adventures>
+            <lib-card-next-adventures
+              class="bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-3xl shadow-[0_0_30px_rgba(236,72,153,0.4)] overflow-hidden transform hover:scale-[1.02] transition-all duration-500 max-h-[70vh] overflow-y-auto"
+            ></lib-card-next-adventures>
+            <div class="flex justify-center mt-8">
+              <button 
+                (keydown)="handleKeydown($event)"
+                (click)="scrollToSection('features')"
+                class="focus:outline-none scroll-button"
+                aria-label="Scroll to features section">
+                <svg 
+                  class="w-12 h-12 text-neon-cyan drop-shadow-[0_0_6px_rgba(0,229,255,0.9)] animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
+            </div>
           </section>
 
           <!-- Sección de Características -->
-          <section class="my-24">
-            <lib-caracteristicas class="space-y-12 bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-3xl p-8 shadow-[0_0_30px_rgba(59,130,246,0.3)]"></lib-caracteristicas>
+          <section id="features" class="my-16 animate-fade-in-up relative" style="animation-delay: 0.5s;">
+            <lib-caracteristicas class="space-y-6 bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-3xl p-8 shadow-[0_0_30px_rgba(59,130,246,0.3)] max-h-[70vh] overflow-y-auto"></lib-caracteristicas>
           </section>
         </main>
       </div>
     </div>
+
+
   </body>
 </html>

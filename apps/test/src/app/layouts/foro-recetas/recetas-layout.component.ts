@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { PostListComponent } from '@angel/features';
+import { CardNextAdventuresComponent, CaracteristicasComponent } from '@angel/angel-ui-components';
 
 
 @Component({
   selector: 'app-recetas-layout',
-  imports: [CommonModule, PostListComponent],
+   imports: [CommonModule , CardNextAdventuresComponent, CaracteristicasComponent],
   templateUrl: './recetas-layout.component.html',
   styleUrl: './recetas-layout.component.scss',
 })

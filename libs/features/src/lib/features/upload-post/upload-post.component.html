@@ -1,116 +1,206 @@
-<div class="mt-12 md:mt-16 lg:mt-20">
-  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="max-w-3xl mx-auto p-8 bg-white rounded-xl shadow-lg mt-4 space-y-8">
+<div class="mt-12 md:mt-16 lg:mt-20 bg-[radial-gradient(ellipse_at_top,#0a1a3d_0%,#1e3a8a_50%,#3b82f6_100%)] relative overflow-hidden">
+  <!-- Partículas de fondo -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="w-64 h-64 bg-[rgba(59,130,246,0.2)] rounded-full blur-3xl animate-float absolute top-10 left-1/4"></div>
+    <div class="w-96 h-96 bg-[rgba(236,72,153,0.15)] rounded-full blur-3xl animate-float absolute bottom-20 right-1/3 delay-1000"></div>
+  </div>
+
+  <form
+    [formGroup]="postForm"
+    (ngSubmit)="onSubmit()"
+    class="max-w-3xl mx-auto p-8 bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.3)] mt-4 space-y-6 relative z-10"
+  >
     <!-- Título -->
-    <div class="space-y-2">
-      <label for="title" class="block text-base font-medium text-gray-800 mb-2">Título</label>
-      <input id="title" formControlName="title" type="text"
-             class="w-full px-4 py-3 text-lg rounded-lg border-2 border-gray-200
-                    focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100
-                    transition-all duration-200 placeholder-gray-400">
+    <div class="space-y-2 animate-fade-in">
+      <label for="title" class="block text-lg font-orbitron text-[var(--neon-cyan)] drop-shadow-[0_0_4px_rgba(0,229,255,0.5)]">
+        Tu título épico *
+      </label>
+      <input
+        #formInput
+        id="title"
+        formControlName="title"
+        type="text"
+        placeholder="Escribe algo inolvidable (máx. 100 caracteres)"
+        class="w-full px-4 py-3 text-lg rounded-lg bg-[rgba(255,255,255,0.1)] text-white border-2 border-[rgba(59,130,246,0.3)] focus:border-[var(--neon-cyan)] focus:ring-4 focus:ring-[rgba(0,229,255,0.2)] transition-all duration-300 placeholder-gray-400 hover:bg-[rgba(255,255,255,0.15)]"
+        [ngClass]="{'invalid-field': postForm.get('title')?.invalid && postForm.get('title')?.touched}"
+      />
+      <p *ngIf="postForm.get('title')?.errors?.['required'] && postForm.get('title')?.touched" class="text-sm error-text font-orbitron">
+        El título es obligatorio. ¡Escribe un título épico!
+      </p>
+      <p *ngIf="postForm.get('title')?.errors?.['maxLength'] && postForm.get('title')?.touched" class="text-sm error-text font-orbitron">
+        Máximo 100 caracteres (actual: {{ postForm.get('title')?.value?.length || 0 }}). ¡Sé conciso!
+      </p>
     </div>
 
     <!-- Autor -->
-    <div class="space-y-2">
-      <label for="author" class="block text-base font-medium text-gray-800 mb-2">Autor</label>
-      <input id="author" formControlName="author" type="text"
-             class="w-full px-4 py-3 text-lg rounded-lg border-2 border-gray-200
-                    focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100
-                    transition-all duration-200 placeholder-gray-400">
+    <div class="space-y-2 animate-fade-in" style="animation-delay: 0.1s;">
+      <label for="author" class="block text-lg font-orbitron text-[var(--neon-cyan)] drop-shadow-[0_0_4px_rgba(0,229,255,0.5)]">
+        Creador del futuro *
+      </label>
+      <input
+        #formInput
+        id="author"
+        formControlName="author"
+        type="text"
+        placeholder="¿Quién eres tú?"
+        class="w-full px-4 py-3 text-lg rounded-lg bg-[rgba(255,255,255,0.1)] text-white border-2 border-[rgba(59,130,246,0.3)] focus:border-[var(--neon-cyan)] focus:ring-4 focus:ring-[rgba(0,229,255,0.2)] transition-all duration-300 placeholder-gray-400 hover:bg-[rgba(255,255,255,0.15)]"
+        [ngClass]="{'invalid-field': postForm.get('author')?.invalid && postForm.get('author')?.touched}"
+      />
+      <p *ngIf="postForm.get('author')?.errors?.['required'] && postForm.get('author')?.touched" class="text-sm error-text font-orbitron">
+        El autor es obligatorio. ¡Dinos quién eres!
+      </p>
     </div>
 
     <!-- Descripción -->
-    <div class="space-y-2">
-      <label for="descripcion" class="block text-base font-medium text-gray-800 mb-2">Descripción</label>
-      <input id="descripcion" formControlName="descripcion" type="text"
-             class="w-full px-4 py-3 text-lg rounded-lg border-2 border-gray-200
-                    focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100
-                    transition-all duration-200 placeholder-gray-400">
+    <div class="space-y-2 animate-fade-in" style="animation-delay: 0.2s;">
+      <label for="descripcion" class="block text-lg font-orbitron text-[var(--neon-cyan)] drop-shadow-[0_0_4px_rgba(0,229,255,0.5)]">
+        Tu visión inicial *
+      </label>
+      <input
+        #formInput
+        id="descripcion"
+        formControlName="descripcion"
+        type="text"
+        placeholder="Un resumen impactante..."
+        class="w-full px-4 py-3 text-lg rounded-lg bg-[rgba(255,255,255,0.1)] text-white border-2 border-[rgba(59,130,246,0.3)] focus:border-[var(--neon-cyan)] focus:ring-4 focus:ring-[rgba(0,229,255,0.2)] transition-all duration-300 placeholder-gray-400 hover:bg-[rgba(255,255,255,0.15)]"
+        [ngClass]="{'invalid-field': postForm.get('descripcion')?.invalid && postForm.get('descripcion')?.touched}"
+      />
+      <p *ngIf="postForm.get('descripcion')?.errors?.['required'] && postForm.get('descripcion')?.touched" class="text-sm error-text font-orbitron">
+        La descripción es obligatoria. ¡Resume tu aventura!
+      </p>
     </div>
 
     <!-- Contenido -->
-    <div class="space-y-2">
-      <label for="content" class="block text-base font-medium text-gray-800 mb-2">Contenido</label>
-      <textarea id="content" formControlName="content" rows="6"
-                class="w-full px-4 py-3 text-lg rounded-lg border-2 border-gray-200
-                       focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100
-                       transition-all duration-200 placeholder-gray-400"></textarea>
+    <div class="space-y-2 animate-fade-in" style="animation-delay: 0.3s;">
+      <label for="content" class="block text-lg font-orbitron text-[var(--neon-cyan)] drop-shadow-[0_0_4px_rgba(0,229,255,0.5)]">
+        Tu historia completa *
+      </label>
+      <textarea
+        #formInput
+        id="content"
+        formControlName="content"
+        rows="6"
+        placeholder="Cuenta tu aventura..."
+        class="w-full px-4 py-3 text-lg rounded-lg bg-[rgba(255,255,255,0.1)] text-white border-2 border-[rgba(59,130,246,0.3)] focus:border-[var(--neon-cyan)] focus:ring-4 focus:ring-[rgba(0,229,255,0.2)] transition-all duration-300 placeholder-gray-400 hover:bg-[rgba(255,255,255,0.15)]"
+        [ngClass]="{'invalid-field': postForm.get('content')?.invalid && postForm.get('content')?.touched}"
+      ></textarea>
+      <p *ngIf="postForm.get('content')?.errors?.['required'] && postForm.get('content')?.touched" class="text-sm error-text font-orbitron">
+        El contenido es obligatorio. ¡Cuenta tu historia!
+      </p>
     </div>
 
     <!-- Imágenes -->
-    <div class="space-y-2">
-      <div class="group relative mt-1 flex justify-center px-8 pt-10 pb-8 border-2 border-gray-200 
-                border-dashed rounded-xl hover:border-indigo-300 transition-colors duration-200
-                hover:bg-gray-50 cursor-pointer">
+    <div class="space-y-2 animate-fade-in" style="animation-delay: 0.4s;">
+      <label for="imagenes" class="block text-lg font-orbitron text-[var(--neon-cyan)] drop-shadow-[0_0_4px_rgba(0,229,255,0.5)]">
+        Capturas del momento *
+      </label>
+      <div
+        #formInput
+        id="imagenes-container"
+        class="group relative mt-1 flex justify-center px-8 pt-10 pb-8 border-2 border-[rgba(59,130,246,0.3)] border-dashed rounded-xl hover:border-[var(--neon-cyan)] transition-all duration-300 bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] cursor-pointer shadow-[0_0_10px_rgba(0,229,255,0.2)]"
+        [ngClass]="{'invalid-field': postForm.get('imagenes')?.invalid && postForm.get('imagenes')?.touched}"
+      >
         <div class="space-y-3 text-center">
-          <svg class="mx-auto h-14 w-14 text-gray-400 group-hover:text-indigo-500 transition-colors" 
-               stroke="currentColor" fill="none" viewBox="0 0 48 48">
-            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" 
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg
+            class="mx-auto h-14 w-14 text-[var(--neon-cyan)] group-hover:text-[var(--neon-pink)] transition-colors animate-pulse"
+            stroke="currentColor"
+            fill="none"
+            viewBox="0 0 48 48"
+          >
+            <path
+              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
           <div class="flex items-center justify-center gap-1 text-base">
-            <label class="relative cursor-pointer font-semibold text-indigo-600 
-                      hover:text-indigo-500 transition-colors">
-              <span>Subir archivos</span>
-              <input id="imagenes" formControlName="imagenes" type="file" 
-                     (change)="onFileChange($event)" multiple 
-                     class="sr-only">
+            <label
+              class="relative cursor-pointer font-orbitron font-semibold text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] transition-colors"
+            >
+              <span>Captura el momento</span>
+              <input
+                id="imagenes"
+                formControlName="imagenes"
+                type="file"
+                (change)="onFileChange($event)"
+                multiple
+                class="sr-only"
+              />
             </label>
-            <p class="text-gray-600">o arrastra y suelta</p>
+            <p class="text-gray-300">o arrastra tus archivos</p>
           </div>
-          <p class="text-sm text-gray-500">PNG, JPG, GIF hasta 10MB</p>
+          <p class="text-sm text-gray-400">PNG, JPG, GIF hasta 10MB</p>
+        </div>
+      </div>
+      <p *ngIf="postForm.get('imagenes')?.errors?.['required'] && postForm.get('imagenes')?.touched" class="text-sm error-text font-orbitron">
+        Las imágenes son obligatorias. ¡Sube al menos una imagen!
+      </p>
+      <!-- Previsualización de imágenes -->
+      <div *ngIf="imagePreviews.length > 0" class="grid grid-cols-2 gap-4 mt-4">
+        <div *ngFor="let preview of imagePreviews" class="relative">
+          <img
+            [src]="preview"
+            alt="Previsualización"
+            class="w-full h-32 object-cover rounded-lg shadow-[0_0_10px_rgba(0,229,255,0.3)]"
+          />
         </div>
       </div>
     </div>
 
-<!-- Tags -->
-<div class="space-y-2" *ngIf="showTagInput">
-  <label for="tags" class="block text-base font-medium text-gray-800 mb-2">
-    Tags
-  </label>
-
-  <!-- <select id="tags" formControlName="tags" multiple -->
-  <select id="tags" formControlName="tags" single
-          class="w-full px-4 py-3 text-lg rounded-lg border-2 border-gray-200
-                 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100
-                 transition-all duration-200 placeholder-gray-400
-                 [height:auto] min-h-[3.5rem]">
-    <option value="senderismo" class="p-2 hover:bg-indigo-50">Senderismo</option>
-    <option value="pesca" class="p-2 hover:bg-indigo-50">Pesca</option>
-    <option value="gastronomia" class="p-2 hover:bg-indigo-50">Gastronomía</option>
-    <option value="micologia" class="p-2 hover:bg-indigo-50">Micología</option>
-  </select>
-
-  
-  <p class="text-sm text-gray-500 mt-1">Selecciona uno o varios (usa Ctrl/Cmd para múltiples)</p>
-</div>
-
-
-
-
-    <!-- Botón Submit -->
-    <div class="pt-6 text-right">
-      <button type="submit" [disabled]="postForm.invalid"
-              class="inline-flex items-center justify-center py-3 px-8 border border-transparent 
-                     shadow-sm text-base font-medium rounded-lg text-white 
-                     bg-indigo-600 hover:bg-indigo-700 
-                     disabled:opacity-50 disabled:cursor-not-allowed
-                     focus:outline-none focus:ring-4 focus:ring-offset-2 
-                     focus:ring-indigo-500 transition-all duration-200
-                     transform hover:scale-[1.02]">
-        Crear Post
-      </button>
+    <!-- Tags -->
+    <div class="space-y-2 animate-fade-in" *ngIf="showTagInput" style="animation-delay: 0.5s;">
+      <label for="tags" class="block text-lg font-orbitron text-[var(--neon-cyan)] drop-shadow-[0_0_4px_rgba(0,229,255,0.5)]">
+        Categoriza tu aventura *
+      </label>
+      <select
+        #formInput
+        id="tags"
+        formControlName="tags"
+        multiple
+        class="w-full px-4 py-3 text-lg rounded-lg bg-[rgba(255,255,255,0.1)] text-white border-2 border-[rgba(59,130,246,0.3)] focus:border-[var(--neon-cyan)] focus:ring-4 focus:ring-[rgba(0,229,255,0.2)] transition-all duration-300 hover:bg-[rgba(255,255,255,0.15)]"
+        [ngClass]="{'invalid-field': postForm.get('tags')?.invalid && postForm.get('tags')?.touched}"
+      >
+        <option value="senderismo" class="p-2 bg-[rgba(255,255,255,0.05)] hover:bg-[var(--neon-green)] hover:text-black">Senderismo</option>
+        <option value="pesca" class="p-2 bg-[rgba(255,255,255,0.05)] hover:bg-[var(--neon-cyan)] hover:text-black">Pesca</option>
+        <option value="gastronomia" class="p-2 bg-[rgba(255,255,255,0.05)] hover:bg-[var(--neon-pink)] hover:text-black">Gastronomía</option>
+        <option value="micologia" class="p-2 bg-[rgba(255,255,255,0.05)] hover:bg-[var(--neon-yellow)] hover:text-black">Micología</option>
+      </select>
+      <p *ngIf="postForm.get('tags')?.errors?.['required'] && postForm.get('tags')?.touched" class="text-sm error-text font-orbitron">
+        Los tags son obligatorios. ¡Selecciona al menos un tema!
+      </p>
+      <p class="text-sm text-gray-400 mt-1">Elige tus temas (Ctrl/Cmd para múltiples)</p>
     </div>
 
+    <!-- Botón Submit y mensajes -->
+    <div class="pt-6 text-center animate-fade-in" style="animation-delay: 0.6s;">
+      <button
+        type="submit"
+        [disabled]="postForm.invalid || isLoading"
+        class="inline-flex items-center justify-center py-3 px-8 bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] hover:from-[var(--neon-pink)] hover:to-[var(--neon-yellow)] text-white font-orbitron font-semibold rounded-full shadow-[0_0_15px_rgba(0,229,255,0.5)] hover:shadow-[0_0_25px_rgba(236,72,153,0.8)] transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed animate-glow"
+      >
+        <span *ngIf="!isLoading">Lanzar al Futuro</span>
+        <span *ngIf="isLoading" class="flex items-center gap-2">
+          <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z" />
+          </svg>
+          Guardando...
+        </span>
+      </button>
+      <p *ngIf="postForm.invalid && !isLoading" class="text-sm error-text font-orbitron mt-2">
+        Por favor, completa los siguientes campos: {{ getRequiredInvalidFields().join(', ') }}
+      </p>
+      <p *ngIf="submissionSuccess" class="text-sm success-text font-orbitron mt-2 text-[var(--neon-cyan)] animate-glow-success">
+        ¡Post lanzado con éxito al futuro!
+      </p>
+    </div>
 
     <!-- Content Generator -->
-    <div class="mt-10">
+    <div class="mt-10 animate-fade-in" style="animation-delay: 0.7s;">
       <lib-content-generator
         (contentGenerated)="handleGeneratedContent($event)"
-        class="block w-full p-6 bg-indigo-50 rounded-xl shadow-sm hover:shadow-md transition-all
-               duration-300 border-2 border-dashed border-indigo-100 hover:border-indigo-200">
-      </lib-content-generator>
+        class="block w-full p-6 bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-xl shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] transition-all duration-300 border-2 border-[rgba(0,229,255,0.2)] hover:border-[var(--neon-cyan)]"
+      ></lib-content-generator>
     </div>
-
-
   </form>
 </div>

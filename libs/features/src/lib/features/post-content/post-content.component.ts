@@ -20,7 +20,6 @@ export class PostContentComponent implements OnInit {
   post$!: Observable<Post>;
 
   ngOnInit(): void {
-    // Se obtiene el parámetro "id" de la URL y se consulta el servicio
     this.post$ = this.route.paramMap.pipe(
       switchMap((params) => {
         const postId = params.get('id');

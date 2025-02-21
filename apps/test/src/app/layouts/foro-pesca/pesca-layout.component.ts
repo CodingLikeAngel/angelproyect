@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostListComponent } from '@angel/features';
 import { Router } from '@angular/router';
-
+import {
+  CardNextAdventuresComponent,
+  CaracteristicasComponent,
+} from '@angel/angel-ui-components';
 
 
 @Component({
   selector: 'app-pesca-layout',
-  imports: [CommonModule, PostListComponent],
+  imports: [CommonModule , CardNextAdventuresComponent, CaracteristicasComponent],
   templateUrl: './pesca-layout.component.html',
   styleUrl: './pesca-layout.component.scss',
 })

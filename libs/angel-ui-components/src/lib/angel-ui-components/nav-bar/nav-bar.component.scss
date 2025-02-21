@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :host {
-  top: 10vh;
+  top: 6vh; /* Ajusta según el header padre */
   position: fixed;
   width: 100%;
   z-index: 40;
 }
 
 .nav-link {
-  @apply font-orbitron font-medium text-lg relative;
+  @apply font-orbitron font-medium text-base relative; /* Reducimos de text-lg a text-base */
 }
 
 .mobile-nav-link {
-  @apply block px-6 py-3 text-lg font-orbitron font-medium rounded-xl transition-all duration-300 hover:scale-105;
+  @apply block px-4 py-2 text-base font-orbitron font-medium rounded-lg transition-all duration-300 hover:scale-105; /* Ajustamos padding */
 }
 
 /* Animaciones */

@@ -1,90 +1,80 @@
-/* libs/shared-ui/src/lib/styles.scss */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
 .post-detail {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 16px;
-    background-color: #fff;
-  }
-  
-  .post-title {
-    font-size: 2rem;
-    margin-bottom: 8px;
-  }
-  
-  .post-subtitle {
-    font-size: 1.25rem;
-    color: #555;
-    margin-bottom: 16px;
-  }
-  
-  .post-meta {
-    font-size: 0.875rem;
-    color: #888;
-    margin-bottom: 16px;
-  
-    .post-author {
-      margin-right: 16px;
-    }
-  }
-  
-  .post-main-image img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 16px;
-    border-radius: 4px;
-  }
-  
-  .post-content {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 24px;
-  }
-  
-  .post-share {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
-  
-    .share-button {
-      padding: 8px 16px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  }
-  
-  .post-comments {
-    border-top: 1px solid #ddd;
-    padding-top: 16px;
-  }
-  
-  .loading {
-    text-align: center;
-    padding: 32px;
-    font-size: 1.2rem;
-  }
-  
+  @apply max-w-4xl mx-auto px-4 py-6 bg-[rgba(255,255,255,0.05)] backdrop-blur-md rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.3)];
+}
 
-  .secondary-image {
-    position: relative;
-    opacity: 0.8; /* Puedes ajustar la opacidad */
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .secondary-image img {
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-  }
-  
-  .secondary-image:hover {
-    transform: scale(1.05); /* Efecto de aumento */
-  }
-  
+.post-title {
+  @apply text-3xl md:text-4xl font-bold;
+}
+
+.post-subtitle {
+  @apply text-lg md:text-xl;
+}
+
+.post-meta {
+  @apply flex items-center gap-4 text-sm;
+}
+
+.post-main-image img {
+  @apply w-full h-auto;
+}
+
+.post-content {
+  @apply leading-relaxed;
+}
+
+.post-share {
+  @apply flex gap-4;
+}
+
+.post-comments {
+  @apply border-t pt-6;
+}
+
+.loading {
+  @apply text-center text-gray-300 text-lg font-orbitron;
+}
+
+/* Animaciones */
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { filter: brightness(100%); }
+  50% { filter: brightness(120%); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Variables neón */
+:root {
+  --neon-cyan: #00e5ff;
+  --neon-pink: #ec4899;
+  --neon-green: #22c55e;
+  --neon-yellow: #eab308;
+}

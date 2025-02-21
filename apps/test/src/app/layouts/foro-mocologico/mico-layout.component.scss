@@ -1,30 +1,51 @@
-/* Estilos mejorados */
-body {
-  background-image: linear-gradient(to bottom, #f7fafc 0%, #edf2f7 100%);
+:root {
+  --neon-green: #22c55e;
+  --neon-yellow: #eab308;
+  --neon-cyan: #00e5ff;
+  --neon-pink: #ec4899;
 }
 
-.bg-green-50 {
-  background: #f0fff4;
-  border: 2px solid #c6f6d5;
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
 }
 
-.text-green-800 {
-  color: #2f855a;
+@keyframes glow {
+  0%, 100% { filter: brightness(100%); }
+  50% { filter: brightness(120%); }
 }
 
-.bg-green-700 {
-  background: #2f855a;
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
 }
 
-.hover\:bg-green-800:hover {
-  background: #276749;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.rounded-xl {
-  border-radius: 1rem;
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
 }
 
-.shadow-lg {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}

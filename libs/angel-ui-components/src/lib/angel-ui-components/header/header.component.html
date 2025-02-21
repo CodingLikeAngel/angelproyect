@@ -1,19 +1,19 @@
 <header
   class="fixed w-full z-50 bg-[rgba(10,26,61,0.9)] backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.3)]"
 >
-  <nav class="container mx-auto px-6 py-4">
-    <div class="flex justify-between items-center h-16">
+  <nav class="container mx-auto px-3 py-2">
+    <div class="flex justify-between items-center h-12">
       <!-- Logo -->
-      <a href="#" class="flex items-center">
+      <a href="#" class="flex items-center flex-shrink-0">
         <span
-          class="text-4xl font-orbitron font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-pink)] animate-glow hover:scale-105 transition-transform duration-300"
+          class="text-2xl font-orbitron font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-pink)] animate-glow hover:scale-105 transition-transform duration-300"
         >
           FORO LEÓN
         </span>
       </a>
 
       <!-- Menú Desktop -->
-      <div class="hidden md:flex items-center gap-10">
+      <div class="hidden md:flex items-center gap-3 flex-shrink-0">
         <a
           href="foro-main/foro-pesca"
           class="nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:scale-105 transition-all duration-300 relative group"
@@ -51,16 +51,16 @@
           ></span>
         </a>
 
-        <div class="flex gap-4 ml-8">
+        <div class="flex gap-2 ml-2">
           <button
             (click)="navigateToUpload()"
-            class="cta-button bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black animate-pulse shadow-[0_0_15px_rgba(0,229,255,0.5)]"
+            class="cta-button bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black font-semibold animate-pulse shadow-[0_0_15px_rgba(0,229,255,0.5)] hover:shadow-[0_0_25px_rgba(0,229,255,0.8)]"
           >
             Escribe tu post
           </button>
           <button
             (click)="navigateToPosts()"
-            class="cta-button bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-yellow)] hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black animate-pulse shadow-[0_0_15px_rgba(236,72,153,0.5)]"
+            class="cta-button bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-yellow)] hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black font-semibold animate-pulse shadow-[0_0_15px_rgba(236,72,153,0.5)] hover:shadow-[0_0_25px_rgba(236,72,153,0.8)]"
           >
             Ver posts
           </button>
@@ -69,12 +69,12 @@
 
       <!-- Botón Mobile -->
       <button
-        class="md:hidden p-3 rounded-lg bg-[var(--neon-cyan)] hover:bg-[var(--neon-pink)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]"
+        class="md:hidden p-2 rounded-lg bg-[var(--neon-cyan)] hover:bg-[var(--neon-pink)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]"
         (click)="isMobileMenuOpen = !isMobileMenuOpen"
         aria-label="Toggle mobile menu"
       >
         <svg
-          class="w-6 h-6 text-white transform transition-transform duration-300"
+          class="w-5 h-5 text-white transform transition-transform duration-300"
           [ngClass]="{ 'rotate-90': isMobileMenuOpen }"
           fill="none"
           stroke="currentColor"
@@ -95,7 +95,7 @@
       class="md:hidden overflow-hidden transition-all duration-500 bg-[rgba(10,26,61,0.95)] backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.3)]"
       [ngClass]="isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'"
     >
-      <div class="px-6 py-6 space-y-4">
+      <div class="px-4 py-4 space-y-3">
         <a
           href="foro-main/foro-pesca"
           class="mobile-nav-link text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] hover:bg-[rgba(255,255,255,0.05)]"
@@ -121,16 +121,16 @@
           Foro Gastronómico
         </a>
 
-        <div class="pt-4 space-y-4">
+        <div class="pt-3 space-y-3">
           <button
             (click)="navigateToUpload()"
-            class="mobile-cta-button bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black animate-pulse shadow-[0_0_15px_rgba(0,229,255,0.5)]"
+            class="mobile-cta-button bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-green)] hover:from-[var(--neon-green)] hover:to-[var(--neon-cyan)] text-black font-semibold animate-pulse shadow-[0_0_15px_rgba(0,229,255,0.5)] hover:shadow-[0_0_25px_rgba(0,229,255,0.8)]"
           >
             Escribe tu post
           </button>
           <button
             (click)="navigateToPosts()"
-            class="mobile-cta-button bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-yellow)] hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black animate-pulse shadow-[0_0_15px_rgba(236,72,153,0.5)]"
+            class="mobile-cta-button bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-yellow)] hover:from-[var(--neon-yellow)] hover:to-[var(--neon-pink)] text-black font-semibold animate-pulse shadow-[0_0_15px_rgba(236,72,153,0.5)] hover:shadow-[0_0_25px_rgba(236,72,153,0.8)]"
           >
             Ver posts
           </button>

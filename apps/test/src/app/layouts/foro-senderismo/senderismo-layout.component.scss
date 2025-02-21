@@ -1,34 +1,57 @@
-/* .badge */
-.badge {
-  @apply px-4 py-2 rounded-full text-sm font-medium bg-[rgba(236,72,153,0.3)] text-[var(--neon-pink)] shadow-md hover:brightness-125 transition-all duration-200;
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
 }
 
-/* .feature-card */
-.feature-card {
-  @apply bg-[rgba(255,255,255,0.05)] p-8 rounded-2xl shadow-[0_0_20px_rgba(59,130,246,0.3)] backdrop-blur-md hover:shadow-[0_0_40px_rgba(236,72,153,0.5)] transition-all duration-300 transform hover:scale-105;
+@keyframes glow {
+  0%, 100% { filter: brightness(100%); }
+  50% { filter: brightness(130%); }
 }
 
-/* .icon-container */
-.icon-container {
-  @apply p-5 rounded-full inline-block mb-6 bg-[rgba(59,130,246,0.2)] text-[var(--neon-cyan)] animate-glow;
+.animate-float {
+  animation: float 5s ease-in-out infinite;
 }
 
-/* .feature-title */
-.feature-title {
-  @apply text-3xl font-orbitron font-bold text-[var(--neon-green)] mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[var(--neon-green)] to-[var(--neon-cyan)] hover:scale-105 transition-transform duration-300;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
-/* .feature-list li */
-.feature-list li {
-  @apply mb-3 text-gray-300 before:content-['✨'] before:mr-3 before:text-[var(--neon-cyan)] hover:text-[var(--neon-pink)] transition-colors duration-200;
+.animate-float-slow {
+  animation: float 7s ease-in-out infinite;
 }
 
-/* .tag */
-.tag {
-  @apply inline-block bg-[rgba(34,197,94,0.3)] text-[var(--neon-green)] px-4 py-2 rounded-full text-sm mr-3 mb-3 shadow-md hover:bg-[rgba(34,197,94,0.5)] transition-all duration-200;
+.animate-bounce {
+  animation: bounce 2s infinite;
 }
 
-/* .cta-button */
-.cta-button {
-  @apply bg-[var(--neon-cyan)] hover:bg-[var(--neon-pink)] text-black font-bold py-4 px-10 rounded-xl shadow-[0_0_20px_rgba(0,229,255,0.5)] transition-all duration-300 transform hover:scale-110 inline-flex items-center animate-glow;
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00e5ff; /* Usamos el valor directo de neon-cyan */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ec4899; /* Usamos el valor directo de neon-pink */
 }
