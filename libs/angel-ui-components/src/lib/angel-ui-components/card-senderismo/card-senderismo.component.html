@@ -2,18 +2,21 @@
 <div *ngIf="!isMobile" class="p-4 flex justify-center">
   <div class="flex flex-wrap justify-center gap-6 max-w-6xl">
     <article
-      class="bg-[rgba(255,255,255,0.05)] backdrop-blur-lg border border-white/15 rounded-2xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.5)] transition-all duration-300 w-full md:w-[30%] lg:w-[32%] min-h-[400px] max-h-[450px] overflow-hidden"
+      class="bg-[rgba(255,255,255,0.05)] backdrop-blur-lg border border-white/15 rounded-2xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.5)] transition-all duration-300 w-full md:w-[40%] lg:w-[45%] flex flex-col h-[450px]"
     >
-      <div class="relative overflow-hidden">
+      <div class="relative overflow-hidden flex-shrink-0">
         <div class="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.8)] to-transparent z-0"></div>
         <img
           [src]="imageUrl"
           alt="{{ routeName }}"
-          class="w-full h-36 object-cover flex-none rounded-t-2xl transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+          class="w-full h-36 object-cover rounded-t-2xl transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
           loading="lazy"
         />
         <div class="absolute bottom-0 left-0 p-4 z-10">
-          <h3 class="text-lg font-orbitron font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] animate-glow" itemprop="name">
+          <h3
+            class="text-lg font-orbitron font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] animate-glow"
+            itemprop="name"
+          >
             {{ routeName }}
           </h3>
         </div>
@@ -28,8 +31,8 @@
           <span>📏 {{ distance }}km</span>
           <span class="ml-auto">↗ {{ ascent }}m</span>
         </div>
-        <p class="text-gray-300 text-xs mb-2 leading-tight" itemprop="description">{{ description }}</p>
-        <ul class="text-xs text-gray-400 space-y-1 mb-3 flex-1 overflow-y-auto">
+        <p class="text-gray-300 text-xs mb-2 leading-tight flex-grow" itemprop="description">{{ description }}</p>
+        <ul class="text-xs text-gray-400 space-y-1 mb-3 overflow-y-auto">
           <li *ngFor="let feature of features">• {{ feature }}</li>
         </ul>
         <a
@@ -44,12 +47,7 @@
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
         </a>
       </div>
@@ -59,22 +57,25 @@
 
 <!-- Versión móvil -->
 <div *ngIf="isMobile" class="p-4 flex justify-center">
-  <div class="w-full max-w-md mx-auto">
+  <div class="w-full max-w-lg mx-auto">
     <div class="relative transition-all duration-500 ease-in-out" [@slideAnimation]="currentRouteIndex">
       <article
-      #postCard 
-        class="bg-[rgba(255,255,255,0.05)] backdrop-blur-lg border border-white/15 rounded-2xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.5)] transition-all duration-300 w-full min-h-[400px] max-h-[50vh] overflow-hidden"
+        #postCard
+        class="bg-[rgba(255,255,255,0.05)] backdrop-blur-lg border border-white/15 rounded-2xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.5)] transition-all duration-300 w-full flex flex-col h-[450px]"
       >
-        <div class="relative overflow-hidden">
+        <div class="relative overflow-hidden flex-shrink-0">
           <div class="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.8)] to-transparent z-0"></div>
           <img
             [src]="imageUrl"
             alt="{{ routeName }}"
-            class="w-full h-32 object-cover flex-none rounded-t-2xl transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+            class="w-full h-32 object-cover rounded-t-2xl transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
             loading="lazy"
           />
           <div class="absolute bottom-0 left-0 p-4 z-10">
-            <h3 class="text-lg font-orbitron font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] animate-glow" itemprop="name">
+            <h3
+              class="text-lg font-orbitron font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] animate-glow"
+              itemprop="name"
+            >
               {{ routeName }}
             </h3>
           </div>
@@ -89,8 +90,8 @@
             <span>📏 {{ distance }}km</span>
             <span class="ml-auto">↗ {{ ascent }}m</span>
           </div>
-          <p class="text-gray-300 text-xs mb-2 leading-tight" itemprop="description">{{ description }}</p>
-          <ul class="text-xs text-gray-400 space-y-1 mb-3 flex-1 overflow-y-auto">
+          <p class="text-gray-300 text-xs mb-2 leading-tight flex-grow" itemprop="description">{{ description }}</p>
+          <ul class="text-xs text-gray-400 space-y-1 mb-3 overflow-y-auto">
             <li *ngFor="let feature of features">• {{ feature }}</li>
           </ul>
           <div class="flex justify-between items-center gap-2 py-2">
@@ -115,12 +116,7 @@
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </a>
             <button
