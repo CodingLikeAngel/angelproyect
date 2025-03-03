@@ -9,10 +9,11 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta name="google-site-verification" content="8b7JPcM4F2Wgd6aFwhH0CWWAM2zee5EMvyjowZaL4vM">
     <script>
+      // Redirigir a la página correcta en Angular
       var path = window.location.pathname;
-      var newUrl = "/index.html?page=" + encodeURIComponent(path);
+      var newUrl = window.location.origin + '/index.html?page=' + encodeURIComponent(path);
       window.location.replace(newUrl);
-    </script>
+  </script>
   
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LBJHH9WDJ6"></script>
