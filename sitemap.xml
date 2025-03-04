@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>codinglikeangel.github.io/angelproyect/</loc>
+        <lastmod>2025-03-04</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>codinglikeangel.github.io/angelproyect/home</loc>
+        <lastmod>2025-03-04</lastmod>
+        <priority>0.8</priority>
+    </url>
+     <url>
+        <loc>codinglikeangel.github.io/angelproyect/pesca-leon</loc>
+        <lastmod>2025-03-04</lastmod>
+        <priority>0.8</priority>
+    </url>
+       <url>
+        <loc>codinglikeangel.github.io/angelproyect/pesca-leon</loc>
+        <lastmod>2025-03-04</lastmod>
+        <priority>0.8</priority>
+    </url>
+       <url>
+        <loc>codinglikeangel.github.io/angelproyect/senderismo-leon</loc>
+        <lastmod>2025-03-04</lastmod>
+        <priority>0.8</priority>
+    </url>
+       <url>
+        <loc>codinglikeangel.github.io/angelproyect/micologia-leon</loc>
+        <lastmod>2025-03-04</lastmod>
+        <priority>0.8</priority>
+    </url>
+       <url>
+        <loc>codinglikeangel.github.io/angelproyect/noticias</loc>
+        <lastmod>2025-03-04</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <!-- Añadir más URLs según sea necesario -->
+</urlset>
