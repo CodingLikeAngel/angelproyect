@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Disallow: /login/
 Allow: /
-Sitemap: codinglikeangel.github.io/angelproyect/sitemap.xml
+Sitemap: codinglikeangel.github.io/angelproyect/sitemap.xmls
